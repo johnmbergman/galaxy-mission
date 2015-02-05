@@ -5,9 +5,8 @@ require "controllers/registration-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';
-  exit;
   
-  $model = new RegistrationModel();
+  /*$model = new RegistrationModel();
   $model->email = $_POST["email"];
   $model->password = $_POST["password"];
   $model->repeatpass = $_POST["confirm"];
@@ -51,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(!$valid_pass)   echo '<li>The passwords do not match.</li>';
     if(!$valid_length) echo '<li>The password must be at least 6 characters long.</li>';
     echo '</ul></div></div></div>';
-  }
+  }*/
 }
 
 ?>
