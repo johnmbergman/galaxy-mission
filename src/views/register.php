@@ -4,6 +4,9 @@ require "models/registration-model.php";
 require "controllers/registration-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
+  echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';
+  exit;
+  
   $model = new RegistrationModel();
   $model->email = $_POST["email"];
   $model->password = $_POST["password"];
