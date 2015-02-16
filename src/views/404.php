@@ -1,5 +1,6 @@
 <div class="text-center">
   <h1><i class="fa fa-bug fa-5x"></i></h1>
-  <h1>404: Page Not found</h1>
-  <p class="lead">The page you tried to reach could not be found.</p>
+  <h1>Oh no!</h1>
+  <p class="lead">A bug found its way into the current mission! <a href="/">Click here</a> to go back to the ship.</p>
+  <p>404 - Page not found</p>
 </div>

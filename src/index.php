@@ -16,15 +16,18 @@
 
     // Get the path of the file to load
     $filename = "views/" . $_GET['page'] . ".php";
+    $jsfilename = "js/" . $_GET['page'] . ".js";
     if(!file_exists($filename))
     {
       $filename = "views/404.php";
+      $jsfilename = "js/404.js";
     }
   }
   else
   {
     // Not specified, load the home page
     $filename = "views/home.php";
+    $jsfilename = "js/home.js";
   }
 
   // Prepare the session variables
@@ -76,31 +79,27 @@
         <a class="navbar-brand" href="/"><i class="fa fa-rocket"></i> Galaxy Mission</a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
+        <?php if($_SESSION["authenticated"]) { ?>
         <ul class="nav navbar-nav">
-          <li><a href="#">Menu Item 1</a></li>
-          <li><a href="#">Menu Item 2</a></li>
-          <li><a href="#">Menu Item 3</a></li>
-          <li><a href="#">Menu Item 4</a></li>
+          <li><a href="/assignments/"><i class="fa fa-check-square-o"></i> Assignments</a></li>
+          <li><a href="/practice/"><i class="fa fa-puzzle-piece"></i> Practice</a></li>
+          <li><a href="/reports/"><i class="fa fa-file-text-o"></i> Reports</a></li>
         </ul>
+        <?php } ?>
         <ul class="nav navbar-nav navbar-right">
-          <?php
-            if($_SESSION["authenticated"])
-            {
-              echo '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Account <b class="caret"></b></a>';
-              echo '<ul class="dropdown-menu">';
-              echo '<li><a href="/profile/"><i class="fa fa-cog"></i> Profile</a></li>';
-              echo '<li><a href="#"><i class="fa fa-lock"></i> Change Password</a></li>';
-              echo '<li class="divider"></li>';
-              echo '<li><a href="/logout/"><i class="fa fa-sign-out"></i> Sign out</a></li>';
-              echo '</ul>';
-              echo '</li>';
-            }
-            else
-            {
-              echo '<li><a href="/register/"><i class="fa fa-file-text-o"></i> Register</a></li>';
-              echo '<li><a href="/login/"><i class="fa fa-sign-in"></i> Sign in</a></li>';
-            }
-          ?>
+          <?php if($_SESSION["authenticated"]) { ?>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Account <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li><a href="/profile/"><i class="fa fa-cog"></i> Profile</a></li>
+            <li><a href="#"><i class="fa fa-lock"></i> Change Password</a></li>
+            <li class="divider"></li>
+            <li><a href="/logout/"><i class="fa fa-sign-out"></i> Sign out</a></li>
+            </ul>
+            </li>
+          <?php } else { ?>
+            <li><a href="/register/"><i class="fa fa-file-text-o"></i> Register</a></li>
+            <li><a href="/login/"><i class="fa fa-sign-in"></i> Sign In</a></li>
+          <?php } ?>
         </ul>
       </div>
     </div>
@@ -122,7 +121,14 @@
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="/js/bootstrap.min.js"></script>
+
+  <!-- Load the javascript file for the page if applicable -->
+  <?php
+  if(file_exists($jsfilename))
+  {
+    echo '<script src="/' . $jsfilename . '"></script>';
+  }
+  ?>
 </body>
 </html>

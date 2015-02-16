@@ -2,12 +2,18 @@
 
 class RegistrationModel
 {
+  public $type;
+  public $firstname;
+  public $lastname;
   public $email;
   public $password;
   public $repeatpass;
 
   public function __construct()
   {
+    $type = "invalid";
+    $firstname = "";
+    $lastname = "";
     $email = "";
     $password = "";
     $repeatpass = "";
@@ -28,6 +34,10 @@ class RegistrationModel
     return (strlen($this->password) >= 6);
   }
 
+  public function ValidName()
+  {
+    return (strlen($this->firstname) > 0 && strlen($this->lastname) > 0);
+  }
 }
 
 ?>

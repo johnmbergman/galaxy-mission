@@ -68,6 +68,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <fieldset>
         <legend><i class="fa fa-user"></i> Register New Account</legend>
         <div class="form-group">
+          <label for="input-type" class="col-md-3 control-label">I am a...</label>
+          <div class="col-md-9">
+            <select name="type" class="form-control" id="input-type">
+              <option val="parent">Parent</option>
+              <option val="teacher">Teacher</option>
+            </select>
+            <span class="help-block"><a href="#" data-toggle="modal" data-target="#model-student">Click here</a> for information on creating a student account.</span>
+          </div>
+        </div>
+        <div class="form-group">
           <label for="input-email" class="col-md-3 control-label">Email</label>
           <div class="col-md-9">
             <input type="email" name="email" class="form-control" id="input-email" placeholder="Email Address">
@@ -102,5 +112,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <p>Already have an account? <a href="/login/">Click here</a> to sign in.</p>
+  </div>
+</div>
+<div class="modal fade" id="model-student" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Student account instructions</h4>
+      </div>
+      <div class="modal-body">
+        <p>To create a student account, please <a href="/login/">log in</a> to a parent or teacher account and choose <strong>Add Student</strong> from the management menu.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+    </div>
   </div>
 </div>
