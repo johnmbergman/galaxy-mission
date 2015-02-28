@@ -78,6 +78,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           </div>
         </div>
         <div class="form-group">
+          <label for="input-firstname" class="col-md-3 control-label">Name</label>
+          <div class="col-md-3">
+            <input type="text" name="firstname" class="form-control" id="input-firstname" placeholder="First Name">
+          </div>
+          <div class="col-md-4">
+            <input type="text" name="lastname" class="form-control" id="input-lastname" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group">
           <label for="input-email" class="col-md-3 control-label">Email</label>
           <div class="col-md-9">
             <input type="email" name="email" class="form-control" id="input-email" placeholder="Email Address">
