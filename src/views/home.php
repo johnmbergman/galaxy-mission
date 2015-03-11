@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <h1>Welcome to Galaxy Mission</h1>
-  <p>This is one reason why you should sign up! Some nice, persuasive words about signing up go here! So why haven't you signed up yet!?</p>
+  <p>Attention Space Cadets!  The Intergalactic Federation needs you!  Only you can save the galaxy now!  Register today!</p>
   <p><a href="/register/" class="btn btn-primary btn-large">Register for an Account</a></p>
 </div>
 <div class="row">

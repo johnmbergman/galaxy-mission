@@ -57,8 +57,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
-      <h1>Hello there!</h1>
+      <h1><font color= #FFFFFF>Hello there!</h1>
       <p class="lead">Fill out the form below to register for an account.</p>
+      </font>
     </div>
   </div>
 </div>
@@ -120,7 +121,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 </div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  <font color= #FFFFFF>
     <p>Already have an account? <a href="/login/">Click here</a> to sign in.</p>
+  </font> 
   </div>
 </div>
 <div class="modal fade" id="model-student" tabindex="-1" role="dialog">
