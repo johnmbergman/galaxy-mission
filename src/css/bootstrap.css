@@ -1356,6 +1356,9 @@ a.text-warning:hover {
 .text-danger {
   color: #b94a48;
 }
+.text-white {
+  color: white;
+}
 a.text-danger:hover {
   color: #953b39;
 }
