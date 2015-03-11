@@ -47,7 +47,7 @@
   <title>Galaxy Mission</title>
 
   <!-- Bootstrap -->
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap.css" rel="stylesheet">
 
   <!-- Font Awesome -->   
   <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
