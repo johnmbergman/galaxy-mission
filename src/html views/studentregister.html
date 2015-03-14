@@ -16,7 +16,22 @@ table, td, td{
 th, td{ 
      padding: 10px;     
      }
-      
+img{
+	width:75px;
+	height:75px;
+	margin: 10px 10px;
+	}
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #008080;
+}
 </style>
 </head>
 
@@ -61,20 +76,35 @@ th, td{
         <div class="form-group">
           <label style="text-align:center" for="input-pass" class="col-md-3 control-label">Please select a passcode icon for the student</label>
           <div class="col-xs-8">
-      		<table width="100%">
-      		  <tr> 
-      		    <td><img src="icons/alien13.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		    <td><img src="icons/astronaut6.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		    <td><img src="icons/comet6.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		    <td><img src="icons/galaxy2.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		  </tr>
-      		  <tr>
-      		    <td><img src="icons/planets1.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		    <td><img src="icons/rocket48.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		    <td><img src="icons/spacecraft2.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		    <td><img src="icons/spaceship2.png" alt="alien icon" style="width:50px;height:50px"></td>
-      		  </tr>  
-      		</table>  
+          <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/alien13.png" alt="alien icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/astronaut6.png" alt="astronaut icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/comet6.png" alt="comet icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/galaxy2.png" alt="galaxy icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/planets1.png" alt="planets icon">
+  		  </label><label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/rocket48.png" alt="rocket icon">
+  		  </label><label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/spacecraft2.png" alt="spacecraft icon">
+  		  </label><label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="icons/spaceship2.png" alt="spaceship icon">
+  		  </label>
           </div>
         </div>
         <div class="form-group">
