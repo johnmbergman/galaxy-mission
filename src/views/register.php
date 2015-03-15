@@ -4,18 +4,18 @@ require "models/registration-model.php";
 require "controllers/registration-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';
-  
-  /*$model = new RegistrationModel();
-  $model->email = $_POST["email"];
-  $model->password = $_POST["password"];
+  $model = new RegistrationModel();
+  $model->email      = $_POST["email"];
+  $model->password   = $_POST["password"];
   $model->repeatpass = $_POST["confirm"];
+  $model->type       = strtolower($_POST["type"]);
 
-  $valid_email = $model->ValidEmail();
-  $valid_pass = $model->ValidPassword();
-  $valid_length = $model->ValidPasswordLength();
+  $valid_email       = $model->ValidEmail();
+  $valid_pass        = $model->ValidPassword();
+  $valid_length      = $model->ValidPasswordLength();
+  $valid_type        = $model->ValidType();
 
-  if($valid_email && $valid_pass && $valid_length)
+  if($valid_email && $valid_pass && $valid_length && $valid_type)
   {
     $controller = new RegistrationController($model);
     if($controller->EmailAvailable($model->email))
@@ -29,9 +29,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       else
       {
         // The account failed to save to the database
-        echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
-        echo '<strong>Error!</strong> An error occurred on the server while trying to create the account. We will try to get this sorted as soon as possible';
-        echo '</div></div></div>';
+        ?>
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-danger">
+              <strong>Error!</strong> An error occurred on the server while trying to create the account. We will try to get this sorted as soon as possible
+            </div>
+          </div>
+        </div>
+
+        <?php
       }
     }
     else
@@ -49,8 +57,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(!$valid_email)  echo '<li>An invalid email address was specified.</li>';
     if(!$valid_pass)   echo '<li>The passwords do not match.</li>';
     if(!$valid_length) echo '<li>The password must be at least 6 characters long.</li>';
+    if(!$valid_type)   echo '<li>An invalid account type was specified!</li>';
     echo '</ul></div></div></div>';
-  }*/
+  }
 }
 
 ?>

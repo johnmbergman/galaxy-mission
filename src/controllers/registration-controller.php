@@ -16,7 +16,18 @@ class RegistrationController
   // Register a new account
   public function Register()
   {
-    $sql = "insert into accounts (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','','','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+    if($this->model->type == "parent")
+    {
+      $sql = "insert into parents (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','','','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+    }
+    elseif($this->model->type == "teacher")
+    {
+      $sql = "insert into teachers (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','','','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+    }
+    else
+    {
+      trigger_error("Type is neither parent nor teacher!");
+    }
     $returnflag = false;
 
     // Attempt to connect to the database
@@ -46,7 +57,15 @@ class RegistrationController
   // Ensure the email is not already registered
   public function EmailAvailable($email)
   {
-    $sql = "select email from accounts where email='" . $email . "'";
+    $sql = "";
+    if($this->model->type == "parent")
+    {
+      $sql = "select email from parents where email='" . $email . "'";
+    }
+    elseif($this->model->type == "teacher")
+    {
+      $sql = "select email from teachers where email='" . $email . "'";
+    }
 
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);

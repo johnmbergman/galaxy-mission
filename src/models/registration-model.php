@@ -38,6 +38,11 @@ class RegistrationModel
   {
     return (strlen($this->firstname) > 0 && strlen($this->lastname) > 0);
   }
+
+  public function ValidType()
+  {
+    return ($this->type == "parent" || $this->type == "teacher");
+  }
 }
 
 ?>
