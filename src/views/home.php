@@ -7,9 +7,6 @@
     <p><a href="/register/" class="btn btn-primary btn-large">Register for an account</a></p>
   </div>
 </div>
-<div class="container">
-  <hr>
-</div>
 <div class="row">
   <div class="col-sm-1">
   </div>
