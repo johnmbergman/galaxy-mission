@@ -35,7 +35,8 @@
   if(!isset($_SESSION["email"]))          $_SESSION["email"] = "";
   if(!isset($_SESSION["firstname"]))      $_SESSION["firstname"] = "";
   if(!isset($_SESSION["lastname"]))       $_SESSION["lastname"] = "";
-
+  if(!isset($_SESSION["is_parent"]))      $_SESSION["is_parent"] = false;
+  if(!isset($_SESSION["is_teacher"]))     $_SESSION["is_teacher"] = false;
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +88,29 @@
         </ul>
         <?php } ?>
         <ul class="nav navbar-nav navbar-right">
+
+          <?php if($_SESSION["is_parent"]) { ?>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Children <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Example Student 1</a></li>
+                <li><a href="#">Example Student 2</a></li>
+                <li><a href="#">Example Student 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Manage Students</a></li>
+              </ul>
+            </li>
+          <?php } if($_SESSION["is_teacher"]) { ?>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Classes <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Example Class 1</a></li>
+                <li><a href="#">Example Class 2</a></li>
+                <li><a href="#">Example Class 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Manage Classes</a></li>
+              </ul>
+            </li>
+          <?php } ?>
+
           <?php if($_SESSION["authenticated"]) { ?>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Account <b class="caret"></b></a>
             <ul class="dropdown-menu">

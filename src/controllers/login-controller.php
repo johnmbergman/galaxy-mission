@@ -37,7 +37,7 @@ class LoginController
   private function GetHash()
   {
     // TODO: Test this query to ensure it works properly!
-    $sql = "select hash from parents where email='" . $this->model->email . "' union select hash from teachers where email='" . $this->model->email . "'";
+    $sql = "select hash, 'parent' as type from parents where email='" . $this->model->email . "' union select hash, 'teacher' as type from teachers where email='" . $this->model->email . "'";
     $returnstring = "";
 
     // Attempt to connect to the database
