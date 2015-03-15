@@ -36,7 +36,8 @@ class LoginController
   // Get the password hash from the table
   private function GetHash()
   {
-    $sql = "select hash from accounts where email='" . $this->model->email . "'";
+    // TODO: Test this query to ensure it works properly!
+    $sql = "select hash from parents where email='" . $this->model->email . "' union select hash from teachers where email='" . $this->model->email . "'";
     $returnstring = "";
 
     // Attempt to connect to the database
