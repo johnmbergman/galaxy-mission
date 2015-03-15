@@ -57,8 +57,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
-      <h1 class="text-white">Hello there!</h1>
-      <p class="lead text-white">Fill out the form below to register for an account.</p>
+      <h1>Hello there!</h1>
+      <p class="lead">Fill out the form below to register for an account.</p>
     </div>
   </div>
 </div>
@@ -79,10 +79,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         </div>
         <div class="form-group">
           <label for="input-firstname" class="col-md-3 control-label">Name</label>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <input type="text" name="firstname" class="form-control" id="input-firstname" placeholder="First Name">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <input type="text" name="lastname" class="form-control" id="input-lastname" placeholder="Last Name">
           </div>
         </div>
@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 </div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <p class="text-white">Already have an account? <a href="/login/">Click here</a> to sign in.</p>
+    <p>Already have an account? <a href="/login/">Click here</a> to sign in.</p>
   </div>
 </div>
 <div class="modal fade" id="model-student" tabindex="-1" role="dialog">
