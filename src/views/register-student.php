@@ -54,11 +54,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 
 ?>
+
+<head>
+<style>
+
+img{
+	width:75px;
+	height:75px;
+	margin: 10px 10px;
+	}
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #008080;
+}
+</style>
+</head>
+
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
       <h1>Hello there!</h1>
-      <p>Fill out the form below to register for an account.</p>
+      <p>Fill out the form below to register a student for an account.</p>
     </div>
   </div>
 </div>
@@ -66,17 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   <div class="col-md-6 col-md-offset-3">
     <form method="post" class="form-horizontal well">
       <fieldset>
-        <legend><i class="fa fa-user"></i> Register New Account</legend>
-        <div class="form-group">
-          <label for="input-type" class="col-md-3 control-label">I am a...</label>
-          <div class="col-md-9">
-            <select name="type" class="form-control" id="input-type">
-              <option val="parent">Parent</option>
-              <option val="teacher">Teacher</option>
-            </select>
-            <span class="help-block"><a href="#" data-toggle="modal" data-target="#model-student">Click here</a> for information on creating a student account.</span>
-          </div>
-        </div>
+        <legend style="text-align:center"><i class="fa fa-user"></i> Register Student Account</legend>
         <div class="form-group">
           <label for="input-firstname" class="col-md-3 control-label">Name</label>
           <div class="col-md-3">
@@ -87,30 +101,63 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           </div>
         </div>
         <div class="form-group">
-          <label for="input-email" class="col-md-3 control-label">Email</label>
-          <div class="col-md-9">
-            <input type="email" name="email" class="form-control" id="input-email" placeholder="Email Address">
+          <label for="input-dateofbirth" class="col-md-3 control-label">Date of Birth</label>
+          <div class="col-md-3">
+            <input type="date" name="dateofbirth" class="form-control" id="input-dateofbirth" placeholder="mm/dd/yyyy" maxlength="10">  
+        </div>
+        <div class="form-group">
+          <label for="input-gradelevel" class="col-md-2 control-lable">Grade Level</label>
+          <div class="col-md-1">
+            <select name="gradelevels">
+				<option value="k">Kindergarten</option>
+				<option value="1">1st Grade</option>
+				<option value="2">2nd Grade</option>
+				<option value="3">3rd Grade</option>
+			</select>
+          </div>
+        </div>  
+        <div class="form-group">
+          <label style="text-align:center;font-size:20px" for="input-pass" class="col-sm-10 col-md-offset-1 control-label">
+          Please select a passcode icon for the student</label>
+          <div class="col-xs-8 col-md-offset-2" >
+          <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/alien13.png" alt="alien icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/astronaut6.png" alt="astronaut icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/comet6.png" alt="comet icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/galaxy2.png" alt="galaxy icon">
+  		  </label>
+  		  <label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/planets1.png" alt="planets icon">
+  		  </label><label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/rocket48.png" alt="rocket icon">
+  		  </label><label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/spacecraft2.png" alt="spacecraft icon">
+  		  </label><label>
+          <input type="radio" name="alien icon" value="small" />
+  			<img src="../res/icons/spaceship2.png" alt="spaceship icon">
+  		  </label>
           </div>
         </div>
         <div class="form-group">
-          <label for="input-pass" class="col-md-3 control-label">Password</label>
-          <div class="col-md-9">
-            <input type="password" name="password" class="form-control" id="input-pass" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="input-confirm" class="col-md-3 control-label">Confirm</label>
-          <div class="col-md-9">
-            <input type="password" name="confirm" class="form-control" id="input-confirm" placeholder="Confirm Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-9 col-md-offset-3">
+          <div class="col-md-9 col-md-offset-2">
             <p>By clicking <strong>Register</strong>, I agree with the <a href="/tos/">Terms of Service</a> of the application.</p>
           </div>
         </div>
         <div class="form-group">
-          <div class="col-md-9 col-md-offset-3">
+          <div class="col-md-9 col-md-offset-5">
             <button type="submit" class="btn btn-primary">Register</button>
           </div>
         </div>
