@@ -4846,9 +4846,9 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  background-image: url('gmjumbo.jpg');
+  background-image: url('../res/gmjumbo.jpg');
   background-position: 0% 25%;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   color: white;
   margin-bottom: 10px;
