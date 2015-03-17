@@ -3,10 +3,6 @@ Scrum of the Earth
 Global Javascript functions for Galaxy Mission
 */ 
 
-
-<script>
-
-function uiMessageBox(uiTitle, uiMessage, imgSrc) {
 /* 
 |--------------------------------------------------------------|
 |  Customized message box                                      | 
@@ -15,6 +11,7 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
 |  John Bergman - Adam Hill 3/16/15                            |
 |--------------------------------------------------------------|
 */
+function uiMessageBox(uiTitle, uiMessage, imgSrc) {
 
    try {
       // Set the message
@@ -30,8 +27,8 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
                ).append(
 
                   $("<div>").attr("class", "modal-body").append(
-                     $("<h3>").html(imgSrc).append(
-                     $("<h3>").text(uiMessage))
+                     $("<img>").attr("src", "../res/" + imgSrc).append(
+                     $("<p>").text(uiMessage))
                   )
                   
 
@@ -55,5 +52,3 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
    }
 
 }
-</script>
-

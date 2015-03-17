@@ -10,39 +10,39 @@
   <div class="col-md-6 col-md-offset-3">
     <form method="post" class="form-horizontal well">
       <fieldset>
-	<legend>Student Name's Information</legend>
+      <legend>Student Name's Information</legend>
         <div class="form-group">
           <label for="firstName" class="col-lg-4 control-label">First Name</label>
           <div class="col-lg-8">
             <input type="text" class="form-control" id="firstName" placeholder="First Name">
           </div>
         </div>
-	<div class="form-group">
-	  <label for="lastName" class="col-lg-4 control-label">Last Name</label>
-	  <div class="col-lg-8">
-	    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-	  </div>
-	</div>
-	<div class="form-group">
-	  <label for="gender" class="col-lg-4 control-label">Gender</label>
-	  <div class="col-lg-8">
-	    <select class="form-control" id="gender">
-	      <option>Male</option>
-	      <option>Female</option>
-	    </select>
-	  </div>
-	</div>
-	<div class="form-group">
-	  <label for="grade" class="col-lg-4 control-label">Grade Level</label>
-	  <div class="col-lg-8">
-	    <select class="form-control" id="grade">
-	      <option>Kindergarten</option>
-	      <option>1st Grade</option>
-	      <option>2nd Grade</option>
-	      <option>3rd Grade</option>
-	    </select>
-	  </div>
-	</div>
+        <div class="form-group">
+          <label for="lastName" class="col-lg-4 control-label">Last Name</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gender" class="col-lg-4 control-label">Gender</label>
+          <div class="col-lg-8">
+            <select class="form-control" id="gender">
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="grade" class="col-lg-4 control-label">Grade Level</label>
+          <div class="col-lg-8">
+            <select class="form-control" id="grade">
+              <option>Kindergarten</option>
+              <option>1st Grade</option>
+              <option>2nd Grade</option>
+              <option>3rd Grade</option>
+            </select>
+          </div>
+        </div>
         <div class="form-group">
           <label for="schoolName" class="col-lg-4 control-label">School Name</label>
           <div class="col-lg-8">
