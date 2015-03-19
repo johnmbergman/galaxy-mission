@@ -22,7 +22,7 @@ class RegistrationController
     }
     elseif($this->model->type == "teacher")
     {
-      $sql = "insert into teachers (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','','','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+      $sql = "insert into teachers (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','" . $this->model->firstname ."', '" . $this->model->lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
     }
     else
     {
@@ -91,4 +91,3 @@ class RegistrationController
   }
 }
 
-?>
