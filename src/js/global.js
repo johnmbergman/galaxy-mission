@@ -29,7 +29,7 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
                ).append(
 
                   $("<div>").attr("class", "modal-body").append(
-                     $("<img>").attr("src", "../res/" + imgSrc +).append(
+                     $("<img>").attr("src", "../res/" + imgSrc).append(
                      $("<p>").text(uiMessage))
                   )
                   
