@@ -57,11 +57,9 @@ class RegistrationController
   // Ensure the email is not already registered
   public function EmailAvailable($email)
   {
-    
-   
-      $sql_parent = "select email from parents where email='" . $email . "'";
-  
-      $sql_teacher = "select email from teachers where email='" . $email . "'";
+    $sql = "select email from parents where email='" . $email . "' union select email from teachers where email='" . $email . "'";   
+    //$sql_parent = "select email from parents where email='" . $email . "'";
+    //$sql_teacher = "select email from teachers where email='" . $email . "'";
     
 
     // Attempt to connect to the database
@@ -72,22 +70,14 @@ class RegistrationController
     }
 
     // Successfully connected to the database. Run the query
-    $rs = $conn->query($sql_parent);
+    $rs = $conn->query($sql);
     if($rs->num_rows > 0)
     {
       $returnflag = false;
     }
     else
     {
-      $rs = $conn->query($sql_teacher);
-      if($rs->num_rows > 0)
-      {
-      $returnflag = false;
-      }
-      else
-      {
-        $returnflag = true;
-      }
+      $returnflag = true;
     }   
     
 
