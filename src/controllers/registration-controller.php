@@ -57,15 +57,12 @@ class RegistrationController
   // Ensure the email is not already registered
   public function EmailAvailable($email)
   {
-    $sql = "";
-    if($this->model->type == "parent")
-    {
-      $sql = "select email from parents where email='" . $email . "'";
-    }
-    elseif($this->model->type == "teacher")
-    {
-      $sql = "select email from teachers where email='" . $email . "'";
-    }
+    
+   
+      $sql_parent = "select email from parents where email='" . $email . "'";
+  
+      $sql_teacher = "select email from teachers where email='" . $email . "'";
+    
 
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -75,15 +72,24 @@ class RegistrationController
     }
 
     // Successfully connected to the database. Run the query
-    $rs = $conn->query($sql);
+    $rs = $conn->query($sql_parent);
     if($rs->num_rows > 0)
     {
       $returnflag = false;
     }
     else
     {
-      $returnflag = true;
-    }
+      $rs = $conn->query($sql_teacher);
+      if($rs->num_rows > 0)
+      {
+      $returnflag = false;
+      }
+      else
+      {
+        $returnflag = true;
+      }
+    }   
+    
 
     // Close the connection and return the result
     $conn->close();
