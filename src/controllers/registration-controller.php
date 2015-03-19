@@ -18,7 +18,7 @@ class RegistrationController
   {
     if($this->model->type == "parent")
     {
-      $sql = "insert into parents (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','','','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+      $sql = "insert into parents (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','" . $this->model->firstname ."', '" . $this->model->lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
     }
     elseif($this->model->type == "teacher")
     {
