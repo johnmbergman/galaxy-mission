@@ -9,13 +9,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $model->password   = $_POST["password"];
   $model->repeatpass = $_POST["confirm"];
   $model->type       = strtolower($_POST["type"]);
-
+  $model->firstname  = $_POST["firstname"];
+  $model->lastname  = $_POST["lastname"];
+  
   $valid_email       = $model->ValidEmail();
   $valid_pass        = $model->ValidPassword();
   $valid_length      = $model->ValidPasswordLength();
   $valid_type        = $model->ValidType();
+  $valid_name        = $model->ValidName();
+  
 
-  if($valid_email && $valid_pass && $valid_length && $valid_type)
+  if($valid_email && $valid_pass && $valid_length && $valid_type && $valid_name)
   {
     $controller = new RegistrationController($model);
     if($controller->EmailAvailable($model->email))
