@@ -35,8 +35,7 @@
   if(!isset($_SESSION["email"]))          $_SESSION["email"] = "";
   if(!isset($_SESSION["firstname"]))      $_SESSION["firstname"] = "";
   if(!isset($_SESSION["lastname"]))       $_SESSION["lastname"] = "";
-  if(!isset($_SESSION["is_parent"]))      $_SESSION["is_parent"] = false;
-  if(!isset($_SESSION["is_teacher"]))     $_SESSION["is_teacher"] = false;
+  if(!isset($_SESSION["type"]))           $_SESSION["type"] = "";
 ?>
 
 <!DOCTYPE html>
@@ -89,8 +88,8 @@
         <?php } ?>
         <ul class="nav navbar-nav navbar-right">
 
-          <?php if($_SESSION["is_parent"]) { ?>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Children <b class="caret"></b></a>
+          <?php if($_SESSION["type"] == "parent") { ?>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Children <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Example Student 1</a></li>
                 <li><a href="#">Example Student 2</a></li>
@@ -99,8 +98,8 @@
                 <li><a href="#"><i class="fa fa-cog"></i> Manage Students</a></li>
               </ul>
             </li>
-          <?php } if($_SESSION["is_teacher"]) { ?>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Classes <b class="caret"></b></a>
+          <?php } if($_SESSION["type"] == "teacher") { ?>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Classes <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Example Class 1</a></li>
                 <li><a href="#">Example Class 2</a></li>
@@ -112,13 +111,16 @@
           <?php } ?>
 
           <?php if($_SESSION["authenticated"]) { ?>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Account <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-            <li><a href="/profile/"><i class="fa fa-cog"></i> Profile</a></li>
-            <li><a href="#"><i class="fa fa-lock"></i> Change Password</a></li>
-            <li class="divider"></li>
-            <li><a href="/logout/"><i class="fa fa-sign-out"></i> Sign out</a></li>
-            </ul>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user"></i> <?php if(strlen($_SESSION['firstname']) > 0) { echo $_SESSION['firstname']; } else { echo "Account"; } ?> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+              <li><a href="/profile/"><i class="fa fa-cog"></i> Profile</a></li>
+              <li><a href="#"><i class="fa fa-lock"></i> Change Password</a></li>
+              <li class="divider"></li>
+              <li><a href="/logout/"><i class="fa fa-sign-out"></i> Sign out</a></li>
+              </ul>
             </li>
           <?php } else { ?>
             <li><a href="/register/"><i class="fa fa-file-text-o"></i> Register</a></li>

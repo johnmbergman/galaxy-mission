@@ -16,29 +16,12 @@ class LoginController
   // Validate the login
   public function Authenticate()
   {
-    if(password_verify($this->model->password, $this->GetHash()))
-    {
-      // Validated
-      $_SESSION["authenticated"] = true;
-      $_SESSION["email"] = $this->model->email;
-      return true;
-    }
-    else
-    {
-      // Not validated
-      $_SESSION["authenticated"] = false;
-      $_SESSION["email"] = "";
-      return false;
-    }
-  }
 
+    // Validation boolean
+    $returnflag = false;
 
-  // Get the password hash from the table
-  private function GetHash()
-  {
-    // TODO: Test this query to ensure it works properly!
-    $sql = "select hash, 'parent' as type from parents where email='" . $this->model->email . "' union select hash, 'teacher' as type from teachers where email='" . $this->model->email . "'";
-    $returnstring = "";
+    // Build the sql query
+    $sql = "select hash, email, 'parent' as type, first_name, last_name, phone from parents where email='" . $this->model->email . "' union select hash, email, 'teacher' as type, first_name, last_name, phone from teachers where email='" . $this->model->email . "'";
 
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -47,16 +30,38 @@ class LoginController
       trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
     }
 
-    // Successfully connected to the database, return the result
+    // Run the query
     $result = $conn->query($sql);
     $row = $result->fetch_row();
-    $returnstring = $row[0];
 
-    // Close the connection and return the result
+    // Check if the password matches
+    if(password_verify($this->model->password, $row[0]))
+    {
+      // The password matches, authenticate and retrieve values
+      $returnflag = true;
+      $_SESSION["authenticated"] = true;
+      $_SESSION["email"] = $row[1];
+      $_SESSION["type"] = $row[2];
+      $_SESSION["firstname"] = $row[3];
+      $_SESSION["lastname"] = $row[4];
+      $_SESSION["phone"] = $row[5];
+    }
+    else
+    {
+      $_SESSION["authenticated"] = false;
+      $_SESSION["email"] = "";
+      $_SESSION["type"] = "";
+      $_SESSION["firstname"] = "";
+      $_SESSION["lastname"] = "";
+      $_SESSION["phone"] = "";
+    }
+
+    // CLose the connection and return the result
     $conn->close();
-    return $returnstring;
+    return $returnflag;
 
   }
+
 }
 
 ?>

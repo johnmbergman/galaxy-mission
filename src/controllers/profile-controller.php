@@ -1,7 +1,7 @@
 <?php
 require "data.php";
 
-class RegistrationController
+class ProfileController
 {
   private $model;
 
@@ -13,20 +13,19 @@ class RegistrationController
   }
 
 
-  // Register a new account
-  public function Register()
+  // Update account information
+  public function Update()
   {
+
+    // Create the sql string
+    $sql = "";
     if($this->model->type == "parent")
     {
-      $sql = "insert into parents (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','" . $this->model->firstname ."', '" . $this->model->lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+      $sql = "update parents set email='" . $this->model->email . "',first_name='" . $this->model->firstname . "',last_name='" . $this->model->lastname . "'";
     }
-    elseif($this->model->type == "teacher")
+    else if($this->model->type == "teacher")
     {
-      $sql = "insert into teachers (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','" . $this->model->firstname ."', '" . $this->model->lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
-    }
-    else
-    {
-      trigger_error("Type is neither parent nor teacher!");
+      $sql = "update teachers set email='" . $this->model->email . "',first_name='" . $this->model->firstname . "',last_name='" . $this->model->lastname . "'";
     }
     $returnflag = false;
 
@@ -41,7 +40,7 @@ class RegistrationController
     if($conn->query($sql) == false)
     {
       echo "bad sql " . $sql;
-      trigger_error("Failed to register the account");
+      trigger_error("Failed to update the account");
     }
     else
     {
