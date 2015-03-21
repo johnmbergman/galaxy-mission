@@ -43,6 +43,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 ?>
 
+
+<!-- PARENT -->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
@@ -78,6 +80,93 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           <label for="phoneNumber" class="col-lg-4 control-label">Phone Number</label>
           <div class="col-lg-8">
             <input type="tel" name="phone" class="form-control" id="phoneNumber" placeholder="(___) ___-____">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-8 col-lg-offset-4">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<!-- TEACHER -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="text-center">
+      <h1 class="text-black">Teacher Account Information</h1>
+      <p class="lead text-black">Click in a field to edit information you would like to change, and then click the Save button.</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form method="post" class="form-horizontal well">
+      <fieldset>
+        <legend>Teacher Account Information</legend>
+        <div class="form-group">
+          <label for="firstName" class="col-lg-4 control-label">First Name</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="col-lg-4 control-label">Last Name</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="schoolName" class="col-lg-4 control-label">School Name</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="lastName" placeholder="School Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="col-lg-4 control-label">School Email</label>
+          <div class="col-lg-8">
+            <input type="email" class="form-control" id="inputEmail" placeholder="School Email Address">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="currentPassword" class="col-lg-4 control-label">Current Password</label>
+          <div class="col-lg-8">
+            <input type="password" class="form-control" id="currentPassword" placeholder="Current Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newPassword" class="col-lg-4 control-label">New Password</label>
+          <div class="col-lg-8">
+            <input type="password" class="form-control" id="newPassword" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmNewPassword" class="col-lg-4 control-label">Confirm New Password</label>
+          <div class="col-lg-8">
+            <input type="password" class="form-control" id="confirmNewPassword" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="grade" class="col-lg-4 control-label">Grade Level Taught</label>
+          <div class="col-lg-8">
+            <select class="form-control" id="gradeLevel">
+              <option>Kindergarten</option>
+              <option>1st Grade</option>
+              <option>2nd Grade</option>
+              <option>3rd Grade</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="grade" class="col-lg-4 control-label">Current Classes</label>
+          <div class="col-lg-8">
+            <select class="form-control" id="classes">
+              <option>First Class Name Here</option>
+              <option>Second Class Name Here</option>
+              <option>Third Class Name Here</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
