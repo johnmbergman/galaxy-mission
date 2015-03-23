@@ -18,15 +18,7 @@ class ProfileController
   {
 
     // Create the sql string
-    $sql = "";
-    if($this->model->type == "parent")
-    {
-      $sql = "update parents set email='" . $this->model->email . "',first_name='" . $this->model->firstname . "',last_name='" . $this->model->lastname . "'";
-    }
-    else if($this->model->type == "teacher")
-    {
-      $sql = "update teachers set email='" . $this->model->email . "',first_name='" . $this->model->firstname . "',last_name='" . $this->model->lastname . "'";
-    }
+    $sql = "update " . (($this->model->type == "parent") ? "parents" : "teachers") . " set first_name=?,last_name=?,phone=? where email=?";
     $returnflag = false;
 
     // Attempt to connect to the database
@@ -37,14 +29,17 @@ class ProfileController
     }
 
     // Successfully connected to the database. Run the query
-    if($conn->query($sql) == false)
+    if($query = $conn->prepare($sql))
     {
-      echo "bad sql " . $sql;
-      trigger_error("Failed to update the account");
-    }
-    else
-    {
+
+      // Bind the parameters and execute
+      $query->bind_param("ssss", $this->model->firstname, $this->model->lastname, $this->model->phone, $_SESSION["email"]);
+      $query->execute();
+      $_SESSION["firstname"] = $this->model->firstname;
+      $_SESSION["lastname"] = $this->model->lastname;
+      $_SESSION["phone"] = $this->model->phone;
       $returnflag = true;
+
     }
 
     // Close the connection and return the result
@@ -52,34 +47,4 @@ class ProfileController
     return $returnflag;
   }
 
-
-  // Ensure the email is not already registered
-  public function EmailAvailable($email)
-  {
-    $sql = "select email from parents where email='" . $email . "' union select email from teachers where email='" . $email . "'";   
-
-    // Attempt to connect to the database
-    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
-    if($conn->connect_error)
-    {
-      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
-    }
-
-    // Successfully connected to the database. Run the query
-    $rs = $conn->query($sql);
-    if($rs->num_rows > 0)
-    {
-      $returnflag = false;
-    }
-    else
-    {
-      $returnflag = true;
-    }   
-    
-
-    // Close the connection and return the result
-    $conn->close();
-    return $returnflag;
-  }
 }
-

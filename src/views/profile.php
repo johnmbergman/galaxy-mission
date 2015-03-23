@@ -1,56 +1,60 @@
 <?php
 
+//////////////////////////////
+//    url: /profile POST
+// author: John Bergman
+//   date: March 23, 2015
+//////////////////////////////
 require "models/profile-model.php";
 require "controllers/profile-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $model = new ProfileModel();
-  $model->email      = $_POST["email"];
   $model->type       = $_SESSION["type"];
   $model->firstname  = $_POST["firstname"];
   $model->lastname   = $_POST["lastname"];
   $model->phone      = $_POST["phone"];
 
-  $valid_email       = $model->ValidEmail();
   $valid_type        = $model->ValidType();
   $valid_name        = $model->ValidName();
+  $valid_school      = $model->ValidSchoolName();
 
-  if($valid_email && $valid_type && $valid_name)
+  if($valid_school && $valid_type && $valid_name)
   {
     // Valid input!
-    $controller = new RegistrationController($model);
-    if($controller->EmailAvailable($model->email))
+    $controller = new ProfileController($model);
+
+    // Update the table
+    if($controller->Update())
     {
-      // TODO: Write success functionality here
+      echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-success">';
+      echo '<strong>Success!</strong> The profile was updated successfully.';
+      echo '</div></div></div>';
     }
     else
     {
-      // The email is unavailable
       echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
-      echo '<strong>Error!</strong> The account could not be created because an account is already registered to this email address.';
+      echo '<strong>Error!</strong> An error occurred while attempting to update the profile.';
       echo '</div></div></div>';
     }
   }
   else
   {
     echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
-    echo '<strong>Error!</strong> The account could not be created. <ul>';
-    if(!$valid_email)  echo '<li>An invalid email address was specified.</li>';
+    echo '<strong>Error!</strong> Your profile could not be updated. <ul>';
     if(!$valid_type)   echo '<li>An invalid account type was specified!</li>';
     if(!$valid_name)   echo '<li>An invalid name was specified! Please enter a name</li>';
+    if(!$valid_school) echo '<li>An invalid school name was specified! Please enter a valid school name.</li>';
     echo '</ul></div></div></div>';
   }
 }
 ?>
 
 
-<!-- PARENT -->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div class="text-center">
-      <h1 class="text-black">Profile</h1>
-      <p class="lead text-black">Click in a field to edit information you would like to change, and then click the Save button.</p>
-    </div>
+    <h1 class="text-black"><?php if($_SESSION["type"] == "parent") { echo "Parent"; } else { echo "Teacher"; } ?> Profile</h1>
+    <p class="lead text-black">Click in a field to edit information you would like to change, and then click the Save button.</p>
   </div>
 </div>
 <div class="row">
@@ -61,25 +65,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <div class="form-group">
           <label for="firstName" class="col-lg-4 control-label">First Name</label>
           <div class="col-lg-8">
-            <input type="text" name="firstname" class="form-control" id="firstName" placeholder="First Name" value="<?php echo htmlentities($_SESSION['firstname']) ?>">
+            <input type="text" name="firstname" maxlength="50" class="form-control" id="firstName" placeholder="First Name" value="<?php echo htmlentities($_SESSION['firstname']); ?>">
           </div>
         </div>
         <div class="form-group">
           <label for="lastName" class="col-lg-4 control-label">Last Name</label>
           <div class="col-lg-8">
-            <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Last Name" value="<?php echo htmlentities($_SESSION['lastname']) ?>">
+            <input type="text" name="lastname" maxlength="50" class="form-control" id="lastName" placeholder="Last Name" value="<?php echo htmlentities($_SESSION['lastname']); ?>">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail" class="col-lg-4 control-label">Email</label>
+          <label for="inputEmail" class="col-lg-4 control-label">School Name</label>
           <div class="col-lg-8">
-            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email Address" value="<?php echo htmlentities($_SESSION['email']) ?>">
+            <input type="text" name="schoolname" maxlength="50" class="form-control" id="schoolname" placeholder="School Name" value="<?php echo htmlentities($_SESSION['schoolname']); ?>">
           </div>
         </div>
         <div class="form-group">
           <label for="phoneNumber" class="col-lg-4 control-label">Phone Number</label>
           <div class="col-lg-8">
-            <input type="tel" name="phone" class="form-control" id="phoneNumber" placeholder="(___) ___-____">
+            <input type="tel" name="phone" class="form-control" id="phoneNumber" value="<?php echo htmlentities($_SESSION['phone']); ?>">
           </div>
         </div>
         <div class="form-group">
@@ -91,90 +95,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     </form>
   </div>
 </div>
-
-<!-- TEACHER -->
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="text-center">
-      <h1 class="text-black">Teacher Account Information</h1>
-      <p class="lead text-black">Click in a field to edit information you would like to change, and then click the Save button.</p>
-    </div>
+<!-- The following fields are Grade Level Taught and Current Classes. I will implement these when the class object has the functionality built in -->
+<!--<div class="form-group">
+  <label for="grade" class="col-lg-4 control-label">Grade Level Taught</label>
+  <div class="col-lg-8">
+    <select class="form-control" name="gradetaught" id="gradeLevel">
+      <option>Kindergarten</option>
+      <option>1st Grade</option>
+      <option>2nd Grade</option>
+      <option>3rd Grade</option>
+    </select>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <form method="post" class="form-horizontal well">
-      <fieldset>
-        <legend>Teacher Account Information</legend>
-        <div class="form-group">
-          <label for="firstName" class="col-lg-4 control-label">First Name</label>
-          <div class="col-lg-8">
-            <input type="text" class="form-control" id="firstName" placeholder="First Name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="lastName" class="col-lg-4 control-label">Last Name</label>
-          <div class="col-lg-8">
-            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="schoolName" class="col-lg-4 control-label">School Name</label>
-          <div class="col-lg-8">
-            <input type="text" class="form-control" id="lastName" placeholder="School Name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail" class="col-lg-4 control-label">School Email</label>
-          <div class="col-lg-8">
-            <input type="email" class="form-control" id="inputEmail" placeholder="School Email Address">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="currentPassword" class="col-lg-4 control-label">Current Password</label>
-          <div class="col-lg-8">
-            <input type="password" class="form-control" id="currentPassword" placeholder="Current Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="newPassword" class="col-lg-4 control-label">New Password</label>
-          <div class="col-lg-8">
-            <input type="password" class="form-control" id="newPassword" placeholder="">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="confirmNewPassword" class="col-lg-4 control-label">Confirm New Password</label>
-          <div class="col-lg-8">
-            <input type="password" class="form-control" id="confirmNewPassword" placeholder="">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="grade" class="col-lg-4 control-label">Grade Level Taught</label>
-          <div class="col-lg-8">
-            <select class="form-control" id="gradeLevel">
-              <option>Kindergarten</option>
-              <option>1st Grade</option>
-              <option>2nd Grade</option>
-              <option>3rd Grade</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="grade" class="col-lg-4 control-label">Current Classes</label>
-          <div class="col-lg-8">
-            <select class="form-control" id="classes">
-              <option>First Class Name Here</option>
-              <option>Second Class Name Here</option>
-              <option>Third Class Name Here</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-lg-8 col-lg-offset-4">
-            <button type="submit" class="btn btn-primary">Save</button>
-          </div>
-        </div>
-      </fieldset>
-    </form>
+<div class="form-group">
+  <label for="grade" class="col-lg-4 control-label">Current Classes</label>
+  <div class="col-lg-8">
+    <select class="form-control" id="classes">
+      <option>First Class Name Here</option>
+      <option>Second Class Name Here</option>
+      <option>Third Class Name Here</option>
+    </select>
   </div>
-</div>
+</div> -->
+<!-- NOTE: Since the user's account is tied to their email address, they should not be able to change their email through a simple form. We can work this out later
+<div class="form-group">
+  <label for="inputEmail" class="col-lg-4 control-label">Email</label>
+  <div class="col-lg-8">
+    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" value="php email goes here">
+  </div>
+</div>-->

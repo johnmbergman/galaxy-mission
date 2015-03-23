@@ -36,6 +36,8 @@
   if(!isset($_SESSION["firstname"]))      $_SESSION["firstname"] = "";
   if(!isset($_SESSION["lastname"]))       $_SESSION["lastname"] = "";
   if(!isset($_SESSION["type"]))           $_SESSION["type"] = "";
+  if(!isset($_SESSION["schoolname"]))     $_SESSION["schoolname"] = "";
+  if(!isset($_SESSION["phone"]))          $_SESSION["phone"] = "";
 ?>
 
 <!DOCTYPE html>
@@ -147,6 +149,7 @@
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="/js/jquery.maskedinput.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/global.js"></script>
 
