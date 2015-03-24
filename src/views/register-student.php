@@ -119,7 +119,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
         <div class="form-group">
           <label style="text-align:center;font-size:20px" for="input-pass" class="col-sm-10 col-md-offset-1 control-label">
           Please select a passcode icon for the student</label>
-          <div class="col-xs-8 col-md-offset-2" >
+          <div class="col-xs-9 col-md-offset-2" >
           <label>
           <input type="radio" name="alien icon" value="small" />
   			<img src="../res/alien13.png" alt="alien icon">
