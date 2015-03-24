@@ -19,11 +19,9 @@ img{
 </head>
 
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="text-center" color=white>
-      <h1>Student Dashboard</h1>
-    </div>
+<div class="panel-primary">
+  <div class="panel-heading">  
+    <h1 class="panel-title text-center">Student Dashboard</h1>
   </div>
 </div>
 <div class="row" style="margin-top:20px">
