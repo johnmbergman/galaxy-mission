@@ -1083,7 +1083,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #666666;
-  background-color: #f6f6f6;
+  background-color: #ffffff;
 }
 input,
 button,
@@ -4846,9 +4846,9 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  background-image: url('../res/gmjumbo.jpg');
+  background-image: url('gmjumbo.jpg');
   background-position: 0% 25%;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   color: white;
   margin-bottom: 10px;
