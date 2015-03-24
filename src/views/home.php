@@ -13,7 +13,7 @@
   <div class="col-sm-10">
     <div class="row">
       <div class="col-sm-6">
-        <div class="panel-home panel-info">
+        <div class="panel-home panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Engages with an interdisciplinary approach</h3>
           </div>
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="panel-home panel-info">
+        <div class="panel-home panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Aligns with common-core standards</h3>
           </div>
@@ -43,7 +43,7 @@
   <div class="col-sm-10">
     <div class="row">
       <div class="col-sm-6">
-        <div class="panel-home panel-info">
+        <div class="panel-home panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Enhances instruction with insights, data, and reporting</h3>
           </div>
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="panel-home panel-info">
+        <div class="panel-home panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Adapts to individual student needs</h3>
           </div>
