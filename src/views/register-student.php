@@ -62,7 +62,7 @@ img{
 	width:75px;
 	height:75px;
 	margin: 10px 10px;
-	}
+}
 label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
   position: absolute; /* Remove input from document flow */
