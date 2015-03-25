@@ -51,6 +51,9 @@
   <!-- Bootstrap -->
   <link href="/css/bootstrap.css" rel="stylesheet">
 
+  <!-- Custom Stylesheet -->
+  <link href="/css/custom.css" rel="stylesheet">
+
   <!-- Font Awesome -->   
   <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
