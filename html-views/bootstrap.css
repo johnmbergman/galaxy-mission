@@ -13,12 +13,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  // background: url('bg.jpg') no-repeat center center fixed;
-  background-color: #fafafa;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   margin: 0;
 }
 article,
