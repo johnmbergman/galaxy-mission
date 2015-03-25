@@ -1,22 +1,44 @@
-<?php
-
-?>
-<head>
 <style>
-div.padded{
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 15px;
-  padding-right: 15px;
+
+h1{
+  color: #ffffff;
+  background-color: #446e9b;
+  border-color: #446e9b;
 }
+    
+div.padded{
+  padding-bottom: 10px;
+}
+ 
 img{
-	width:100px;
-	height:100px;
-	margin: 10px 10px;
-	}
+	width:60px;
+	height:60px;
+	margin: 5px 5px;
+}
+	
+.panel-body{
+    font-size: small;
+}
+
+.panel-info > .panel-body{
+    background:#A0A0A0;
+}
+
+.panel-primary > .panel-body{
+    background:#EFF8FB;
+}
+
+.panel-success > .panel-body{
+    background:#A0A0A0;
+}
+
+.gray-background{
+	background:#E0E0E0;
+}
 
 </style>
 </head>
+
 
 
 <div class="panel-primary">
@@ -24,73 +46,202 @@ img{
     <h1 class="panel-title text-center">Student Dashboard</h1>
   </div>
 </div>
+<div class="panel-body gray-background">
+<div class="container-fluid">
 <div class="row" style="margin-top:20px">
- <!-- <div class="col-sm-1">
-  </div>-->
-  <div class="col-sm-10 col-sm-offset-1" >
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="panel-primary">
-          <div class="panel-heading">
-            <h2 class="panel-title text-center">Training</h2>
+  <div class="col-md-6">
+    <div class="panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center">Training</h2>
+      </div>         
+      <div class="panel-body"> 
+        <div class="container-fluid">
+          <div class="row">         
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Assignment #1</h2>
+              </div>
+              <div class="panel-body">
+                 <div class="col-xs-2">
+                  <img src="../res/earth.png" alt="earth">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary" >Launch</a>              
+                  </div>  
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="panel-body">
-            <div class="row text-center">
-              <div class="col-md-6 col-md-offset-3">
-                <img src="../res/earth.png" alt="earth">
-	            <a href="#" class="btn btn-success">Assignment #1</a>
+        </div>
+        <div class="container-fluid">
+          <div class="row">         
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Assignment #2</h2>
+              </div>
+              <div class="panel-body">
+                 <div class="col-xs-2">
+                  <img src="../res/mars.png" alt="mars">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary">Launch</a>              
+                  </div>  
+                </div>
               </div>
             </div>
-            <div class="row text-center">
-              <div class="col-md-4">
-                <img src="../res/jupiter.png" alt="jupiter">
-	            <a href="#" class="btn btn-info">Assignment #2</a>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">         
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Assignment #3</h2>
               </div>
-             <div class="col-md-4 col-md-offset-4">
-                <img src="../res/mars.png" alt="mars">
-	            <a href="#" class="btn btn-warning">Assignment #3</a>
+              <div class="panel-body">
+                <div class="col-xs-2">
+                  <img src="../res/jupiter.png" alt="jupiter">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary">Launch</a>              
+                  </div>  
+                </div>
               </div>
             </div>
-            <div class="row text-center">
-              <div class="col-md-6 col-md-offset-3">
-                <img src="../res/neptune.png" alt="neptune">
-	            <a href="#" class="btn btn-danger">Assignment #4</a>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">         
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Assignment #4</h2>
+              </div>
+              <div class="panel-body">
+                 <div class="col-xs-2">
+                  <img src="../res/neptune.png" alt="neptune">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary">Launch</a>              
+                  </div>  
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="panel-primary">
-          <div class="panel-heading">
-            <h2 class="panel-title text-center">Missions</h2>
-          </div>
-          <div class="panel-body">
-            <div class="row text-center">
-              <div class="col-md-6 col-md-offset-3">
-                <img src="../res/earth.png" alt="earth">
+    </div>
+  </div>
+  <div class="col-md-6">   
+    <div class="panel-success">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center">Missions</h2>
+      </div>
+       <div class="panel-body"> 
+        <div class="container-fluid">
+          <div class="row">           
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Mission #1</h2>
               </div>
-              <div class="col-md-6 col-md-offset-3">
-	            <a href="#" class="btn btn-success">Mission #1</a>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-md-4">
-                <img src="../res/jupiter.png" alt="jupiter">
-	            <a href="#" class="btn btn-info">Mission #2</a>
-              </div>
-             <div class="col-md-4 col-md-offset-4">
-                <img src="../res/mars.png" alt="mars">
-	            <a href="#" class="btn btn-warning">Mission #3</a>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-md-6 col-md-offset-3">
-                <img src="../res/neptune.png" alt="neptune">
-              </div>
-              <div class="col-md-6 col-md-offset-3">  
-	            <a href="#" class="btn btn-danger">Mission #4</a>
+              <div class="panel-body">
+                <div class="col-xs-2">
+                  <img src="../res/earth.png" alt="earth">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary">Launch</a>
+                  </div>  
+                </div>
               </div>
             </div>
           </div>
-        </div>    
+        </div>
+         <div class="container-fluid">
+          <div class="row">           
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Mission #2</h2>
+              </div>
+              <div class="panel-body">
+                <div class="col-xs-2">
+                  <img src="../res/mars.png" alt="mars">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary">Launch</a>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">           
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Mission #3</h2>
+              </div>
+              <div class="panel-body">
+                <div class="col-xs-2">
+                  <img src="../res/jupiter.png" alt="jupiter">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary">Launch</a>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>     
+        <div class="container-fluid">
+          <div class="row">           
+            <div class="panel-primary padded">
+              <div class="panel-heading">
+                <h2 class="panel-title text-left">Mission #4</h2>
+              </div>
+              <div class="panel-body">
+                <div class="col-xs-2">
+                  <img src="../res/neptune.png" alt="neptune">
+                </div>
+                <div class="col-xs-8">  
+                  <p>The image is a placeholder.  Any image can go to the left.  A description of the mission can go here</p>
+                </div>
+                <div class="col-xs-2">
+                  <div class="row text-right" style="margin-top:10px">
+                    <a href="#" class="btn btn-primary">Launch</a>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
