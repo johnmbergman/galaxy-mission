@@ -1,4 +1,9 @@
 <?php
+/*
+  John Bergman
+  Updated: March 26, 2015
+  LoginController class for accepting a LoginModel and authenticating a user account.
+*/
 require "data.php";
 
 class LoginController

@@ -1,4 +1,9 @@
 <?php
+/*
+  John Bergman
+  Updated: March 26, 2015
+  RegistrationController class for accepting a RegistrationModel and registering a parent or teacher account.
+*/
 require "data.php";
 
 class RegistrationController
@@ -16,6 +21,8 @@ class RegistrationController
   // Register a new account
   public function Register()
   {
+
+    // Generate the appropriate query string
     if($this->model->type == "parent")
     {
       $sql = "insert into parents (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','" . $this->model->firstname ."', '" . $this->model->lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";

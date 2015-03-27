@@ -56,19 +56,19 @@ function PrintTestCaseBreak()
       $model->ValidName() ? Pass() : Fail();
       
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidName()", "Test empty strings");
+      PrintTestCase("ProfileModel", "ValidName()", "'' (empty string)");
       $model->firstname = "";
       $model->lastname = "";
       $model->ValidName() ? Fail() : Pass();
         
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidName()", "First name blank, Last name exists");
+      PrintTestCase("ProfileModel", "ValidName()", "'', 'Doe' (first name empty string)");
       $model->firstname = "";
       $model->lastname = "Doe";
       $model->ValidName() ? Fail() : Pass();
     
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidName()", "First name exists, Last name blank");
+      PrintTestCase("ProfileModel", "ValidName()", "'John', '' (last name empty string)");
       $model->firstname = "John";
       $model->lastname = "";
       $model->ValidName() ? Fail() : Pass();
@@ -76,54 +76,54 @@ function PrintTestCaseBreak()
 
       // ValidPhone()
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 1: 1112223333");
+      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 1: '1112223333'");
       $model->phone = "1112223333";
       $model->ValidPhone() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 2: 111-222-3333");
+      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 2: '111-222-3333'");
       $model->phone = "111-222-3333";
       $model->ValidPhone() ? Pass() : Fail();
         
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 3: (111) 222-3333");
+      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 3: '(111) 222-3333'");
       $model->phone = "(111) 222-3333";
       $model->ValidPhone() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 4: (unspecified)");
+      PrintTestCase("ProfileModel", "ValidPhone()", "Good phone 4: '' (empty string)");
       $model->phone = "";
       $model->ValidPhone() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidPhone()", "Phone with letters: 111222asdf");
+      PrintTestCase("ProfileModel", "ValidPhone()", "Phone with letters: '111222asdf'");
       $model->phone = "111222asdf";
       $model->ValidPhone() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidPhone()", "Bad Format: 111-222-333");
+      PrintTestCase("ProfileModel", "ValidPhone()", "Bad Format: '111-222-333'");
       $model->phone = "111-222-333";
       $model->ValidPhone() ? Fail() : Pass();
 
 
       // ValidType()
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidType()", "Type parent");
+      PrintTestCase("ProfileModel", "ValidType()", "Type 'parent'");
       $model->type = "parent";
       $model->ValidType() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidType()", "Type teacher");
+      PrintTestCase("ProfileModel", "ValidType()", "Type 'teacher'");
       $model->type = "teacher";
       $model->ValidType() ? Pass() : Fail();
     
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidType()", "Type student");
+      PrintTestCase("ProfileModel", "ValidType()", "Type 'student'");
       $model->type = "student";
       $model->ValidType() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidType()", "Empty String");
+      PrintTestCase("ProfileModel", "ValidType()", "'' (empty string)");
       $model->type = "";
       $model->ValidType() ? Fail() : Pass();
 
@@ -139,7 +139,7 @@ function PrintTestCaseBreak()
       $model->ValidSchoolName() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidSchoolName()", "Empty string");
+      PrintTestCase("ProfileModel", "ValidSchoolName()", "'' (empty string)");
       $model->schoolname = "";
       $model->ValidSchoolName() ? Pass() : Fail();
 
@@ -151,17 +151,17 @@ function PrintTestCaseBreak()
 
       // ValidEmail()
       PrintTestCaseBreak();
-      PrintTestCase("LoginModel", "ValidEmail()", "Good email");
+      PrintTestCase("LoginModel", "ValidEmail()", "Good email - 'test@example.com'");
       $model->email = "test@gmail.com";
       $model->ValidEmail() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("LoginModel", "ValidEmail()", "Empty string");
+      PrintTestCase("LoginModel", "ValidEmail()", "'' (empty string)");
       $model->email = "";
       $model->ValidEmail() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("LoginModel", "ValidEmail()", "Bad format");
+      PrintTestCase("LoginModel", "ValidEmail()", "Bad format - 'noemail'");
       $model->email = "noemail";
       $model->ValidEmail() ? Fail() : Pass();
 
@@ -172,22 +172,22 @@ function PrintTestCaseBreak()
 
       // ValidType()
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidType()", "Type parent");
+      PrintTestCase("RegistrationModel", "ValidType()", "Type 'parent'");
       $model->type = "parent";
       $model->ValidType() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidType()", "Type teacher");
+      PrintTestCase("RegistrationModel", "ValidType()", "Type 'teacher'");
       $model->type = "teacher";
       $model->ValidType() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidType()", "Type student");
+      PrintTestCase("RegistrationModel", "ValidType()", "Type 'student'");
       $model->type = "student";
       $model->ValidType() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidType()", "Empty String");
+      PrintTestCase("RegistrationModel", "ValidType()", "'' (empty string)");
       $model->type = "";
       $model->ValidType() ? Fail() : Pass();
       
@@ -200,19 +200,19 @@ function PrintTestCaseBreak()
       $model->ValidName() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidName()", "Test empty strings");
+      PrintTestCase("RegistrationModel", "ValidName()", "'', '' (empty strings)");
       $model->firstname = "";
       $model->lastname = "";
       $model->ValidName() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidName()", "First name blank, Last name exists");
+      PrintTestCase("RegistrationModel", "ValidName()", "'','Doe' (first name empty string)");
       $model->firstname = "";
       $model->lastname = "Doe";
       $model->ValidName() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidName()", "First name exists, Last name blank");
+      PrintTestCase("RegistrationModel", "ValidName()", "'John', '' (last name empty string)");
       $model->firstname = "John";
       $model->lastname = "";
       $model->ValidName() ? Fail() : Pass();
@@ -220,34 +220,34 @@ function PrintTestCaseBreak()
 
       // ValidEmail()
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidEmail()", "Good email");
+      PrintTestCase("RegistrationModel", "ValidEmail()", "Good email - 'test@gmail.com'");
       $model->email = "test@gmail.com";
       $model->ValidEmail() ? Pass() : Fail();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidEmail()", "Empty string");
+      PrintTestCase("RegistrationModel", "ValidEmail()", "'' (empty string)");
       $model->email = "";
       $model->ValidEmail() ? Fail() : Pass();
 
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidEmail()", "Bad format");
+      PrintTestCase("RegistrationModel", "ValidEmail()", "Bad format - 'noemail'");
       $model->email = "noemail";
       $model->ValidEmail() ? Fail() : Pass();
 
 
       // ValidPasswordLength()
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidPasswordLength()", "Good length (greater than 6)");
+      PrintTestCase("RegistrationModel", "ValidPasswordLength()", "'password' Good length (at least 6)");
       $model->password = "password";
       $model->ValidPasswordLength() ? Pass() : Fail();
       
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidPasswordLength()", "Empty string");
+      PrintTestCase("RegistrationModel", "ValidPasswordLength()", "'' (empty string)");
       $model->password = "";
       $model->ValidPasswordLength() ? Fail() : Pass();
       
       PrintTestCaseBreak();
-      PrintTestCase("RegistrationModel", "ValidPasswordLength()", "Bad length (length of 3)");
+      PrintTestCase("RegistrationModel", "ValidPasswordLength()", "'123' Too short (less than 6)");
       $model->password = "123";
       $model->ValidPasswordLength() ? Fail() : Pass();
         
@@ -266,12 +266,14 @@ function PrintTestCaseBreak()
 
       PrintTestCaseBreak();
       PrintTestCase("RegistrationModel", "ValidPassword()", "Only first password specified");
-      $model->password = "123";
+      $model->password = "password";
+      $model->repeatpass = "";
       $model->ValidPassword() ? Fail() : Pass();
 
       PrintTestCaseBreak();
       PrintTestCase("RegistrationModel", "ValidPassword()", "Only second password specified");
-      $model->password = "123";
+      $model->password = "";
+      $model->repeatpass = "password";
       $model->ValidPassword() ? Fail() : Pass();
 
 

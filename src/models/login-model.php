@@ -1,4 +1,9 @@
 <?php
+/*
+  John Bergman
+  Updated: March 26, 2015
+  LoginModel class for modeling login credentials before passing to the LoginController.
+*/
 
 class LoginModel
 {
