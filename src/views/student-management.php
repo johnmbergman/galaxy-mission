@@ -24,14 +24,29 @@
                     <label for="studentSelect" class="col-lg-4 control-label">Select Student</label>
                     <div class="col-lg-8">
                       <select class="form-control" id="studentSelect">
-                        <?php 
-                          require(dirname(__FILE__)."/../controllers/data.php");
+                        <?php
+
+                          // Open the connection
+                          require "controllers/data.php";
                           $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
-                          $res = $conn->query("SELECT student_id FROM students WHERE parent_id = user_id");
-                          while ($conn->fetch_assoc($res)) {
-                            $options.= "<option>".$student->first_name . " " . $student->last_name."</option>"; }
-                          echo $options; 
-                          $conn->close(); ?>
+                          if($conn->connect_error)
+                          {
+                            trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+                          }
+
+                          // Run the command
+                          if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"]))
+                          {
+                            while ($row = $result->fetch_assoc())
+                            {
+                              echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                            }
+                          }
+
+                          // Close the connection
+                          $conn->close();
+
+                        ?>
                       </select>
                     </div>
                   </div>
