@@ -22,11 +22,15 @@ class StudentCreationModel
     $parent_id = "";
   }
 
-  public function ValidName()
+  public function ValidFirstName()
   {
-    return (strlen($this->firstname) > 0 && strlen($this->lastname) > 0);
+    return (strlen($this->firstname) > 0);
   }
   
+  public function ValidLastName()
+  {
+    return (strlen($this->lastname) > 0);
+  }
 }
 
 ?>

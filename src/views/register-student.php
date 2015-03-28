@@ -4,23 +4,24 @@ require "models/registration-model.php";
 require "controllers/registration-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';
+  /*echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';*/
   
-  /*$model = new RegistrationModel();
-  $model->email = $_POST["email"];
-  $model->password = $_POST["password"];
-  $model->repeatpass = $_POST["confirm"];
-
-  $valid_email = $model->ValidEmail();
-  $valid_pass = $model->ValidPassword();
-  $valid_length = $model->ValidPasswordLength();
-
-  if($valid_email && $valid_pass && $valid_length)
+  $model = new StudentCreationModel();
+  $model->firstname  = $_POST["firstname"];
+  $model->lastname   = $_POST["lastname"];
+  $model->gradelevel = $_POST["gradelevels"];
+  $model->password   = $_POST["password"]
+  $model->password   = $_POST["password"];
+  $model->parent_id  = $_SESSION["user_id"];
+  
+  $valid_firstname        = $model->ValidFirstName();
+  $valid_lastname 		  = $model->ValidLastName();
+  if($valid_firstname && $valid_lastname)
   {
     $controller = new RegistrationController($model);
-    if($controller->EmailAvailable($model->email))
+    if($controller->NameAvailable($model->firstname, $model->lastname, model->parent_id))
     {
-      // The email is available
+      // The name is available
       if($controller->Register())
       {
         header("Location: /register-success/");
@@ -36,9 +37,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-      // The email is unavailable
+      // The name is unavailable
       echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
-      echo '<strong>Error!</strong> The account could not be created because an account is already registered to this email address.';
+      echo '<strong>Error!</strong> The account could not be created because a student account with this name is already registered to this parent.';
       echo '</div></div></div>';
     }
   }
@@ -46,11 +47,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
     echo '<strong>Error!</strong> The account could not be created. <ul>';
-    if(!$valid_email)  echo '<li>An invalid email address was specified.</li>';
-    if(!$valid_pass)   echo '<li>The passwords do not match.</li>';
-    if(!$valid_length) echo '<li>The password must be at least 6 characters long.</li>';
+    if(!$valid_firstname)  echo '<li>Please enter a valid first name.</li>';
+    if(!$valid_lastname)   echo '<li>Please enter a valid last name.</li>';
     echo '</ul></div></div></div>';
-  }*/
+  }
 }
 
 ?>
@@ -117,32 +117,32 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
           Please select a passcode icon for the student</label>
           <div class="col-xs-10 col-md-offset-1" >
           <label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="0" />
   			<img src="../res/alien13.png" alt="alien icon">
   		  </label>
   		  <label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="1" />
   			<img src="../res/astronaut6.png" alt="astronaut icon">
   		  </label>
   		  <label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="2" />
   			<img src="../res/comet6.png" alt="comet icon">
   		  </label>
   		  <label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="3" />
   			<img src="../res/galaxy2.png" alt="galaxy icon">
   		  </label>
   		  <label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="4" />
   			<img src="../res/planets1.png" alt="planets icon">
   		  </label><label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="5" />
   			<img src="../res/rocket48.png" alt="rocket icon">
   		  </label><label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="6" />
   			<img src="../res/spacecraft2.png" alt="spacecraft icon">
   		  </label><label>
-          <input type="radio" name="alien icon" value="small" />
+          <input type="radio" name="password" value="7" />
   			<img src="../res/spaceship2.png" alt="spaceship icon">
   		  </label>
           </div>

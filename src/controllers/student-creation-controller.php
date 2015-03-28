@@ -21,7 +21,7 @@ class StudentCreationController
   public function Register()
   {
   // generate the query string
-	$sql = "insert into student (parent_id, first_name,last_name,pwd_picture,grade_level,date_created) values ('" . $SESSION["user_id"] . $this->model->firstname ."', '" . $this->model->lastname . "','". $this->model->passwordimage . "','" . $this->model->gradelevel. date("Y-m-d H:i:s") . "')";
+	$sql = "insert into student (parent_id, first_name,last_name,pwd_picture,grade_level,date_created) values ('" . $this->model->parent_id ."','" . $this->model->firstname ."', '" . $this->model->lastname . "','". $this->model->password ."','" . $this->model->gradelevel."','" . date("Y-m-d H:i:s") ."')";
   
     $returnflag = false;
    
@@ -49,9 +49,9 @@ class StudentCreationController
   }
   
   // Ensure the student is not already registered
-  public function StudentAvailable($email)
+  public function NametAvailable($firstname, $lastname, $parent_id)
   {
-    $sql = "select first_name from student where parent_id='" . $user_id . "' and first_name='" . $firstname . "' and last_name='" . $lastname . "'"; 
+    $sql = "select first_name from student where parent_id='" . $parent_id . "' and first_name='" . $firstname . "' and last_name='" . $lastname . "'"; 
 
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
