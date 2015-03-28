@@ -1,17 +1,16 @@
 <?php
 
-require "models/registration-model.php";
-require "controllers/registration-controller.php";
+require "models/student-creation-model.php";
+require "controllers/student-creation-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  /*echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';*/
-  
+  echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';
+  /*
   $model = new StudentCreationModel();
   $model->firstname  = $_POST["firstname"];
   $model->lastname   = $_POST["lastname"];
   $model->gradelevel = $_POST["gradelevels"];
   $model->password   = $_POST["password"]
-  $model->password   = $_POST["password"];
   $model->parent_id  = $_SESSION["user_id"];
   
   $valid_firstname        = $model->ValidFirstName();
@@ -50,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(!$valid_firstname)  echo '<li>Please enter a valid first name.</li>';
     if(!$valid_lastname)   echo '<li>Please enter a valid last name.</li>';
     echo '</ul></div></div></div>';
-  }
+  }*/
 }
 
 ?>
@@ -100,7 +99,8 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
             <input type="text" name="lastname" class="form-control" id="input-lastname" placeholder="Last Name">
           </div>
         </div>
-    
+        <br>
+        
         <div class="form-group">
           <label for="input-gradelevel" class="col-md-4 text-right control-lable">Grade Level</label>
           <div class="col-md-8">
