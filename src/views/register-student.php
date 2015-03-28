@@ -1,4 +1,9 @@
 <?php
+/*
+  Adam Hill
+  Updated: March 27, 2015
+  Register-student view where a parent can create a student account for their child
+*/
 
 require "models/student-creation-model.php";
 require "controllers/student-creation-controller.php";
