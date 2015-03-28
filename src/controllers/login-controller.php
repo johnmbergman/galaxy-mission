@@ -26,7 +26,7 @@ class LoginController
     $returnflag = false;
 
     // Build the sql query
-    $sql = "select hash, email, 'parent' as type, first_name, last_name, phone from parents where email='" . $this->model->email . "' union select hash, email, 'teacher' as type, first_name, last_name, phone from teachers where email='" . $this->model->email . "'";
+    $sql = "select parent_id as id, hash, email, 'parent' as type, first_name, last_name, phone from parents where email='" . $this->model->email . "' union select teacher_id as id, hash, email, 'teacher' as type, first_name, last_name, phone from teachers where email='" . $this->model->email . "'";
 
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -40,20 +40,22 @@ class LoginController
     $row = $result->fetch_row();
 
     // Check if the password matches
-    if(password_verify($this->model->password, $row[0]))
+    if(password_verify($this->model->password, $row[1]))
     {
       // The password matches, authenticate and retrieve values
       $returnflag = true;
       $_SESSION["authenticated"] = true;
-      $_SESSION["email"] = $row[1];
-      $_SESSION["type"] = $row[2];
-      $_SESSION["firstname"] = $row[3];
-      $_SESSION["lastname"] = $row[4];
-      $_SESSION["phone"] = $row[5];
+      $_SESSION["user_id"] = $row[0];
+      $_SESSION["email"] = $row[2];
+      $_SESSION["type"] = $row[3];
+      $_SESSION["firstname"] = $row[4];
+      $_SESSION["lastname"] = $row[5];
+      $_SESSION["phone"] = $row[6];
     }
     else
     {
       $_SESSION["authenticated"] = false;
+      $_SESSION["user_id"] = -1;
       $_SESSION["email"] = "";
       $_SESSION["type"] = "";
       $_SESSION["firstname"] = "";

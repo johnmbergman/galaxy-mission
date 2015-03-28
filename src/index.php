@@ -32,6 +32,7 @@
 
   // Prepare the session variables
   if(!isset($_SESSION["authenticated"]))  $_SESSION["authenticated"] = false;
+  if(!isset($_SESSION["user_id"]))        $_SESSION["user_id"] = -1;
   if(!isset($_SESSION["email"]))          $_SESSION["email"] = "";
   if(!isset($_SESSION["firstname"]))      $_SESSION["firstname"] = "";
   if(!isset($_SESSION["lastname"]))       $_SESSION["lastname"] = "";

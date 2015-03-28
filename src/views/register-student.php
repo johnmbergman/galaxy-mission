@@ -15,10 +15,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $model->lastname   = $_POST["lastname"];
   $model->gradelevel = $_POST["gradelevels"];
   $model->password   = $_POST["password"];
-  $model->parent_id  = 1 ; // $_SESSION["user_id"];
+  $model->parent_id  = $_SESSION["user_id"];
   
   $valid_firstname        = $model->ValidFirstName();
-  $valid_lastname 		  = $model->ValidLastName();
+  $valid_lastname         = $model->ValidLastName();
   if($valid_firstname && $valid_lastname)
   {
     $controller = new StudentCreationController($model);
