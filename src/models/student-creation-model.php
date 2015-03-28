@@ -19,7 +19,7 @@ class StudentCreationModel
     $firstname = "";
     $lastname = "";
     $gradelevel = "";
-    $passwordimage = "";
+    $password = "";
     $parent_id = "";
   }
 

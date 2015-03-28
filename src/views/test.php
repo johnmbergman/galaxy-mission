@@ -308,7 +308,7 @@ function PrintTestCaseBreak()
       $model->ValidPassword() ? Pass() : Fail();
       
       PrintTestCaseBreak();
-      PrintTestCase("StudentCreationModel", "ValidPassword()", "'' (empty string)");
+      PrintTestCase("StudentCreationModel", "ValidPassword()", "'' (empty string - passcode image not selected)");
       $model->password = "";
       $model->ValidPassword() ? Fail() : Pass();
 
