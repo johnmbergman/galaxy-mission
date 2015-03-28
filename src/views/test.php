@@ -300,11 +300,22 @@ function PrintTestCaseBreak()
       PrintTestCase("StudentCreationModel", "ValidLastName()", "'' (empty string)");
       $model->lastname = "";
       $model->ValidLastName() ? Fail() : Pass();
+      
+      // ValidPassword()
+      PrintTestCaseBreak();
+      PrintTestCase("StudentCreationModel", "ValidPassword()", "6");
+      $model->password = 6;
+      $model->ValidPassword() ? Pass() : Fail();
+      
+      PrintTestCaseBreak();
+      PrintTestCase("StudentCreationModel", "ValidPassword()", "'' (empty string)");
+      $model->password = "";
+      $model->ValidPassword() ? Fail() : Pass();
 
-
-
-
-
+	  PrintTestCaseBreak();
+      PrintTestCase("StudentCreationModel", "ValidPassword()", "10 (invalid value)");
+      $model->password = 10;
+      $model->ValidPassword() ? Fail() : Pass();
       ?></tr>
     </table>
   </div>

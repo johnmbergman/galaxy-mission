@@ -19,7 +19,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   
   $valid_firstname        = $model->ValidFirstName();
   $valid_lastname         = $model->ValidLastName();
-  if($valid_firstname && $valid_lastname)
+  $valid_password		  = $model->ValidPassword();
+  if($valid_firstname && $valid_lastname && $valid_password)
   {
     $controller = new StudentCreationController($model);
     if($controller->NameAvailable($model->firstname, $model->lastname, $model->parent_id))
@@ -52,33 +53,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     echo '<strong>Error!</strong> The account could not be created. <ul>';
     if(!$valid_firstname)  echo '<li>Please enter a valid first name.</li>';
     if(!$valid_lastname)   echo '<li>Please enter a valid last name.</li>';
+    if(!$valid_password)   echo '<li>Please select a passcode icon.</li>';
     echo '</ul></div></div></div>';
   }
 }
 
 ?>
-
-<head>
-<style>
-
-img{
-	width:75px;
-	height:75px;
-	margin: 10px 10px;
-}
-label > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
-label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-}
-label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #008080;
-}
-</style>
-</head>
 
 
 <div class="row">
@@ -122,32 +102,32 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
           <div class="col-xs-10 col-md-offset-1" >
           <label>
           <input type="radio" name="password" value="0" />
-  			<img src="../res/alien13.png" alt="alien icon">
+  			<img  src="../res/alien13.png" width="75px" height="75px" style="margin:10px 10px" alt="alien icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="1" />
-  			<img src="../res/astronaut6.png" alt="astronaut icon">
+  			<img src="../res/astronaut6.png" width="75px" height="75px" style="margin:10px 10px" alt="astronaut icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="2" />
-  			<img src="../res/comet6.png" alt="comet icon">
+  			<img src="../res/comet6.png" width="75px" height="75px" style="margin:10px 10px" alt="comet icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="3" />
-  			<img src="../res/galaxy2.png" alt="galaxy icon">
+  			<img src="../res/galaxy2.png" width="75px" height="75px" style="margin:10px 10px" alt="galaxy icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="4" />
-  			<img src="../res/planets1.png" alt="planets icon">
+  			<img src="../res/planets1.png" width="75px" height="75px" style="margin:10px 10px" alt="planets icon">
   		  </label><label>
           <input type="radio" name="password" value="5" />
-  			<img src="../res/rocket48.png" alt="rocket icon">
+  			<img src="../res/rocket48.png" width="75px" height="75px" style="margin:10px 10px" alt="rocket icon">
   		  </label><label>
           <input type="radio" name="password" value="6" />
-  			<img src="../res/spacecraft2.png" alt="spacecraft icon">
+  			<img src="../res/spacecraft2.png" width="75px" height="75px" style="margin:10px 10px" alt="spacecraft icon">
   		  </label><label>
           <input type="radio" name="password" value="7" />
-  			<img src="../res/spaceship2.png" alt="spaceship icon">
+  			<img src="../res/spaceship2.png" width="75px" height="75px" style="margin:10px 10px" alt="spaceship icon">
   		  </label>
           </div>
         </div>
