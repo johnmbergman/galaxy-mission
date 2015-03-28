@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $model->firstname  = $_POST["firstname"];
   $model->lastname   = $_POST["lastname"];
   $model->gradelevel = $_POST["gradelevels"];
-  $model->password   = $_POST["password"]
+  $model->password   = $_POST["password"];
   $model->parent_id  = 1 ; // $_SESSION["user_id"];
   
   $valid_firstname        = $model->ValidFirstName();
@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   if($valid_firstname && $valid_lastname)
   {
     $controller = new RegistrationController($model);
-    if($controller->NameAvailable($model->firstname, $model->lastname, model->parent_id))
+    if($controller->NameAvailable($model->firstname, $model->lastname, $model->parent_id))
     {
       // The name is available
       if($controller->Register())
