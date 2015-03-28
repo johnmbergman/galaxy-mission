@@ -100,16 +100,12 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
             <input type="text" name="lastname" class="form-control" id="input-lastname" placeholder="Last Name">
           </div>
         </div>
+    
         <div class="form-group">
-          <label for="input-dateofbirth" class="col-md-3 control-label">Date of Birth</label>
-          <div class="col-md-3">
-            <input type="date" name="dateofbirth" class="form-control" id="input-dateofbirth" placeholder="mm/dd/yyyy" maxlength="10">  
-        </div>
-        <div class="form-group">
-          <label for="input-gradelevel" class="col-md-2 control-lable">Grade Level</label>
-          <div class="col-md-1">
+          <label for="input-gradelevel" class="col-md-4 text-right control-lable">Grade Level</label>
+          <div class="col-md-8">
             <select name="gradelevels">
-				<option value="k">Kindergarten</option>
+				<option value="0">Kindergarten</option>
 				<option value="1">1st Grade</option>
 				<option value="2">2nd Grade</option>
 				<option value="3">3rd Grade</option>
@@ -119,7 +115,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
         <div class="form-group">
           <label style="text-align:center;font-size:20px" for="input-pass" class="col-sm-10 col-md-offset-1 control-label">
           Please select a passcode icon for the student</label>
-          <div class="col-xs-9 col-md-offset-2" >
+          <div class="col-xs-10 col-md-offset-1" >
           <label>
           <input type="radio" name="alien icon" value="small" />
   			<img src="../res/alien13.png" alt="alien icon">
