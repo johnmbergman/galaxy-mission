@@ -276,6 +276,11 @@ function PrintTestCaseBreak()
       $model->repeatpass = "password";
       $model->ValidPassword() ? Fail() : Pass();
       
+      
+      // StudentCreationModel Unit Tests //
+      require "models/student-creation-model.php";
+      $model = new StudentCreationModel();
+      
       // ValidFirstName()
       PrintTestCase("ProfileModel", "ValidFirstName()", "'John'");
       $model->firstname = "John";
