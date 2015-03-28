@@ -1,43 +1,32 @@
 <?php
+/*
+  Adam Hill
+  Created: March 27, 2015
+  StudentCreationModel class for modeling a new student account to be registered.
+*/
 
 class StudentCreationModel
 {
-  public $type;
   public $firstname;
   public $lastname;
-  public $email;
+  public $gradelevel;
   public $password;
-  public $repeatpass;
-
+  public $parent_id;
+  
   public function __construct()
   {
-    $type = "invalid";
     $firstname = "";
     $lastname = "";
-    $email = "";
-    $password = "";
-    $repeatpass = "";
-  }
-
-  public function ValidEmail()
-  {
-    return filter_var($this->email, FILTER_VALIDATE_EMAIL);
-  }
-
-  public function ValidPassword()
-  {
-    return ($this->password == $this->repeatpass);
-  }
-
-  public function ValidPasswordLength()
-  {
-    return (strlen($this->password) >= 6);
+    $gradelevel = "";
+    $passwordimage = "";
+    $parent_id = "";
   }
 
   public function ValidName()
   {
     return (strlen($this->firstname) > 0 && strlen($this->lastname) > 0);
   }
+  
 }
 
 ?>
