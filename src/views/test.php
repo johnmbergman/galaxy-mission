@@ -275,6 +275,26 @@ function PrintTestCaseBreak()
       $model->password = "";
       $model->repeatpass = "password";
       $model->ValidPassword() ? Fail() : Pass();
+      
+      // ValidFirstName()
+      PrintTestCase("ProfileModel", "ValidFirstName()", "'John'");
+      $model->firstname = "John";
+      $model->ValidFirstName() ? Pass() : Fail();
+      
+      PrintTestCaseBreak();
+      PrintTestCase("ProfileModel", "ValidFirstName()", "'' (empty string)");
+      $model->firstname = "";
+      $model->ValidFirstName() ? Fail() : Pass();
+      
+      // ValidLastName()
+      PrintTestCase("ProfileModel", "ValidLastName()", "'Doe'");
+      $model->lastname = "Doe";
+      $model->ValidLastName() ? Pass() : Fail();
+      
+      PrintTestCaseBreak();
+      PrintTestCase("ProfileModel", "ValidLastName()", "'' (empty string)");
+      $model->lastname = "";
+      $model->ValidLastName() ? Fail() : Pass();
 
 
 
