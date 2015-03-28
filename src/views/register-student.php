@@ -15,11 +15,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $model->lastname   = $_POST["lastname"];
   $model->gradelevel = $_POST["gradelevels"];
   $model->parent_id  = $_SESSION["user_id"];
-  if (isset($_GET["password"]))
-  {
-    $model->password   = $_POST["password"];
-  }
-  
+  $model->password   = (isset($_POST["password"]) ? $_POST["password"] : -1);
+ 
   $valid_firstname        = $model->ValidFirstName();
   $valid_lastname         = $model->ValidLastName();
   $valid_password		  = $model->ValidPassword();
@@ -122,13 +119,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   		  <label>
           <input type="radio" name="password" value="4" />
   			<img src="../res/planets1.png" width="75px" height="75px" style="margin:10px 10px" alt="planets icon">
-  		  </label><label>
+  		  </label>
+  		  <label>
           <input type="radio" name="password" value="5" />
   			<img src="../res/rocket48.png" width="75px" height="75px" style="margin:10px 10px" alt="rocket icon">
-  		  </label><label>
+  		  </label>
+  		  <label>
           <input type="radio" name="password" value="6" />
   			<img src="../res/spacecraft2.png" width="75px" height="75px" style="margin:10px 10px" alt="spacecraft icon">
-  		  </label><label>
+  		  </label>
+  		  <label>
           <input type="radio" name="password" value="7" />
   			<img src="../res/spaceship2.png" width="75px" height="75px" style="margin:10px 10px" alt="spaceship icon">
   		  </label>
