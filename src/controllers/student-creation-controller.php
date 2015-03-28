@@ -21,7 +21,7 @@ class StudentCreationController
   public function Register()
   {
   // generate the query string
-	$sql = "insert into student (parent_id, first_name,last_name,pwd_picture,grade_level,date_created) values ('" . $this->model->parent_id ."','" . $this->model->firstname ."', '" . $this->model->lastname . "','". $this->model->password ."','" . $this->model->gradelevel."','" . date("Y-m-d H:i:s") ."')";
+	$sql = "insert into student (parent_id, first_name,last_name,pwd_picture,grade_level,date_created) values (" . $this->model->parent_id .",'" . $this->model->firstname ."', '" . $this->model->lastname . "','". $this->model->password ."','" . $this->model->gradelevel."','" . date("Y-m-d H:i:s") ."')";
   
     $returnflag = false;
    
