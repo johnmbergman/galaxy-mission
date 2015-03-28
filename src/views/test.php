@@ -4,7 +4,6 @@ $passed = 0;
 function Pass()
 {
   global $passed;
-  //echo "<td><p class='text-success'><strong>PASSED</strong></p></td>";
   echo "<td><span class='label label-success'>PASSED</span></td>";
   ++$passed;
 }
@@ -13,7 +12,6 @@ $failed = 0;
 function Fail()
 {
   global $failed;
-  //echo "<td><p class='text-danger'><strong>FAILED!</strong></p></td>";
   echo "<td><span class='label label-danger'>FAILED</span></td>";
   ++$failed;
 }
@@ -250,7 +248,7 @@ function PrintTestCaseBreak()
       PrintTestCase("RegistrationModel", "ValidPasswordLength()", "'123' Too short (less than 6)");
       $model->password = "123";
       $model->ValidPasswordLength() ? Fail() : Pass();
-        
+
       // ValidPassword()
       PrintTestCaseBreak();
       PrintTestCase("RegistrationModel", "ValidPassword()", "Passwords match");
@@ -275,29 +273,31 @@ function PrintTestCaseBreak()
       $model->password = "";
       $model->repeatpass = "password";
       $model->ValidPassword() ? Fail() : Pass();
-      
-      
+
+
       // StudentCreationModel Unit Tests //
       require "models/student-creation-model.php";
       $model = new StudentCreationModel();
       
       // ValidFirstName()
-      PrintTestCase("ProfileModel", "ValidFirstName()", "'John'");
+      PrintTestCaseBreak();
+      PrintTestCase("StudentCreationModel", "ValidFirstName()", "'John'");
       $model->firstname = "John";
       $model->ValidFirstName() ? Pass() : Fail();
       
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidFirstName()", "'' (empty string)");
+      PrintTestCase("StudentCreationModel", "ValidFirstName()", "'' (empty string)");
       $model->firstname = "";
       $model->ValidFirstName() ? Fail() : Pass();
       
       // ValidLastName()
-      PrintTestCase("ProfileModel", "ValidLastName()", "'Doe'");
+      PrintTestCaseBreak();
+      PrintTestCase("StudentCreationModel", "ValidLastName()", "'Doe'");
       $model->lastname = "Doe";
       $model->ValidLastName() ? Pass() : Fail();
       
       PrintTestCaseBreak();
-      PrintTestCase("ProfileModel", "ValidLastName()", "'' (empty string)");
+      PrintTestCase("StudentCreationModel", "ValidLastName()", "'' (empty string)");
       $model->lastname = "";
       $model->ValidLastName() ? Fail() : Pass();
 
