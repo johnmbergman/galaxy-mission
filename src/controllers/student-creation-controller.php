@@ -49,7 +49,7 @@ class StudentCreationController
   }
   
   // Ensure the student is not already registered
-  public function NametAvailable($firstname, $lastname, $parent_id)
+  public function NameAvailable($firstname, $lastname, $parent_id)
   {
     $sql = "select first_name from student where parent_id='" . $parent_id . "' and first_name='" . $firstname . "' and last_name='" . $lastname . "'"; 
 

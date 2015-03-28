@@ -9,7 +9,6 @@ require "models/student-creation-model.php";
 require "controllers/student-creation-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">Not implemented!</div></div></div>';
   
   $model = new StudentCreationModel();
   $model->firstname  = $_POST["firstname"];
@@ -22,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $valid_lastname 		  = $model->ValidLastName();
   if($valid_firstname && $valid_lastname)
   {
-    $controller = new RegistrationController($model);
+    $controller = new StudentCreationController($model);
     if($controller->NameAvailable($model->firstname, $model->lastname, $model->parent_id))
     {
       // The name is available
