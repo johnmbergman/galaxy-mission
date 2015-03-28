@@ -104,15 +104,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           Please select a passcode icon for the student</label>
           <div class="col-xs-10 col-md-offset-1" >
           <label>
-          <input type="radio" name="password" value=0 />
+          <input type="radio" name="password" value="0" />
   			<img  src="../res/alien13.png" width="75px" height="75px" style="margin:10px 10px" alt="alien icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value=1 />
+          <input type="radio" name="password" value="1" />
   			<img src="../res/astronaut6.png" width="75px" height="75px" style="margin:10px 10px" alt="astronaut icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value=2 />
+          <input type="radio" name="password" value="2" />
   			<img src="../res/comet6.png" width="75px" height="75px" style="margin:10px 10px" alt="comet icon">
   		  </label>
   		  <label>
