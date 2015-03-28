@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Student Name's Information</h2>
+      <h2>Student Information</h2>
       <div class="panel-primary">
         <div class="panel-body">
           <div class="row">
@@ -20,6 +20,25 @@
               <form method="post" class="form-horizontal well">
                 <fieldset>
                   <legend>Click in a field to edit information and then click Save.</legend>
+                  <div class="form-group">
+                    <label for="studentSelect" class="col-lg-4 control-label">Select Student</label>
+                    <div class="col-lg-8">
+                      <select class="form-control" id="studentSelect">
+                        <?php 
+                          require(dirname(__FILE__)."/../controllers/data.php");
+                          $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+                          $res = $conn->query("SELECT student_id FROM students WHERE parent_id = user_id");
+                          while ($conn->fetch_assoc($res)) {
+                            $options.= "<option>".$student->first_name . " " . $student->last_name."</option>"; }
+                          echo $options; 
+                          $conn->close(); ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <hr>
+                    <br />
+                  </div>
                   <div class="form-group">
                     <label for="firstName" class="col-lg-4 control-label">First Name</label>
                     <div class="col-lg-8">
