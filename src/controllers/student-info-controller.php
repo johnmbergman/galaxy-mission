@@ -1,4 +1,11 @@
-<?php require "data.php";
+<?php 
+/*
+  Shaun Fyffe
+  Updated: March 28, 2015
+  StudentInfoController class for accepting a StudentInfoModel and updating account information in database.
+*/
+
+require "data.php";
 
 class StudentInfoController
 {

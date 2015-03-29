@@ -1,4 +1,9 @@
 <?php
+/*
+  Shaun Fyffe
+  Updated: March 28, 2015
+  StudentInfoModel class for modeling Student Account Information before passing to the StudentInfoController
+*/
 
 class StudentInfoModel {
   public $firstname;
