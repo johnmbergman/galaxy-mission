@@ -141,8 +141,86 @@ function PrintTestCaseBreak()
       $model->schoolname = "";
       $model->ValidSchoolName() ? Pass() : Fail();
 
-    
 
+      // StudentInfoModel Unit Tests //
+      require "models/student-info-model.php";
+      $model = new StudentInfoModel();
+
+      // ValidName()
+      PrintTestCase("StudentInfoModel", "ValidName()", "'Jack','Roosevelt'");
+      $model->firstname = "Jack";
+      $model->lastname = "Roosevelt";
+      $model->ValidName() ? Pass() : Fail();
+      
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidName()", "'' (empty string)");
+      $model->firstname = "";
+      $model->lastname = "";
+      $model->ValidName() ? Fail() : Pass();
+        
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidName()", "'', 'Roosevelt' (first name empty string)");
+      $model->firstname = "";
+      $model->lastname = "Roosevelt";
+      $model->ValidName() ? Fail() : Pass();
+    
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidName()", "'Jack', '' (last name empty string)");
+      $model->firstname = "Jack";
+      $model->lastname = "";
+      $model->ValidName() ? Fail() : Pass();
+
+
+      // ValidGrade()
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidGrade()", "Good Grade 1: 'Kindergarten'");
+      $model->grade = "Kindergarten";
+      $model->ValidGrade() ? Pass() : Fail();
+
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidGrade()", "Good Grade 2: '1st Grade'");
+      $model->grade = "1st Grade";
+      $model->ValidGrade() ? Pass() : Fail();
+        
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidGrade()", "Bad Format: '' (empty string)");
+      $model->grade = "";
+      $model->ValidGrade() ? Fail() : Pass();
+
+      // ValidSchoolName()
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidSchoolName()", "'Example Elementary School'");
+      $model->schoolname = "Example Elementary School";
+      $model->ValidSchoolName() ? Pass() : Fail();
+
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidSchoolName()", "Length greater than 50");
+      $model->schoolname = "LongestSchoolNameEverByAnIncrediblyWideMarginThereIsNotOneSchoolThatCanCompeteWithItsNameLength";
+      $model->ValidSchoolName() ? Fail() : Pass();
+
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidSchoolName()", "'' (empty string)");
+      $model->schoolname = "";
+      $model->ValidSchoolName() ? Pass() : Fail();
+
+      // ValidTeacherName()
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidTeacherName()", "'Rachel Robinson'");
+      $model->teachername = "Rachel Robinson";
+      $model->ValidTeacherName() ? Pass() : Fail();
+
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidTeacherName()", "Length greater than 30");
+      $model->teachername = "HaveYouEverHadATeacherThatHadANameLongerThanThirtyCharactersIfSoWhatWasHerName";
+      $model->ValidTeacherName() ? Fail() : Pass();
+
+      PrintTestCaseBreak();
+      PrintTestCase("StudentInfoModel", "ValidTeacherName()", "'' (empty string)");
+      $model->teachername = "";
+      $model->ValidTeacherName() ? Pass() : Fail();
+
+
+    
       // LoginModel Unit Tests //
       require "models/login-model.php";
       $model = new LoginModel();

@@ -1,3 +1,57 @@
+<?php
+
+//////////////////////////////
+//    url: /student-management POST
+// author: Shaun Fyffe with guidance from John Bergman
+//   date: March 28, 2015
+//////////////////////////////
+require "models/student-info-model.php";
+require "controllers/student-info-controller.php";
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  $model = new StudentInfoModel();
+  $model->firstname  = $_POST["firstname"];
+  $model->lastname   = $_POST["lastname"];
+  $model->grade      = $_POST["grade"];
+
+  $valid_name        = $model->ValidName();
+  $valid_grade       = $model->ValidGrade();
+  $valid_school      = $model->ValidSchoolName();
+  $valid_teacher     = $model->ValidTeacherName();
+
+  if($valid_teacher && $valid_school && valid_grade && $valid_name)
+  {
+    // Valid input!
+    $controller = new StudentInfoController($model);
+
+    // Update the table
+    if($controller->Update())
+    {
+      echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-success">';
+      echo '<strong>Success!</strong> The profile was updated successfully.';
+      echo '</div></div></div>';
+    }
+    else
+    {
+      echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
+      echo '<strong>Error!</strong> An error occurred while attempting to update the profile.';
+      echo '</div></div></div>';
+    }
+  }
+  else
+  {
+    echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
+    echo '<strong>Error!</strong> Your profile could not be updated. <ul>';
+    if(!$valid_name)   echo '<li>An invalid name was specified! Please enter a first and last name!</li>';
+    if(!$valid_grade)  echo '<li>An invalid grade was selected! Please select a grade</li>';
+    if(!$valid_school) echo '<li>An invalid school name was specified! Please enter a valid school name.</li>';
+    if(!$valid_teacher) echo '<li>An invalid teacher name was specified! Please enter a valid teacher name.</li>';
+    echo '</ul></div></div></div>';
+  }
+}
+?>
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
@@ -13,7 +67,7 @@
                 <li class="divider"></li>
                 <li><a href="https://www.galaxymission.com/student-management">Student Information</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Return to Parent Dashboard</a></li>
+                <li class="disable"><a href="#">Return to Parent Dashboard</a></li>
               </ul>
             </div>
             <div class="col-sm-8">
@@ -67,22 +121,12 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="gender" class="col-lg-4 control-label">Gender</label>
-                    <div class="col-lg-8">
-                      <select class="form-control" id="gender">
-                        <option>Male</option>
-                        <option>Female</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
                     <label for="grade" class="col-lg-4 control-label">Grade Level</label>
                     <div class="col-lg-8">
-                      <select class="form-control" id="grade">
-                        <option>Kindergarten</option>
-                        <option>1st Grade</option>
-                        <option>2nd Grade</option>
-                        <option>3rd Grade</option>
+                      <select class="form-control" id="grade" name="grade">
+                        <option value = "">Select a grade level</option>
+                        <option value = "Kindergarten">Kindergarten</option>
+                        <option value = "1st Grade">1st Grade</option>
                       </select>
                     </div>
                   </div>
