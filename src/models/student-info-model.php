@@ -25,11 +25,11 @@ class StudentInfoModel {
   }
 
   public function ValidSchoolName() {
-    return (strlen($this->schoolname) <= 50;
+    return strlen($this->schoolname) <= 50;
   }
 
   public function ValidTeacherName() {
-    return (strlen($this->teachername) <= 30;
+    return strlen($this->teachername) <= 30;
   }
 }
 

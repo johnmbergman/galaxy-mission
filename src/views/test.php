@@ -147,6 +147,7 @@ function PrintTestCaseBreak()
       $model = new StudentInfoModel();
 
       // ValidName()
+      PrintTestCaseBreak();
       PrintTestCase("StudentInfoModel", "ValidName()", "'Jack','Roosevelt'");
       $model->firstname = "Jack";
       $model->lastname = "Roosevelt";
