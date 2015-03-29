@@ -1,7 +1,7 @@
 <?php
 /*
   Adam Hill
-  Updated: March 27, 2015
+  Updated: March 28, 2015
   Register-student view where a parent can create a student account for their child
 */
 
@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $model = new StudentCreationModel();
   $model->firstname  = $_POST["firstname"];
   $model->lastname   = $_POST["lastname"];
-  $model->gradelevel = $_POST["gradelevels"];
+  $model->gradelevel = $_POST["gradelevel"];
   $model->parent_id  = $_SESSION["user_id"];
   $model->password   = (isset($_POST["password"]) ? $_POST["password"] : -1);
  
@@ -49,6 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   }
   else
   {
+	// output message detailing invalid inputs
     echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
     echo '<strong>Error!</strong> The account could not be created. <ul>';
     if(!$valid_firstname)  echo '<li>Please enter a valid first name.</li>';
@@ -84,53 +85,54 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           </div>
         </div>
         <br>
-        
+      <div class="row">
         <div class="form-group">
-          <label for="input-gradelevel" class="col-md-4 text-right control-lable">Grade Level</label>
-          <div class="col-md-8">
-            <select name="gradelevels">
+          <label for="input-gradelevel" class="col-md-4 text-right control-label">Grade Level</label>
+          <div class="col-md-4">
+            <select name="gradelevel" class="form-control" id="input-gradelevel">
 				<option value="0">Kindergarten</option>
 				<option value="1">1st Grade</option>
 				<option value="2">2nd Grade</option>
 				<option value="3">3rd Grade</option>
 			</select>
           </div>
-        </div>  
+        </div>
+      </div>  
         <div class="form-group">
-          <label style="text-align:center;font-size:20px" for="input-pass" class="col-sm-10 col-md-offset-1 control-label">
+          <label style="text-align:center;font-size:20px" class="col-sm-10 col-md-offset-1 control-label">
           Please select a passcode icon for the student</label>
           <div class="col-xs-10 col-md-offset-1" >
           <label>
           <input type="radio" name="password" value="0" />
-  			<img  src="../res/alien13.png" width="75px" height="75px" style="margin:10px 10px" alt="alien icon">
+  			<img  src="../res/alien13.png" style="margin:10px 10px; width:75px; height:75px;" alt="alien icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="1" />
-  			<img src="../res/astronaut6.png" width="75px" height="75px" style="margin:10px 10px" alt="astronaut icon">
+  			<img src="../res/astronaut6.png" style="margin:10px 10px; width:75px; height:75px;" alt="astronaut icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="2" />
-  			<img src="../res/comet6.png" width="75px" height="75px" style="margin:10px 10px" alt="comet icon">
+  			<img src="../res/comet6.png" style="margin:10px 10px; width:75px; height:75px;" alt="comet icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="3" />
-  			<img src="../res/galaxy2.png" width="75px" height="75px" style="margin:10px 10px" alt="galaxy icon">
+  			<img src="../res/galaxy2.png" style="margin:10px 10px; width:75px; height:75px;" alt="galaxy icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="4" />
-  			<img src="../res/planets1.png" width="75px" height="75px" style="margin:10px 10px" alt="planets icon">
+  			<img src="../res/planets1.png" style="margin:10px 10px; width:75px; height:75px;" alt="planets icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="5" />
-  			<img src="../res/rocket48.png" width="75px" height="75px" style="margin:10px 10px" alt="rocket icon">
+  			<img src="../res/rocket48.png" style="margin:10px 10px; width:75px; height:75px;" alt="rocket icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="6" />
-  			<img src="../res/spacecraft2.png" width="75px" height="75px" style="margin:10px 10px" alt="spacecraft icon">
+  			<img src="../res/spacecraft2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spacecraft icon">
   		  </label>
   		  <label>
           <input type="radio" name="password" value="7" />
-  			<img src="../res/spaceship2.png" width="75px" height="75px" style="margin:10px 10px" alt="spaceship icon">
+  			<img src="../res/spaceship2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spaceship icon">
   		  </label>
           </div>
         </div>

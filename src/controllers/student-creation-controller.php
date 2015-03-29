@@ -1,7 +1,7 @@
 <?php
 /*
   Adam Hill
-  Created: March 27, 2015
+  Updated: March 28, 2015
   StudentCreationController class for accepting a StudentCreationModel and registering a student account.
 */
 require "data.php";

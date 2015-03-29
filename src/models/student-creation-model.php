@@ -1,7 +1,7 @@
 <?php
 /*
   Adam Hill
-  Created: March 27, 2015
+  Updated: March 28, 2015
   StudentCreationModel class for modeling a new student account to be registered.
 */
 
