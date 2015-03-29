@@ -2,7 +2,7 @@
 
 //////////////////////////////
 //    url: /student-management POST
-// author: Shaun Fyffe with guidance from John Bergman
+// author: Shaun Fyffe with PHP guidance from John Bergman
 //   date: March 28, 2015
 //////////////////////////////
 require "models/student-info-model.php";
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <div class="panel-primary">
         <div class="panel-body">
           <div class="row">
-            // Sidebar for Account Settings Area
+            <!--Sidebar for Account Settings Area-->
             <div class="col-sm-4">
               <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="https://www.galaxymission.com/account-settings">Overview</a></li>
@@ -72,19 +72,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
               </ul>
             </div>
             <div class="col-sm-8">
-              // Student Info Form
+              <!--Student Info Form-->
               <form method="post" class="form-horizontal well">
                 <fieldset>
                   <legend>Click in a field to edit information and then click Save.</legend>
                   <div class="form-group">
-                    // Parents with multiple students will be able to choose between them to make changes
+                    <!--Parents with multiple students will be able to choose between them to make changes-->
                     <label for="studentSelect" class="col-lg-4 control-label">Select Student</label>
                     <div class="col-lg-8">
                       <select class="form-control" id="studentSelect">
                         <?php
 
                           // Open the connection
-                          require "controllers/data.php";
                           $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
                           if($conn->connect_error) {
                             trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
@@ -106,23 +105,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                   </div>
                   <div class="col-lg-10 col-lg-offset-2">
                     <hr>
-                    <br />
+                    <br>
                   </div>
-                  // Update student's first name
+                  <!--Update student's first name-->
                   <div class="form-group">
                     <label for="firstName" class="col-lg-4 control-label">First Name</label>
                     <div class="col-lg-8">
                       <input type="text" class="form-control" id="firstName" placeholder="First Name">
                     </div>
                   </div>
-                  // Update student's last name
+                  <!--Update student's last name-->
                   <div class="form-group">
                     <label for="lastName" class="col-lg-4 control-label">Last Name</label>
                     <div class="col-lg-8">
                       <input type="text" class="form-control" id="lastName" placeholder="Last Name">
                     </div>
                   </div>
-                  // Update student's grade level
+                  <!--Update student's grade level-->
                   <div class="form-group">
                     <label for="grade" class="col-lg-4 control-label">Grade Level</label>
                     <div class="col-lg-8">
@@ -133,21 +132,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                       </select>
                     </div>
                   </div>
-                  // Update student's school's name
+                  <!--Update student's school's name-->
                   <div class="form-group">
                     <label for="schoolName" class="col-lg-4 control-label">School Name</label>
                     <div class="col-lg-8">
                       <input type="text" class="form-control" id="schoolName" placeholder="School Name (optional)">
                     </div>
                   </div>
-                  // Update student's teacher's name
+                  <!--Update student's teacher's name-->
                   <div class="form-group">
                     <label for="teacherName" class="col-lg-4 control-label">Teacher Name</label>
                     <div class="col-lg-8">
                       <input type="text" class="form-control" id="teacherName" placeholder="Teacher Name (optional)">
                     </div>
                   </div>
-                  // Update information in database
+                  <!--Update information in database-->
                   <div class="form-group">
                     <div class="col-lg-8 col-lg-offset-4">
                       <button type="submit" class="btn btn-primary">Save</button>
