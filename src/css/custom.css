@@ -56,6 +56,10 @@
 	height:75px;
 	margin: 10px 10px;
 }
+.progress-label {
+  float: left;
+  margin-right: 2px;
+}
 label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
   position: absolute; /* Remove input from document flow */
