@@ -51,16 +51,40 @@
   }
 }
 
+
+
+@media screen and (min-height: 750px){
+#div1{
+    margin-top: 40%;
+    margin-left: -40%;
+    font-size: 70px;
+    color: white;
+    background: black;
+    padding-left: 10px;
+    position: relative;
+  }
+
+  #ques{
+    margin-left: -40%;
+    font-size: 20px;
+    color: white;
+    background: black;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  #answer{
+    color: black;
+  }
+}
+
 .passcode-img{
 	width:75px;
 	height:75px;
 	margin: 10px 10px;
 }
-.progress-label {
-  float: left;
-  margin-right: 2px;
-}
-label > input{ /* HIDE RADIO */
+.progress-label { float: left; font-size:95%; font-weight:bold;} .dash-header{margin-top:18px; font-size:15px; font-weight:600;} .dash-col-header{font-weight:600;} .img-responsive-dash {display: block; max-width: 100%; height: auto; border-radius: 6px; margin-bottom: 12px;} label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
   position: absolute; /* Remove input from document flow */
 }
