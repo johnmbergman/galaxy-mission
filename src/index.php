@@ -149,6 +149,10 @@
         <?php echo "<pre>" . print_r($_SESSION, TRUE) . "</pre>"; ?>
       </div>
     </div>-->
+    <hr />
+    <div class="row">
+      <p>Copyright &copy; <a href="https://www.galaxymission.com/">Galaxy Mission</a> <?php echo date("Y"); ?></p>
+    </div>
   </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

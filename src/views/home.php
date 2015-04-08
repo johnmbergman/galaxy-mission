@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron jumbotron-home">
   <div class="container text-center">
     <h1>Galaxy Mission</h1>
     <h2>Unlock your child's unlimited math potential.</h2>

@@ -1,4 +1,26 @@
 
+.jumbotron-home {
+  background-image: url('gmjumbo.jpg');
+  background-position: 0% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  margin-bottom: 10px;
+  background-color: #eeeeee;
+  max-width: 100%;
+}
+
+.jumbotron-question {
+  background-image: url('../res/spaceWindowImg.jpg');
+  background-position: 0% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  margin-bottom: 10px;
+  background-color: #eeeeee;
+  max-width: 100%;
+}
+
 @media screen and (min-height: 0px){
 #div1{
     margin-top: 20%;

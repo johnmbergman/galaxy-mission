@@ -4840,14 +4840,10 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  background-image: url('gmjumbo.jpg');
-  background-position: 0% 25%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: white;
-  margin-bottom: 10px;
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
   background-color: #eeeeee;
-  max-width: 100%;
 }
 .jumbotron h1,
 .jumbotron .h1 {
