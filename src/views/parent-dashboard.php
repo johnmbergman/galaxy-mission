@@ -6,7 +6,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-sm-3">
-              <a href="#"><img class="img-responsive-dash" src="res/tell-friend.jpg" /></a>
+              <a href="#"><img class="img-responsive-dash" src="../res/tell-friend.jpg" /></a>
               <div class="panel panel-default">
                 <div class="panel-body">
                   <ul class="nav nav-pills nav-stacked">
