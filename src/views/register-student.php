@@ -103,35 +103,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           Please select a passcode icon for the student</label>
           <div class="col-xs-10 col-md-offset-1" >
           <label>
-          <input type="radio" name="password" value="0" />
+          <input type="radio" name="password" value="0" style="visibility:hidden; position:absolute"/>
   			<img  src="../res/alien13.png" style="margin:10px 10px; width:75px; height:75px;" alt="alien icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value="1" />
+          <input type="radio" name="password" value="1" style="visibility:hidden; position:absolute" />
   			<img src="../res/astronaut6.png" style="margin:10px 10px; width:75px; height:75px;" alt="astronaut icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value="2" />
+          <input type="radio" name="password" value="2" style="visibility:hidden; position:absolute"/>
   			<img src="../res/comet6.png" style="margin:10px 10px; width:75px; height:75px;" alt="comet icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value="3" />
+          <input type="radio" name="password" value="3" style="visibility:hidden; position:absolute"/>
   			<img src="../res/galaxy2.png" style="margin:10px 10px; width:75px; height:75px;" alt="galaxy icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value="4" />
+          <input type="radio" name="password" value="4" style="visibility:hidden; position:absolute"/>
   			<img src="../res/planets1.png" style="margin:10px 10px; width:75px; height:75px;" alt="planets icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value="5" />
+          <input type="radio" name="password" value="5" style="visibility:hidden; position:absolute"/>
   			<img src="../res/rocket48.png" style="margin:10px 10px; width:75px; height:75px;" alt="rocket icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value="6" />
+          <input type="radio" name="password" value="6" style="visibility:hidden; position:absolute"/>
   			<img src="../res/spacecraft2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spacecraft icon">
   		  </label>
   		  <label>
-          <input type="radio" name="password" value="7" />
+          <input type="radio" name="password" value="7" style="visibility:hidden; position:absolute"/>
   			<img src="../res/spaceship2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spaceship icon">
   		  </label>
           </div>

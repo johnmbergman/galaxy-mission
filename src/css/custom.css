@@ -104,10 +104,14 @@
 	height:75px;
 	margin: 10px 10px;
 }
-.progress-label { float: left; font-size:95%; font-weight:bold;} .dash-header{margin-top:18px; font-size:15px; font-weight:600;} .dash-col-header{font-weight:600;} .img-responsive-dash {display: block; max-width: 100%; height: auto; border-radius: 6px; margin-bottom: 12px;} label > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
+.progress-label { float: left; font-size:95%; font-weight:bold;} 
+
+.dash-header{margin-top:18px; font-size:15px; font-weight:600;} 
+
+.dash-col-header{font-weight:600;} 
+
+.img-responsive-dash {display: block; max-width: 100%; height: auto; border-radius: 6px; margin-bottom: 12px;} 
+
 label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
   border:2px solid transparent;
