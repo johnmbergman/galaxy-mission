@@ -1,10 +1,11 @@
+<?php
 /*
   Adam Hill
   HTML Created: April 10, 2015
   This page will offer a parent or teacher a dropdown menu to select their student from 
   and will then generate a report on that student.
 */
-
+?>
 
 
 <div class="container-fluid">
@@ -108,7 +109,8 @@
     			  </tr>
     			</tbody>
     		  </table>
-    	    <h2>Performance by Standard</h2>
+    		<div class="col-md-6">
+    	    <h2 class="text-center">Performance by Standard</h2>
               <table class="table table-striped table-hover ">
   				<thead>
     			  <tr>
@@ -157,7 +159,9 @@
     			  </tr>
     			</tbody>
     		  </table>
-    	    <h2>Mission Performance</h2>
+    		</div>
+    		<div class="col-md-6">
+    	    <h2 class="text-center">Mission Performance</h2>
     		  <table class="table table-striped table-hover ">
   				<thead>
     			  <tr>
@@ -187,10 +191,12 @@
     		  </table>	 
     		</div>
     	  </div>	
+    	  </div>
         </div>
       </div>          
 	</div>			  
   <div>			   
 </div>          
-          
+      
+    
           
