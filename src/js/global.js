@@ -84,3 +84,14 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
    }
 
 }
+
+/* 
+|--------------------------------------------------------------|
+|  Error message                                               | 
+|  John Bergman - 4/10/15                                      |
+|--------------------------------------------------------------|
+*/
+function uiError(xhr, status, errorThrown) {
+   uiMessageBox("Error Message", "Oh no! A bug found its way into the current mission.", "");
+   console.log(xhr + "\n" + status + "\n" + errorThrown);
+}

@@ -1,33 +1,65 @@
-
-
 $("document").ready(function() {
 
   // Set up bindings
   $("#qInput").keypress(function(e) {
+
+    // Check if ENTER key was pressed
     if(e.which == 13) {
-      // Enter key was pressed
-      submitFunction();
+      submitAnswer();
       return false;
     }
+
   });
 
   // After bindings are setup, test functionality with the following 
   // TODO: When ajax functionality is setup, replace this with ajax query
-  var newQuestion = "Fill in the blank: 1, 2, _, 4, 5";
-  displayQuestion(newQuestion);
+  requestQuestion();
 });
 
 // Called when the /enter/ key is pressed
-function submitFunction() {
+function submitAnswer() {
   var studentAnswer = $("#qInput").val();
   if(studentAnswer == "") {
     uiMessageBox("Message", "Don't forgot to enter your answer!", "");
   } else {
-    uiMessageBox("Message", "You answered " + studentAnswer + "!", "");
+    $.ajax({
+      url: "../controllers/ajax.php",
+      timeout: 6000,
+      data: {
+        "action": "SubmitAnswer",
+        "answer": studentAnswer
+      },
+      type: "post",
+      dataType: "json",
+      success: function(data) {
+        uiMessageBox("Response", data["message"], "");
+      },
+      error: function(xhr, status, errorThrown) {
+        uiError(xhr, status, errorThrown);
+      }
+    });
   }
 }
 
 function displayQuestion(questionText) {
   $("#qInput").val("");
   $("#qQuestion").html(questionText);
+}
+
+function requestQuestion() {
+  $.ajax({
+    url: "../controllers/ajax.php",
+    timeout: 6000,
+    data: {
+      "action": "GetQuestion"
+    },
+    type: "post",
+    dataType: "json",
+    success: function(data) {
+      displayQuestion(data["question"]);
+    },
+    error: function(xhr, status, errorThrown) {
+      uiError(xhr, status, errorThrown);
+    }
+  });
 }

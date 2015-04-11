@@ -1,6 +1,6 @@
 <?php
 
-public class Question
+class Question
 {
   public $type_id;
   public $text;
@@ -12,20 +12,10 @@ public class Question
   {
     $type_id = "";
     $text = "";
-    $var_count = "";
+    $var_count = 0;
     $equation_answer = "";
-    $equation_remainder = "";
   }
 
-  public static function QuestionFactory($qtype_id, $qdifficulty)
-  {
-    $question = new Question();
-
-    // Add code to generate the question here
-
-    return $question;
-  }
 }
 
-public enum 
 ?>
