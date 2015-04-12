@@ -19,19 +19,15 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="select" class="col-sm-2 control-label">Reason</label>
+                <label for="selectSubject" class="col-sm-2 control-label">Subject</label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="select">
-                    <option>I'd like to report a bug in Galaxy Mission</option>
-                    <option>I love Galaxy Mission! I'd like to submit a testimonial.</option>
-                    <option>Other (Please explain below)</option>
+                  <select class="form-control" id="selectSubject">
+                    <option>General comment</option>
+                    <option>Report a bug / problem with Galaxy Mission</option>
+                    <option>Submit a testimonial</option>
+                    <option>Question or comment about Galaxy Mission</option>
+                    <option>Other Inquiry</option>
                   </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputSubject" class="col-sm-2 control-label">Subject</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputSubject" placeholder="Enter Your Subject Here">
                 </div>
               </div>
               <div class="form-group">
