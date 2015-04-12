@@ -10,6 +10,7 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <ul class="nav nav-pills nav-stacked">
+                    <li><a href="parent-dashboard">Parent Dashboard</a></li>
                     <li><a href="account-settings">Account Settings</a></li>
                     <li><a href="reports">Student Reports</a></li>
                     <li><a href="#">Notifications</a></li>
@@ -20,13 +21,13 @@
               </div>  
             </div>
             <div class="col-sm-9">
-              <h5 class="dash-col-header">Would you like to contact us?</h6>
+              <h4 class="dash-col-header">Would you like to contact us?</h6>
               <p>If you'd like to report a technical problem with our program, or let us know how Galaxy Mission has helped your student(s), please use our <a href="feedback">feedback form</a> or email us at <a href="mailto:support@galaxymission.com">support@galaxymission.com</a>.</p>
               <p>&nbsp;</p>
-              <p>Galaxy Mission</p>
-              <p>Scrum of the Earth</p>
-              <p>Florida State University</p>
-              <p>Tallahassee, FL 32306-4530</p>
+              <p>Galaxy Mission<br />
+              Scrum of the Earth<br />
+              Florida State University<br />
+              Tallahassee, FL 32306-4530</p>
             </div>
           </div>
         </div>
