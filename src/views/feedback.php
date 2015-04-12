@@ -1,6 +1,20 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
+    <div class="col-sm-3">
+      <a href="#"><img class="img-responsive-dash" src="/../res/tell-friend.jpg" /></a>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="account-settings">Account Settings</a></li>
+            <li><a href="reports">Student Reports</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="contact">Contact Us</a></li>
+            <li><a href="feedback" class="active">Send Us Feedback</a></li>
+          </ul>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-9">
       <div class="panel panel-default">
         <div class="panel-heading">
           <form class="form-horizontal">
