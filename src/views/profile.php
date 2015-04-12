@@ -61,11 +61,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <div class="col-sm-4">
               <ul class="nav nav-pills nav-stacked">
                 <li><a href="account-settings">Overview</a></li>
-                <li></li>
                 <li class="active"><a href="profile">Account Information</a></li>
-                <li></li>
                 <li><a href="student-management">Student Information</a></li>
-                <li></li>
                 <li><a href="parent-dashboard">Return to Parent Dashboard</a></li>
               </ul>
             </div>

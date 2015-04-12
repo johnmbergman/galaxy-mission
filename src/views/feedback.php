@@ -9,7 +9,7 @@
             <li><a href="reports">Student Reports</a></li>
             <li><a href="#">Notifications</a></li>
             <li><a href="contact">Contact Us</a></li>
-            <li><a href="feedback" class="active">Send Us Feedback</a></li>
+            <li class="active"><a href="feedback">Send Us Feedback</a></li>
           </ul>
         </div>
       </div>  
