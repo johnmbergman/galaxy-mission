@@ -87,8 +87,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <?php if($_SESSION["authenticated"]) { ?>
         <ul class="nav navbar-nav">
-          <li><a href="/assignments/"><i class="fa fa-check-square-o"></i> Assignments</a></li>
-          <li><a href="/practice/"><i class="fa fa-puzzle-piece"></i> Practice</a></li>
+          <li><a href="/assignments/"><i class="fa fa-check-square-o"></i> Student Login</a></li>
           <li><a href="/reports/"><i class="fa fa-file-text-o"></i> Reports</a></li>
         </ul>
         <?php } ?>
@@ -101,7 +100,8 @@
                 <li><a href="#">Example Student 2</a></li>
                 <li><a href="#">Example Student 3</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Manage Students</a></li>
+                <li><a href="/student-management/"><i class="fa fa-cog"></i> Manage Students</a></li>
+                <li><a href="/register-student/"><i class="fa fa-file-text-o"></i> Register Child</a></li>
               </ul>
             </li>
           <?php } if($_SESSION["type"] == "teacher") { ?>
