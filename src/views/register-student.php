@@ -75,66 +75,64 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   <div class="col-md-6 col-md-offset-3">
     <form method="post" class="form-horizontal well">
       <fieldset>
-        <legend style="text-align:center"><i class="fa fa-user"></i> Register Student Account</legend>
+        <legend><i class="fa fa-user"></i> Register Student Account</legend>
         <div class="form-group">
           <label for="input-firstname" class="col-md-3 control-label">Name</label>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <input type="text" name="firstname" class="form-control" id="input-firstname" placeholder="First Name">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <input type="text" name="lastname" class="form-control" id="input-lastname" placeholder="Last Name">
           </div>
         </div>
-        <br>
-      <div class="row">
         <div class="form-group">
-          <label for="input-gradelevel" class="col-md-4 text-right control-label">Grade Level</label>
-          <div class="col-md-4">
+          <label for="input-gradelevel" class="col-md-3 control-label">Grade Level</label>
+          <div class="col-md-9">
             <select name="gradelevel" class="form-control" id="input-gradelevel">
-				<option value="0">Kindergarten</option>
-				<option value="1">1st Grade</option>
-				<option value="2">2nd Grade</option>
-				<option value="3">3rd Grade</option>
-			</select>
+              <option value="0">Kindergarten</option>
+              <option value="1">1st Grade</option>
+              <option value="2">2nd Grade</option>
+              <option value="3">3rd Grade</option>
+            </select>
           </div>
         </div>
-      </div>  
         <div class="form-group">
           <label style="text-align:center;font-size:20px" class="col-sm-10 col-md-offset-1 control-label">
-          Please select a passcode icon for the student</label>
+            Please select a passcode icon.
+          </label>
           <div class="col-xs-10 col-md-offset-1" >
-          <label>
-          <input type="radio" name="password" value="0" style="visibility:hidden; position:absolute"/>
-  			<img  src="../res/alien13.png" style="margin:10px 10px; width:75px; height:75px;" alt="alien icon">
-  		  </label>
-  		  <label>
-          <input type="radio" name="password" value="1" style="visibility:hidden; position:absolute" />
-  			<img src="../res/astronaut6.png" style="margin:10px 10px; width:75px; height:75px;" alt="astronaut icon">
-  		  </label>
-  		  <label>
-          <input type="radio" name="password" value="2" style="visibility:hidden; position:absolute"/>
-  			<img src="../res/comet6.png" style="margin:10px 10px; width:75px; height:75px;" alt="comet icon">
-  		  </label>
-  		  <label>
-          <input type="radio" name="password" value="3" style="visibility:hidden; position:absolute"/>
-  			<img src="../res/galaxy2.png" style="margin:10px 10px; width:75px; height:75px;" alt="galaxy icon">
-  		  </label>
-  		  <label>
-          <input type="radio" name="password" value="4" style="visibility:hidden; position:absolute"/>
-  			<img src="../res/planets1.png" style="margin:10px 10px; width:75px; height:75px;" alt="planets icon">
-  		  </label>
-  		  <label>
-          <input type="radio" name="password" value="5" style="visibility:hidden; position:absolute"/>
-  			<img src="../res/rocket48.png" style="margin:10px 10px; width:75px; height:75px;" alt="rocket icon">
-  		  </label>
-  		  <label>
-          <input type="radio" name="password" value="6" style="visibility:hidden; position:absolute"/>
-  			<img src="../res/spacecraft2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spacecraft icon">
-  		  </label>
-  		  <label>
-          <input type="radio" name="password" value="7" style="visibility:hidden; position:absolute"/>
-  			<img src="../res/spaceship2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spaceship icon">
-  		  </label>
+            <label>
+              <input type="radio" name="password" value="0" style="visibility:hidden; position:absolute"/>
+              <img  src="../res/alien13.png" style="margin:10px 10px; width:75px; height:75px;" alt="alien icon">
+            </label>
+            <label>
+              <input type="radio" name="password" value="1" style="visibility:hidden; position:absolute" />
+              <img src="../res/astronaut6.png" style="margin:10px 10px; width:75px; height:75px;" alt="astronaut icon">
+            </label>
+            <label>
+              <input type="radio" name="password" value="2" style="visibility:hidden; position:absolute"/>
+              <img src="../res/comet6.png" style="margin:10px 10px; width:75px; height:75px;" alt="comet icon">
+            </label>
+            <label>
+              <input type="radio" name="password" value="3" style="visibility:hidden; position:absolute"/>
+              <img src="../res/galaxy2.png" style="margin:10px 10px; width:75px; height:75px;" alt="galaxy icon">
+            </label>
+            <label>
+              <input type="radio" name="password" value="4" style="visibility:hidden; position:absolute"/>
+              <img src="../res/planets1.png" style="margin:10px 10px; width:75px; height:75px;" alt="planets icon">
+            </label>
+            <label>
+              <input type="radio" name="password" value="5" style="visibility:hidden; position:absolute"/>
+              <img src="../res/rocket48.png" style="margin:10px 10px; width:75px; height:75px;" alt="rocket icon">
+            </label>
+            <label>
+              <input type="radio" name="password" value="6" style="visibility:hidden; position:absolute"/>
+              <img src="../res/spacecraft2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spacecraft icon">
+            </label>
+            <label>
+              <input type="radio" name="password" value="7" style="visibility:hidden; position:absolute"/>
+              <img src="../res/spaceship2.png" style="margin:10px 10px; width:75px; height:75px;" alt="spaceship icon">
+            </label>
           </div>
         </div>
         <div class="form-group">

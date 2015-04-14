@@ -1,6 +1,7 @@
 <?php
 /*
 This script should be attached to the top of any view that requires authentication to view.
+require "controllers/authenticate.php";
 Author: John Bergman
 Date: 2015-04-14
 */
