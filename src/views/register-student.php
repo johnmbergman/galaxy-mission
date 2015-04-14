@@ -5,6 +5,7 @@
   Register-student view where a parent can create a student account for their child
 */
 
+require "controllers/authenticate.php";
 require "models/student-creation-model.php";
 require "controllers/student-creation-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")

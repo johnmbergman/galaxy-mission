@@ -1,3 +1,4 @@
+<?php require "controllers/authenticate.php"; ?>
 <?php
 
 //////////////////////////////
@@ -19,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $valid_school      = $model->ValidSchoolName();
   $valid_teacher     = $model->ValidTeacherName();
 
-  if($valid_teacher && $valid_school && valid_grade && $valid_name)
+  if($valid_teacher && $valid_school && $valid_grade && $valid_name)
   {
     // Valid input!
     $controller = new StudentInfoController($model);

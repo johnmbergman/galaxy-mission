@@ -1,3 +1,4 @@
+<?php require "controllers/authenticate.php"; ?>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
