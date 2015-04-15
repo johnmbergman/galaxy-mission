@@ -4,7 +4,7 @@
 	Updated 4/14/15
 	Student dashboard
 */
-	$student_id = SESSION["user_id"];
+	$student_id = $_SESSION["user_id"];
 	$sql = "select game_level from students where student_id='" . $student_id . "'";
     
     // Attempt to connect to the database
@@ -64,8 +64,8 @@
 
 <?php
 
-if ($current_level > 0)
-{
+if ($current_level > 0)  
+{?>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 2 or 1st Grade</h1>
@@ -104,10 +104,11 @@ if ($current_level > 0)
     </div>
   </div>
 </div>
-}
+<? } ?>
 
-if ($current_level > 1)
-{
+<?php
+if ($current_level > 1) 
+{?>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 3 or 2nd Grade</h1>
@@ -146,10 +147,11 @@ if ($current_level > 1)
     </div>
   </div>
 </div>
-}
+<? } ?>
 
-if ($current_level > 2)
-{
+<?php
+if ($current_level > 2)  
+{?>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 4 or 3rd Grade</h1>
@@ -188,8 +190,4 @@ if ($current_level > 2)
     </div>
   </div>
 </div>
-}
-
-
-
-?>
+<? } ?>
