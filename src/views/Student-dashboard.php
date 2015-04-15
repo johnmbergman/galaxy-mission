@@ -1,4 +1,23 @@
-<?php require "controllers/authenticate.php"; ?>
+<?php
+/* 
+	Adam Hill
+	Updated 4/14/15
+	Student dashboard
+*/
+	$student_id = SESSION["user_id"];
+	$sql = "select game_level from students where student_id='" . $student_id . "'";
+    
+    // Attempt to connect to the database
+    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+    if($conn->connect_error)
+    {
+      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
+
+    // Successfully connected to the database. Run the query
+    $current_level = $conn->query($sql); 
+  
+?>  
 <div class="row">
   <div class="col-lg-12">
     <h1>Student Dashboard</h1>
@@ -43,6 +62,10 @@
   </div>
 </div>
 
+<?php
+
+if ($current_level > 0)
+{
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 2 or 1st Grade</h1>
@@ -81,6 +104,10 @@
     </div>
   </div>
 </div>
+}
+
+if ($current_level > 1)
+{
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 3 or 2nd Grade</h1>
@@ -119,7 +146,10 @@
     </div>
   </div>
 </div>
+}
 
+if ($current_level > 2)
+{
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 4 or 3rd Grade</h1>
@@ -158,3 +188,8 @@
     </div>
   </div>
 </div>
+}
+
+
+
+?>
