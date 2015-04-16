@@ -1,4 +1,5 @@
 <?php
+require "controllers/data.php";
 /* 
 	Adam Hill
 	Updated 4/14/15
@@ -15,8 +16,12 @@
     }
 
     // Successfully connected to the database. Run the query
-    $current_level = $conn->query($sql); 
-  
+    $result = $conn->query($sql);
+    $row = $result->fetch_row();
+    $current_level = $row[0];
+
+    // CLose the database
+    $conn->close();
 ?>  
 <div class="row">
   <div class="col-lg-12">
@@ -104,7 +109,7 @@ if ($current_level > 0)
     </div>
   </div>
 </div>
-<? } ?>
+<?php } ?>
 
 <?php
 if ($current_level > 1) 
@@ -147,7 +152,7 @@ if ($current_level > 1)
     </div>
   </div>
 </div>
-<? } ?>
+<?php } ?>
 
 <?php
 if ($current_level > 2)  
@@ -190,4 +195,4 @@ if ($current_level > 2)
     </div>
   </div>
 </div>
-<? } ?>
+<?php } ?>
