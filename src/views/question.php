@@ -24,6 +24,17 @@ if(isset($_SESSION["current_mission"]))
 // Create a new mission
 $_SESSION["current_mission"] = new Mission();
 
+// If the type is set, then set the mission type
+if(isset($_GET["type"]))
+{
+  $_SESSION["current_mission"]->type_id = $_GET["type"];
+}
+else
+{
+  // The type is not set, forward them to the student-dashboard to select a type
+  header("Location: /student-dashboard/");
+  exit();
+}
 
 ?>
 
@@ -41,6 +52,7 @@ $_SESSION["current_mission"] = new Mission();
   </div>
 </div>
 
+<!-- Background styling for the question page -->
 <style>
 body{
   background-color: black;
@@ -50,5 +62,3 @@ body{
   background-position: center;
 }
 </style>
-
-  

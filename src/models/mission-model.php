@@ -11,7 +11,7 @@ class Mission
 
   public function __construct()
   {
-    $type_id = "";
+    $type_id = -1;
     $start_time = new DateTime();
     $finish_time = $start_time;
     $student_id = "";
