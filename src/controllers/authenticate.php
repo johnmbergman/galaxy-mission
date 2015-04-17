@@ -16,6 +16,7 @@ if(isset($_SESSION["authenticated"]))
   {
     $logged_in = true;
   }
+  
 }
 
 // We have determined if they are logged in. If they are not, forward them
