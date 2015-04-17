@@ -22,12 +22,13 @@ if(isset($_SESSION["current_mission"]))
 }
 
 // Create a new mission
-$_SESSION["current_mission"] = new Mission();
+$newmission = new Mission();
 
 // If the type is set, then set the mission type
 if(isset($_GET["type"]))
 {
-  $_SESSION["current_mission"]->type_id = $_GET["type"];
+  $newmission->type_id = $_GET["type"];
+  $_SESSION["current_mission"] = $newmission;
 }
 else
 {

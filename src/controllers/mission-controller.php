@@ -6,6 +6,7 @@
 */
 require "data.php";
 require "../models/question-model.php";
+require "../models/mission-model.php";
 
 class MissionController
 {
@@ -17,13 +18,13 @@ class MissionController
     $this->model = $model;
   }
 
-  public function GenerateQuestion($qtype_id, $qlevel)
+  public function GenerateQuestion($qlevel)
   {
     $question = new Question();
-    $question->type_id = $qtype_id;
+    //$question->type_id = $this->model->type_id;
 
     // For now, we just have a dummy queston
-    switch ($qtype_id) {
+    /*switch ($this->model->type_id) {
 
       case "2":   // Counting numbers
         $question->answer = rand(2, 5);
@@ -33,22 +34,21 @@ class MissionController
       case "3":   // Missing number (sequence)
         $question->answer = rand(0, 5);
         $question->text = "Enter the missing number: ";
-        $question->text .= ($question->answer == 0) ? "_" : "0") . " ";
-        $question->text .= ($question->answer == 1) ? "_" : "1") . " ";
-        $question->text .= ($question->answer == 2) ? "_" : "2") . " ";
-        $question->text .= ($question->answer == 3) ? "_" : "3") . " ";
-        $question->text .= ($question->answer == 4) ? "_" : "4") . " ";
-        $question->text .= ($question->answer == 5) ? "_" : "5") . " ";
+        $question->text .= (($question->answer == 0) ? "_" : "0") . " ";
+        $question->text .= (($question->answer == 1) ? "_" : "1") . " ";
+        $question->text .= (($question->answer == 2) ? "_" : "2") . " ";
+        $question->text .= (($question->answer == 3) ? "_" : "3") . " ";
+        $question->text .= (($question->answer == 4) ? "_" : "4") . " ";
+        $question->text .= (($question->answer == 5) ? "_" : "5") . " ";
         break;
 
       default:
         $question->answer = "1";
-        $question->text = "This question type has not been implemented! (Answer 1)";
+        $question->text = "This question type (" . $qtype_id . ") has not been implemented! (Answer 1)";
         break;
-    }
-
+    }*/
+$question->text = "Question type is " . $this->model->type_id;
     // Set the current question to the generated question
-    
     return $question;
   }
 

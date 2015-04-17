@@ -1,9 +1,9 @@
 <?php
 
 require "mission-controller.php";
+session_start();
 
 // Application AJAX Entry point
-session_start();
 header("Content-Type: application/json");
 if(isset($_POST["action"]) && !empty($_POST["action"]))
 {
@@ -40,9 +40,8 @@ function GetQuestion()
   {
     $model = $_SESSION["current_mission"];
     $controller = new MissionController($model);
-    $return["question"] = "This is the question text";
-    //$question = $controller->GenerateQuestion($model->type_id, 1);
-    //$return["question"] = $question->text;
+    $question = $controller->GenerateQuestion(1);
+    $return["question"] = $question->text;
   }
   else
   {
