@@ -1,10 +1,12 @@
+<?php require "controllers/authenticate.php"; ?>
 <?php
 /*
 	Adam Hill
 	Created: 4/15/15
 	Student sign-in
 */
-
+require "models/student-info-model.php";
+require "controllers/student-info-controller.php";
 
 ?>
 
@@ -20,7 +22,7 @@
   <div class="col-md-6 col-md-offset-3">
     <form method="post" class="form-horizontal well">
       <fieldset>
-        <legend><i class="fa fa-user"></i> Login Student Account</legend>
+        <legend><i class="fa fa-user"></i>Student Account Login</legend>
         <div class="form-group">
           <label for="studentSelect" class="col-lg-4 control-label">Select Student</label>
           <div class="col-lg-8">
@@ -48,9 +50,9 @@
           </div>
     	</div>
     	<div class="col-lg-10 col-lg-offset-2">
-                    <hr>
-                    <br>
-                  </div>
+          <hr>
+          <br>
+        </div>
         <div class="form-group">
           <label style="text-align:center;font-size:20px" class="col-sm-10 col-md-offset-1 control-label">
             Select the student's passcode icon.
