@@ -1,26 +1,65 @@
-// src/js/question.js
-//Question Form's Javascript
-//Description: Javascript with functions for the src/views/question.php html code
-//Date: 3/17/2015
-//Author: Jennifer Steadman
-//
+$("document").ready(function() {
 
-//Functions for Question Form
-//Right now set up to display a string already set here
-//When complete the string will be sent from the server from the database
-var newQuestions = " 1 - 2 - ? - 4 - 5 ";
-var myNewElement = document.createElement("p");
-var myText = document.createTextNode(newQuestions);
-myNewElement.appendChild(myText);
-document.getElementById("div1").appendChild(myNewElement);
+  // Set up bindings
+  $("#qInput").keypress(function(e) {
 
-  
-//Function is called when you input an answer and press enter on the question page
-//shows the number you submitted once you enter the answer then press enter button
-//When complete this answer will be sent to the server to input into database
-function submitFunction()
-{
-  var x = document.Question.number.value;	  
-  document.getElementById("div2").innerHTML = "The number you entered was: " + x;
-  console.log("You Entered: " + x);	
+    // Check if ENTER key was pressed
+    if(e.which == 13) {
+      submitAnswer();
+      return false;
+    }
+
+  });
+
+  // After bindings are setup, test functionality with the following 
+  // TODO: When ajax functionality is setup, replace this with ajax query
+  requestQuestion();
+});
+
+// Called when the /enter/ key is pressed
+function submitAnswer() {
+  var studentAnswer = $("#qInput").val();
+  if(studentAnswer == "") {
+    uiMessageBox("Message", "Don't forgot to enter your answer!", "");
+  } else {
+    $.ajax({
+      url: "../controllers/ajax.php",
+      timeout: 6000,
+      data: {
+        "action": "SubmitAnswer",
+        "answer": studentAnswer
+      },
+      type: "post",
+      dataType: "json",
+      success: function(data) {
+        uiMessageBox("Response", data["message"], "");
+      },
+      error: function(xhr, status, errorThrown) {
+        uiError(xhr, status, errorThrown);
+      }
+    });
+  }
+}
+
+function displayQuestion(questionText) {
+  $("#qInput").val("");
+  $("#qQuestion").html(questionText);
+}
+
+function requestQuestion() {
+  $.ajax({
+    url: "../controllers/ajax.php",
+    timeout: 6000,
+    data: {
+      "action": "GetQuestion"
+    },
+    type: "post",
+    dataType: "json",
+    success: function(data) {
+      displayQuestion(data["question"]);
+    },
+    error: function(xhr, status, errorThrown) {
+      uiError(xhr, status, errorThrown);
+    }
+  });
 }

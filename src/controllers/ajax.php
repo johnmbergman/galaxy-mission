@@ -40,8 +40,9 @@ function GetQuestion()
   {
     $model = $_SESSION["current_mission"];
     $controller = new MissionController($model);
-    $question = $controller->GenerateQuestion("TODO", "TODO");
-    $return["question"] = $question->text;
+    $return["question"] = "This is the question text";
+    //$question = $controller->GenerateQuestion($model->type_id, 1);
+    //$return["question"] = $question->text;
   }
   else
   {
@@ -65,11 +66,9 @@ function CheckAnswer()
       $student_answer = $_POST["answer"];
       if(strlen($student_answer) > 0)
       {
-        /*$model = $_SESSION["current_mission"];
-        $controller = new MissionController($model);*/
-        /* TODO: Add Code to reference validation functions HERE */
-        // PLACEHOLDER
-        if($student_answer == "1")
+        $model = $_SESSION["current_mission"];
+        $controller = new MissionController($model);
+        if($controller->CheckAnswer($student_answer))
         {
           // Correct
           $return["message"] = "Correct answer message goes here!";

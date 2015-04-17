@@ -1,12 +1,13 @@
 <?php
-
 //////////////////////////////
 //    url: /profile POST
 // author: John Bergman
 //   date: March 23, 2015
 //////////////////////////////
+require "controllers/authenticate.php";
 require "models/profile-model.php";
 require "controllers/profile-controller.php";
+
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $model = new ProfileModel();
@@ -60,10 +61,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           <div class="row">
             <div class="col-sm-4">
               <ul class="nav nav-pills nav-stacked">
+<<<<<<< HEAD
                 <li><a href="account-settings">Account Overview</a></li>
                 <li class="active"><a href="profile">Account Information</a></li>
                 <li><a href="student-management">Student Information</a></li>
                 <li><a href="parent-dashboard">Return to My Dashboard</a></li>
+=======
+                <li><a href="/account-settings/">Overview</a></li>
+                <li class="active"><a href="/profile/">Account Information</a></li>
+                <li><a href="/student-management/">Student Information</a></li>
+                <li><a href="/parent-dashboard/">Return to Parent Dashboard</a></li>
+>>>>>>> origin/master
               </ul>
             </div>
             <div class="col-sm-8">

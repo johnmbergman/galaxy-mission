@@ -40,7 +40,7 @@ img{
 </head>
 
 
-
+<?php require "controllers/authenticate.php"; ?>
 <div class="panel-primary">
   <div class="panel-heading">  
     <h1 class="panel-title text-center">Name of selected class goes here</h1>

@@ -17,21 +17,47 @@ class MissionController
     $this->model = $model;
   }
 
-  public function GenerateQuestion($qtype_id, $qdifficulty)
+  public function GenerateQuestion($qtype_id, $qlevel)
   {
     $question = new Question();
-
-    // Add code to generate the question here
+    $question->type_id = $qtype_id;
 
     // For now, we just have a dummy queston
-    $question->type_id = -1;
-    $question->text = "This is a test question. The answer is the number 1.";
-    $question->var_count = 0;
-    $question->equation_answer = "1";
+    switch ($qtype_id) {
+
+      case "2":   // Counting numbers
+        $question->answer = rand(2, 5);
+        $question->text = "Enter the number that comes next: " . ($question->answer - 2) . " " . ($question->answer-1) . " _";
+        break;
+
+      case "3":   // Missing number (sequence)
+        $question->answer = rand(0, 5);
+        $question->text = "Enter the missing number: ";
+        $question->text .= ($question->answer == 0) ? "_" : "0") . " ";
+        $question->text .= ($question->answer == 1) ? "_" : "1") . " ";
+        $question->text .= ($question->answer == 2) ? "_" : "2") . " ";
+        $question->text .= ($question->answer == 3) ? "_" : "3") . " ";
+        $question->text .= ($question->answer == 4) ? "_" : "4") . " ";
+        $question->text .= ($question->answer == 5) ? "_" : "5") . " ";
+        break;
+
+      default:
+        $question->answer = "1";
+        $question->text = "This question type has not been implemented! (Answer 1)";
+        break;
+    }
 
     // Set the current question to the generated question
     
     return $question;
+  }
+
+
+  // Compare the student's response to the actual answer to see if the student is correct
+  public function CheckAnswer($student_answer)
+  {
+    // TODO: Generate the answer from the equation
+    return  ($this->model->answer == $student_answer);
   }
 
 }

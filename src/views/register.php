@@ -131,24 +131,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     </form>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <p>Already have an account? <a href="/login/">Click here</a> to sign in.</p>
-  </div>
-</div>
-<div class="modal fade" id="model-student" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Student account instructions</h4>
-      </div>
-      <div class="modal-body">
-        <p>To create a student account, please <a href="/login/">log in</a> to a parent or teacher account and choose <strong>Add Student</strong> from the management menu.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-      </div>
-    </div>
-  </div>
-</div>

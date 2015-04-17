@@ -7,44 +7,58 @@ Description: This is the form that will except a question from the server that c
               *currently it only outputs a input string and reads the anser from the user and displays
               it on the screen and in the console log 
               *currently need server code to continue
-
 Date: 3/17/2015
 Author: Jennifer Steadman
-
-*This also currently contains the CSS at the bottom which will be moved to the custom CSS file
-  we are currently working on organizing
-
 -->
 
+<?php
+require "controllers/authenticate.php";
+require "models/mission-model.php";
 
+// AJAX-based view. First, create the request to start a new mission
+if(isset($_SESSION["current_mission"]))
+{
+  // A MISSION IS CURRENTLY SET. SAVE PROGRESS?? OR FORWARD TO DASHBOARD??
+}
 
-<!--creates form to display math problem and allow user to enter answer and press enter -->
+// Create a new mission
+$_SESSION["current_mission"] = new Mission();
 
+// If the type is set, then set the mission type
+if(isset($_GET["type"]))
+{
+  $_SESSION["current_mission"]->type_id = $_GET["type"];
+}
+else
+{
+  // The type is not set, forward them to the student-dashboard to select a type
+  header("Location: /student-dashboard/");
+  exit();
+}
 
-<div class="question-image">
-  <div class="col-md-5 col-md-offset-3">
-    <h1>
-      <div class="panel panel-default" id="div1">
-      </div>
-    </h1>
-	  <form class="panel panel-default" name="Question" id="ques" method="get" autocomplete="off" id="qForm">
-  	  <label class="control-label" id="labelAnswer" for="inputLarge">Enter the missing number below.
-      </label><br>
-  	  <input class=".formcontrol" name="number" id="answer" type="text" size="10" autofocus>
-      <input type="submit" onclick="submitFunction()" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
-      <div id="div2">
-      </div>
-    </form>
+?>
+
+<div class="jumbotron jumbotron-question">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1 id="qQuestion">Loading question...</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4 text-center">
+      <p>Your answer:</p>
+      <input id="qInput" type="number" class="form-control input-lg" autocomplete="off" autofocus>
+    </div>
   </div>
 </div>
 
+<!-- Background styling for the question page -->
 <style>
 body{
-    background: #9f948e url(../res/spaceWindowImg.jpg) no-repeat;
-    background-size: 100%;
-    background-attachment: fixed;
-    background-position: center;
+  background-color: black;
+  background: url(../res/question-bg-1.jpg) no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 </style>
-
-  

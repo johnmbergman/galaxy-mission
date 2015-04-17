@@ -1,3 +1,4 @@
+<?php require "controllers/authenticate.php"; ?>
 <?php
 
 //////////////////////////////
@@ -19,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $valid_school      = $model->ValidSchoolName();
   $valid_teacher     = $model->ValidTeacherName();
 
-  if($valid_teacher && $valid_school && valid_grade && $valid_name)
+  if($valid_teacher && $valid_school && $valid_grade && $valid_name)
   {
     // Valid input!
     $controller = new StudentInfoController($model);
@@ -62,10 +63,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <!--Sidebar for Account Settings Area-->
             <div class="col-sm-4">
               <ul class="nav nav-pills nav-stacked">
+<<<<<<< HEAD
                 <li><a href="account-settings">Account Overview</a></li>
                 <li><a href="profile">Account Information</a></li>
                 <li class="active"><a href="student-management">Student Information</a></li>
                 <li><a href="parent-dashboard">Return to My Dashboard</a></li>
+=======
+                <li><a href="/account-settings/">Overview</a></li>
+                <li><a href="/profile/">Account Information</a></li>
+                <li class="active"><a href="/student-management/">Student Information</a></li>
+                <li><a href="/parent-dashboard/">Return to Parent Dashboard</a></li>
+>>>>>>> origin/master
               </ul>
             </div>
             <div class="col-sm-8">

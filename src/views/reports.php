@@ -5,6 +5,7 @@
   This page will offer a parent or teacher a dropdown menu to select their student from 
   and will then generate a report on that student.
 */
+require "controllers/authenticate.php";
 ?>
 
 
