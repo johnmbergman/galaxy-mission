@@ -47,6 +47,10 @@
             </select>
           </div>
     	</div>
+    	<div class="col-lg-10 col-lg-offset-2">
+                    <hr>
+                    <br>
+                  </div>
         <div class="form-group">
           <label style="text-align:center;font-size:20px" class="col-sm-10 col-md-offset-1 control-label">
             Select the student's passcode icon.
