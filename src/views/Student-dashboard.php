@@ -68,9 +68,8 @@ require "controllers/data.php";
 </div>
 
 <?php
-
 if ($current_level > 0)  
-{?>
+{ ?>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 2 or 1st Grade</h1>
@@ -113,7 +112,7 @@ if ($current_level > 0)
 
 <?php
 if ($current_level > 1) 
-{?>
+{ ?>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 3 or 2nd Grade</h1>
@@ -156,7 +155,7 @@ if ($current_level > 1)
 
 <?php
 if ($current_level > 2)  
-{?>
+{ ?>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title">Module (Level) 4 or 3rd Grade</h1>
