@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Parent Dashboard</h2>
+      <h2>My Dashboard</h2>
       <div class="panel-primary">
         <div class="panel-body">
           <div class="row">
@@ -10,10 +10,10 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="parent-dashboard">Parent Dashboard</a></li>
+                    <li class="active"><a href="parent-dashboard">My Dashboard</a></li>
                     <li><a href="account-settings">Account Settings</a></li>
                     <li><a href="reports">Student Reports</a></li>
-                    <li><a href="#">Notifications</a></li>
+                    <li class="disabled"><a href="#">View Achievements</a></li>
                     <li><a href="contact">Contact Us</a></li>
                     <li><a href="feedback">Send Us Feedback</a></li>
                   </ul>
@@ -24,6 +24,7 @@
               <ul class="nav nav-tabs">
                 <li class="active"><a href="#student1" data-toggle="tab">STUDENT 1's Progress</a></li>
                 <li class="disabled"><a>STUDENT 2's Progress</a></li>
+                <li><a href="register-student">Add a Child</a></li>
               </ul>
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="student1">
