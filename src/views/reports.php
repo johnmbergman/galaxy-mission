@@ -6,6 +6,7 @@
   and will then generate a report on that student.
 */
 require "controllers/authenticate.php";
+require "controllers/data.php";
 ?>
 
 
@@ -18,19 +19,35 @@ require "controllers/authenticate.php";
           <div class="row">
             <div class="col-md-8 text-right">	   
               <div class="form-group">
-                <label for="input-student" class="col-md-4 text-right control-label"><h4>Student</h4></label>
-                <div class="col-md-6">
-                  <select name="student" class="form-control" id="input-student">
-                    <option value="0">John Bergman</option>
-					<option value="1">Jennifer Steadman</option>
-					<option value="2">Tyler Decker</option>
-					<option value="3">Shaun Fyffe</option>
-					<option value="4">Adam Hill</option>
-				  </select>
-				</div>
+              <div class="col-md-4 text-center">
+                <label for="input-student" class="control-label"><h4>Student</h4></label>
+              </div>
+              <div class="col-md-6">
+                <select class="form-control" id="studentSelect">
+                        <?php
+
+                          // Open the connection
+                          $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+                          if($conn->connect_error) {
+                            trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+                          }
+
+                          // Run the command
+                          if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+                            while ($row = $result->fetch_assoc()) {
+                              echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                            }
+                          }
+
+                          // Close the connection
+                          $conn->close();
+
+                        ?>
+                  </select>
+              </div>  
 			  </div>
 			</div>	  
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-left">
               <div class="form-group">
                 <button type="submit" class="btn btn-info">Generate</button>
               </div>  
