@@ -30,36 +30,30 @@ require "controllers/data.php";
 </div>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h1 class="panel-title">Module (Level) 1 or Kindergarten</h1>
+    <h1 class="panel-title">Space Cadet Training</h1>
   </div>
   <div class="panel-body">
     <div class="col-md-12">
       <div class="list-group">
-      <a href="#" class="list-group-item">
+      <a href="/question/2" class="list-group-item">
         <div>
-          <img src="../res/earth.png" style="height:4em;width:4em;float:left;" alt="Earth">
-          <h4><u>Mission Title</u></h4>
-          <p>A brief description of the mission can go here.</p>
+          <img src="../res/parabolic8.png" style="height:4em;width:4em;float:left;" alt="antennas">
+          <h4><u>Counting Numbers</u></h4>
+          <p>In order to get accepted to the Intergalactic Federation's Academy for Space Exploration you must pass this entry exam.  Prove that for you counting is as easy as 1, 2, 3.</p>
         </div>
       </a>
-      <a href="#" class="list-group-item">
+      <a href="/question/3" class="list-group-item">
         <div>
-          <img src="../res/mars.png" style="height:4em;width:4em;float:left;" alt="Mars">
-          <h4><u>Mission Title</u></h4>
-          <p>A brief description of the mission can go here.</p>
+          <img src="../res/astronaut7.png" style="height:4em;width:4em;float:left;" alt="astronaut">
+          <h4><u>Fill in Missing Numbers</u></h4>
+          <p>Help a fellow cadet lost on a training exercise get back to the group by filling in the missing numbers from these sequences</p>
         </div>
       </a>
-      <a href="#" class="list-group-item">
+      <a href="/question/10" class="list-group-item">
         <div>
-          <img src="../res/jupiter.png" style="height:4em;width:4em;float:left;" alt="Jupiter">
-          <h4><u>Mission Title</u></h4>
-          <p>A brief description of the mission can go here.</p>
-        </div>
-      <a href="#" class="list-group-item">
-        <div>
-          <img src="../res/neptune.png" style="height:4em;width:4em;float:left;" alt="Neptune">
-          <h4><u>Mission Title</u></h4>
-          <p>A brief description of the mission can go here.</p>
+          <img src="../res/spacecraft5.png" style="height:4em;width:4em;float:left;" alt="spacecraft">
+          <h4><u>Add and Subtract</u></h4>
+          <p>Pass your spaceflight training by solving these add and subtract problems.</p>
         </div>
       </a>
       </div>

@@ -55,7 +55,7 @@ require "controllers/student-info-controller.php";
         </div>
         <div class="form-group">
           <label style="text-align:center;font-size:20px" class="col-sm-10 col-md-offset-1 control-label">
-            Select the student's passcode icon.
+            Select the student's passcode icon:
           </label>
           <div class="col-sm-10 col-md-offset-1" >
             <label>
