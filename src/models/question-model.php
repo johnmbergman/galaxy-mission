@@ -8,9 +8,9 @@ class Question
 
   public function __construct()
   {
-    $type_id = -1;
-    $text = "";
-    $answer = "";
+    $this->type_id = -1;
+    $this->text = "";
+    $this->answer = "";
   }
 
 }

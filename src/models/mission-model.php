@@ -1,6 +1,6 @@
 <?php
 
-require "question-model.php";
+require_once "question-model.php";
 
 class Mission
 {
@@ -8,13 +8,16 @@ class Mission
   public $start_time;
   public $finish_time;
   public $student_id;
+  public $current_question;
+  public $question_no;
 
   public function __construct()
   {
-    $type_id = -1;
-    $start_time = new DateTime();
-    $finish_time = $start_time;
-    $student_id = "";
+    $this->type_id = "-1";
+    $this->start_time = new DateTime();
+    $this->finish_time = "";
+    $this->student_id = "";
+    $this->question_no = 0;
   }
 
 }

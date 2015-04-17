@@ -32,7 +32,12 @@ function submitAnswer() {
       type: "post",
       dataType: "json",
       success: function(data) {
-        uiMessageBox("Response", data["message"], "");
+        if(data["message"] == "GOOD") {
+          uiMessageBox("Correct", "Great job! That's the correct answer!", "");
+          requestQuestion();
+        } else {
+          uiMessageBox("Response", data["message"], "");
+        }
       },
       error: function(xhr, status, errorThrown) {
         uiError(xhr, status, errorThrown);

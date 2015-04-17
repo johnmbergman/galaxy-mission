@@ -4,9 +4,8 @@
   Updated: April 10, 2015
   MissionController class for managing a student mission.
 */
-require "data.php";
-require "../models/question-model.php";
-require "../models/mission-model.php";
+require_once "data.php";
+require_once "../models/mission-model.php";
 
 class MissionController
 {
@@ -24,7 +23,7 @@ class MissionController
     //$question->type_id = $this->model->type_id;
 
     // For now, we just have a dummy queston
-    /*switch ($this->model->type_id) {
+    switch ($this->model->type_id) {
 
       case "2":   // Counting numbers
         $question->answer = rand(2, 5);
@@ -44,10 +43,10 @@ class MissionController
 
       default:
         $question->answer = "1";
-        $question->text = "This question type (" . $qtype_id . ") has not been implemented! (Answer 1)";
+        $question->text = "This question type (" . $this->model->type_id . ") has not been implemented! (Answer 1)";
         break;
-    }*/
-$question->text = "Question type is " . $this->model->type_id;
+    }
+
     // Set the current question to the generated question
     return $question;
   }
@@ -56,8 +55,7 @@ $question->text = "Question type is " . $this->model->type_id;
   // Compare the student's response to the actual answer to see if the student is correct
   public function CheckAnswer($student_answer)
   {
-    // TODO: Generate the answer from the equation
-    return  ($this->model->answer == $student_answer);
+    return  ($this->model->current_question->answer == $student_answer);
   }
 
 }

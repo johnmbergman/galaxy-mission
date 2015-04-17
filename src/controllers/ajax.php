@@ -1,6 +1,6 @@
 <?php
 
-require "mission-controller.php";
+require_once "mission-controller.php";
 session_start();
 
 // Application AJAX Entry point
@@ -40,8 +40,10 @@ function GetQuestion()
   {
     $model = $_SESSION["current_mission"];
     $controller = new MissionController($model);
-    $question = $controller->GenerateQuestion(1);
-    $return["question"] = $question->text;
+    $model->current_question = $controller->GenerateQuestion(1);
+    $model->question_no++;
+    $_SESSION["current_mission"] = $model;
+    $return["question"] = $model->current_question->text;
   }
   else
   {
@@ -70,20 +72,20 @@ function CheckAnswer()
         if($controller->CheckAnswer($student_answer))
         {
           // Correct
-          $return["message"] = "Correct answer message goes here!";
+          $return["message"] = "GOOD";
           $return["correct"] = true;
         }
         else
         {
           // Incorrect
-          $return["message"] = "Incorrect answer message goes here!";
+          $return["message"] = "Sorry, that's not quite right. Try again!";
           $return["correct"] = false;
         }
       }
       else
       {
         // The answer is blank!
-        $return["message"] = "No answer was specified message goes here!";
+        $return["message"] = "Don't forgot to enter your answer!";
         $return["correct"] = false;
       }
     }

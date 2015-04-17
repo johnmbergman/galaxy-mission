@@ -14,8 +14,7 @@ Global Javascript functions for Galaxy Mission
 function uiMessageBox(uiTitle, uiMessage, imgSrc) {
 
    try {
-   	if (imgSrc.length > 0)
-   	{
+   	if (imgSrc.length > 0) {
       // Set the message with image
       var tempMessageBox = $("<div>").attr("class", "modal fade").append(
             $("<div>").attr("class", "modal-dialog").append(
@@ -30,7 +29,8 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
 
                   $("<div>").attr("class", "modal-body").append(
                      $("<img>").attr("src", "../res/" + imgSrc).append(
-                     $("<p>").text(uiMessage))
+                        $("<p>").attr("class", "lead").text(uiMessage)
+                     )
                   )
                   
 
@@ -60,7 +60,7 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
                ).append(
 
                   $("<div>").attr("class", "modal-body").append(
-                     $("<p>").text(uiMessage)
+                     $("<p>").attr("class", "lead").text(uiMessage)
                   )
 
                ).append(

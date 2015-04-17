@@ -42,7 +42,7 @@ else
 <div class="jumbotron jumbotron-question">
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1 id="qQuestion">Loading question...</h1>
+      <h2 id="qQuestion">Loading question...</h2>
     </div>
   </div>
   <div class="row">
