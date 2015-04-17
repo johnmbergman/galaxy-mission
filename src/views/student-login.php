@@ -46,7 +46,7 @@
             ?>
           </select>
         </div>
-      </div>
+    
       <div class="form-group">
           <label style="text-align:center;font-size:20px" class="col-sm-10 col-md-offset-1 control-label">
             Select the student's passcode icon.
@@ -91,3 +91,7 @@
             <button type="submit" class="btn btn-primary">Login</button>
           </div>
         </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
