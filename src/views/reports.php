@@ -24,26 +24,26 @@ require "controllers/data.php";
               </div>
               <div class="col-md-6">
                 <select class="form-control" id="studentSelect">
-                        <?php
+                <?php
+                
+                  // Open the connection 
+                  $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+                  if($conn->connect_error) {
+                    trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+                    }
+                    
+                    // Run the command
+                    if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+                      while ($row = $result->fetch_assoc()) {
+                        echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                      }
+                    }
 
-                          // Open the connection
-                          $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
-                          if($conn->connect_error) {
-                            trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
-                          }
+                    // Close the connection
+                    $conn->close();
 
-                          // Run the command
-                          if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
-                            while ($row = $result->fetch_assoc()) {
-                              echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
-                            }
-                          }
-
-                          // Close the connection
-                          $conn->close();
-
-                        ?>
-                  </select>
+                  ?>
+                </select>
               </div>  
 			  </div>
 			</div>	  
