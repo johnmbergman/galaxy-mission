@@ -43,15 +43,15 @@
                 // Close the connection
                 $conn->close();
 
-            ?>
-          </select>
-        </div>
-    
-      <div class="form-group">
+              ?>
+            </select>
+          </div>
+    	</div>
+        <div class="form-group">
           <label style="text-align:center;font-size:20px" class="col-sm-10 col-md-offset-1 control-label">
             Select the student's passcode icon.
           </label>
-          <div class="col-xs-10 col-md-offset-1" >
+          <div class="col-sm-10 col-md-offset-1" >
             <label>
               <input type="radio" name="password" value="0" style="visibility:hidden; position:absolute"/>
               <img  src="../res/alien13.png" style="margin:10px 10px; width:75px; height:75px;" alt="alien icon">
