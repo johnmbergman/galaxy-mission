@@ -22,6 +22,31 @@ require "controllers/data.php";
 
     // CLose the database
     $conn->close();
+    
+    function complete($mission)
+    {
+    
+    	$returnflag = false;
+    	
+    	$sql = "select max number_correct from student_mission_record where mission_id ='" . $mission . "'";
+    	
+    	// Attempt to connect to the database
+        $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+        if($conn->connect_error)
+        {
+      		trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    	}
+
+    	// Run the query
+    	$result = $conn->query($sql);
+    	
+    	if ($result >= 8)
+    		$returnflag = true;
+    		
+    	// CLose the connection and return the result
+    	$conn->close();
+    	return $returnflag;
+    };
 ?>  
 <div class="row">
   <div class="col-lg-12">
@@ -36,24 +61,51 @@ require "controllers/data.php";
     <div class="col-md-12">
       <div class="list-group">
       <a href="/question/2" class="list-group-item">
-        <div>
+        <div class="row">
+        <div class="col-md-10">
           <img src="../res/parabolic8.png" style="height:4em;width:4em;margin:10px;float:left;" alt="antennas">
           <h4><u>Counting Numbers</u></h4>
           <p>In order to get accepted to the Intergalactic Federation's Academy for Space Exploration you must pass this entry exam.  Prove that for you counting is as easy as 1, 2, 3.</p>
         </div>
+        <div class="col-md-2">
+        <?php 
+        	if (complete(7))
+        	{?>
+        		<img src="../res/green-check.png" style="height:4em;width:4em;margin:10px;float:right;" alt="checkmark">
+        	<?php } ?>			
+        </div>
+        </div>
       </a>
       <a href="/question/3" class="list-group-item">
-        <div>
+        <div class="row">
+        <div class="col-md-10">
           <img src="../res/astronaut7.png" style="height:4em;width:4em;margin:10px;float:left;" alt="astronaut">
           <h4><u>Fill in Missing Numbers</u></h4>
           <p>Help a fellow cadet lost on a training exercise get back to the group by filling in the missing numbers from these sequences.</p><br>
         </div>
+        <div class="col-md-2">
+        <?php 
+        	if (complete(8))
+        	{?>
+        		<img src="../res/green-check.png" style="height:4em;width:4em;margin:10px;float:right;" alt="checkmark">
+        	<?php } ?>			
+        </div>
+        </div>
       </a>
       <a href="/question/10" class="list-group-item">
-        <div>
+        <div class="row">
+        <div class="col-md-10">
           <img src="../res/spacecraft5.png" style="height:4em;width:4em;margin:10px;float:left;" alt="spacecraft">
           <h4><u>Add and Subtract</u></h4>
           <p>Pass your spaceflight training by solving these add and subtract problems.</p><br>
+        </div>
+        <div class="col-md-2">
+        <?php 
+        	if (complete(9))
+        	{?>
+        		<img src="../res/green-check.png" style="height:4em;width:4em;margin:10px;float:right;" alt="checkmark">
+        	<?php } ?>			
+        </div>
         </div>
       </a>
       </div>
