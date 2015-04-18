@@ -5,9 +5,29 @@
 	Created: 4/15/15
 	Student sign-in
 */
-require "models/student-info-model.php";
-require "controllers/student-info-controller.php";
+require "models/student-login-model.php";
+require "controllers/student-login-controller.php";
 
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  $model = new StudentLoginModel();
+  $model->studentId = $_POST["student_id"];
+  $model->pwd_picture = $_POST["pwd_picture"];
+
+  if($model->ValidStudentId())
+  {
+    $controller = new StudentLoginController($model);
+    if($controller->Authenticate())
+    {
+      header("Location: /");
+      exit;
+    }
+    else
+    {
+      echo "Could not be authenticated! Add Message.";
+    }
+  }
+}
 ?>
 
 <div class="row">

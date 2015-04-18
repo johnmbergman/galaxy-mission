@@ -8,12 +8,12 @@
 Class StudentLoginModel {
   
   public $studentId;
-  public $password;
+  public $pwd_picture;
     
   public function __construct()    
   {
     $studentId = "";
-    $password = "";
+    $pwd_picture = "";
   }
     
   public function ValidStudentId()
