@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $model->email      = $_POST["email"];
   $model->password   = $_POST["password"];
   $model->repeatpass = $_POST["confirm"];
-  $model->type       = strtolower($_POST["type"]);
+  $model->type       = "parent"; /*strtolower($_POST["type"]);*/
   $model->firstname  = $_POST["firstname"];
   $model->lastname  = $_POST["lastname"];
   
@@ -80,6 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <form method="post" class="form-horizontal well">
       <fieldset>
         <legend><i class="fa fa-user"></i> Register New Account</legend>
+        <!-- PARENT/TEACHER FUNCTIONALITY
         <div class="form-group">
           <label for="input-type" class="col-md-3 control-label">I am a...</label>
           <div class="col-md-9">
@@ -90,6 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <span class="help-block"><a href="#" data-toggle="modal" data-target="#model-student">Click here</a> for information on creating a student account.</span>
           </div>
         </div>
+        -->
         <div class="form-group">
           <label for="input-firstname" class="col-md-3 control-label">Name</label>
           <div class="col-md-4">
