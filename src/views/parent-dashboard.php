@@ -35,8 +35,34 @@
                 <li><a href="/register-student/"><i class="fa fa-plus-square"></i> Add a Child</a></li>
               </ul>
 
-              <!-- Tab content for each student here -->
               <div class="tab-content">
+
+                <!-- Tab content for each student here -->
+                <?php
+                  // Open the connection
+                  $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+                  if($conn->connect_error) {
+                    trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+                  }
+
+                  // Run the command
+                  if($result = $conn->query("SELECT student_id, first_name, last_name, grade_level FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+                    while ($row = $result->fetch_assoc()) {
+
+                      // Render data for each student
+                      $model = new DashboardDataModel();
+                      ?>
+                      <div class="tab-panel fade" id="#<?php echo $row["student_id"]; ?>">
+                        <div class="well">
+                        </div>
+                      </div>
+                      <?php
+                    }
+                  }
+
+                  // Close the connection
+                  $conn->close();
+                ?>
                 <div class="tab-pane fade active in" id="student1">
                   <div class="panel panel-default">
                     <div class="panel-heading">
