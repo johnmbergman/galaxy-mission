@@ -34,14 +34,16 @@
   }
 
   // Prepare the session variables
-  if(!isset($_SESSION["authenticated"]))  $_SESSION["authenticated"] = false;
-  if(!isset($_SESSION["user_id"]))        $_SESSION["user_id"] = -1;
-  if(!isset($_SESSION["email"]))          $_SESSION["email"] = "";
-  if(!isset($_SESSION["firstname"]))      $_SESSION["firstname"] = "";
-  if(!isset($_SESSION["lastname"]))       $_SESSION["lastname"] = "";
-  if(!isset($_SESSION["type"]))           $_SESSION["type"] = "";
-  if(!isset($_SESSION["schoolname"]))     $_SESSION["schoolname"] = "";
-  if(!isset($_SESSION["phone"]))          $_SESSION["phone"] = "";
+  if(!isset($_SESSION["authenticated"]))        $_SESSION["authenticated"] = false;
+  if(!isset($_SESSION["user_id"]))              $_SESSION["user_id"] = -1;
+  if(!isset($_SESSION["email"]))                $_SESSION["email"] = "";
+  if(!isset($_SESSION["firstname"]))            $_SESSION["firstname"] = "";
+  if(!isset($_SESSION["lastname"]))             $_SESSION["lastname"] = "";
+  if(!isset($_SESSION["type"]))                 $_SESSION["type"] = "";
+  if(!isset($_SESSION["schoolname"]))           $_SESSION["schoolname"] = "";
+  if(!isset($_SESSION["phone"]))                $_SESSION["phone"] = "";
+  if(!isset($_SESSION["current_student_id"]))   $_SESSION["current_student_id"] = -1;
+  if(!isset($_SESSION["current_student_name"])) $_SESSION["current_student_name"] = "";
 ?>
 
 <!DOCTYPE html>
@@ -91,14 +93,19 @@
         <?php if($_SESSION["authenticated"]) { ?>
         <ul class="nav navbar-nav">
           <li><a href="/parent-dashboard/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-          <li><a href="/student-login/"><i class="fa fa-check-square-o"></i> Student Login</a></li>
           <li><a href="/reports/"><i class="fa fa-file-text-o"></i> Reports</a></li>
         </ul>
         <?php } ?>
         <ul class="nav navbar-nav navbar-right">
 
           <?php if($_SESSION["type"] == "parent") { ?>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Children <b class="caret"></b></a>
+            <li><a><i class="fa fa-star"></i> 0</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-users"></i>
+                <?php echo (strlen($_SESSION["current_student_name"]) > 0 ? $_SESSION["current_student_name"] : "Children"); ?>
+                <b class="caret"></b>
+              </a>
               <ul class="dropdown-menu">
 <?php
 $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -111,7 +118,21 @@ if($result = $conn->query("SELECT student_id, first_name, last_name FROM student
   while ($row = $result->fetch_assoc()) {
     echo "<li class='dropdown-header'><strong>" . $row["first_name"] . " " . $row["last_name"] . "</strong></li>";
     echo "<li><a href='/student-management/" . $row["student_id"] . "'><i class='fa fa-gear'></i> Profile</a></li>";
-    echo "<li><a href='/student-login/" . $row["student_id"] . "'><i class='fa fa-sign-in'></i> Sign in</a></li>";
+    if($_SESSION["current_student_id"] > 0)
+    {
+      if($row["student_id"] == $_SESSION["current_student_id"])
+      {
+        echo "<li><a><strong class='text-success'><i class='fa fa-check-circle'></i> Signed in</strong></a></li>";
+      }
+      else
+      {
+        echo "<li><a href='/student-login/" . $row["student_id"] . "'><i class='fa fa-sign-in'></i> Sign in</a></li>";
+      }
+    }
+    else
+    {
+      echo "<li><a href='/student-login/" . $row["student_id"] . "'><i class='fa fa-sign-in'></i> Sign in</a></li>";
+    }
     echo "<li class='divider'></li>";
   }
 }
@@ -128,7 +149,7 @@ $conn->close();
           <?php if($_SESSION["authenticated"]) { ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user"></i> <?php if(strlen($_SESSION['firstname']) > 0) { echo $_SESSION['firstname']; } else { echo "Account"; } ?> <b class="caret"></b>
+                <i class="fa fa-user"></i> <?php echo (strlen($_SESSION['firstname']) > 0 ? $_SESSION['firstname'] : "Account"); ?> <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
               <li><a href="/profile/"><i class="fa fa-cog"></i> Profile</a></li>
