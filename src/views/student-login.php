@@ -1,5 +1,5 @@
-<?php require "controllers/authenticate.php"; ?>
-<?php
+<?php require "controllers/authenticate.php"; 
+
 /*
 	Adam Hill
 	Created: 4/15/15
@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $model = new StudentLoginModel();
   $model->studentId = $_POST["student_id"];
-  $model->pwd_picture = $_POST["pwd_picture"];
+  $model->pwd_picture = $_POST["password"];
 
   if($model->ValidStudentId())
   {
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                   trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
                 }
 
-                // Run the command
+				// Run the command
                 if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
                   while ($row = $result->fetch_assoc()) {
                     echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";

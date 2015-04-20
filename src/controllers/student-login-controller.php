@@ -25,7 +25,7 @@ class StudentLoginController
     $returnflag = false;
 
     // Build the sql query
-    $sql = "select student_id, parent_id, first_name, last_name, pwd_picture, grade_level, game_level from students where student_id='" . $this->model->studentId . "'"; 
+    $sql = "select student_id, pwd_picture, first_name, last_name, grade_level, game_level from students where student_id='" . $this->model->studentId . "'"; 
     
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -39,16 +39,16 @@ class StudentLoginController
     $row = $result->fetch_row();
 
     // Check if the password matches
-    if(pwd_picture == $this->model->pwd_picture)
+    if($this->model->pwd_picture == $row(1))
     {
       // The password matches, authenticate and retrieve values
       $returnflag = true;
       $_SESSION["authenticated"] = true;
       $_SESSION["student_id"] = $row[0];
-      $_SESSION["firstname"] = $row[1];
-      $_SESSION["lastname"] = $row[2];
-      $_SESSION["grade_level"] = $row[3];
-      $_SESSION["game_level"] = $row[4];
+      $_SESSION["firstname"] = $row[2];
+      $_SESSION["lastname"] = $row[3];
+      $_SESSION["grade_level"] = $row[4];
+      $_SESSION["game_level"] = $row[5];
       
     }
     else
@@ -70,7 +70,5 @@ class StudentLoginController
 }
 
 ?>
-}
 
-?>
    
