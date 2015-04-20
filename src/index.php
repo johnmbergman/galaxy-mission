@@ -90,6 +90,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <?php if($_SESSION["authenticated"]) { ?>
         <ul class="nav navbar-nav">
+          <li><a href="/parent-dashboard/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
           <li><a href="/student-login/"><i class="fa fa-check-square-o"></i> Student Login</a></li>
           <li><a href="/reports/"><i class="fa fa-file-text-o"></i> Reports</a></li>
         </ul>

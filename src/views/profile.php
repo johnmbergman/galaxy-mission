@@ -55,55 +55,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
-      <h2><?php if($_SESSION["type"] == "parent") { echo "Parent"; } else { echo "Teacher"; } ?> Account Information</h2>
+      <h2>Account Settings</h2>
       <div class="panel-primary">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-4">
-              <ul class="nav nav-pills nav-stacked">
-<<<<<<< HEAD
-                <li><a href="account-settings">Account Overview</a></li>
-                <li class="active"><a href="profile">Account Information</a></li>
-                <li><a href="student-management">Student Information</a></li>
-                <li><a href="parent-dashboard">Return to My Dashboard</a></li>
-=======
-                <li><a href="/account-settings/">Overview</a></li>
-                <li class="active"><a href="/profile/">Account Information</a></li>
-                <li><a href="/student-management/">Student Information</a></li>
-                <li><a href="/parent-dashboard/">Return to Parent Dashboard</a></li>
->>>>>>> origin/master
-              </ul>
+            <div class="col-md-3">
+              <?php include "dashboard-menu.php"; ?>
             </div>
-            <div class="col-sm-8">
+            <div class="col-md-9">
               <form method="post" class="form-horizontal well">
                 <fieldset>
                   <legend>Click in a field to edit information and then click Save.</legend>
                   <div class="form-group">
-                    <label for="firstName" class="col-lg-4 control-label">First Name</label>
-                    <div class="col-lg-8">
+                    <label for="firstName" class="col-lg-3 control-label">First Name</label>
+                    <div class="col-lg-9">
                       <input type="text" name="firstname" maxlength="50" class="form-control" id="firstName" placeholder="First Name" value="<?php echo htmlentities($_SESSION['firstname']); ?>">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="lastName" class="col-lg-4 control-label">Last Name</label>
-                    <div class="col-lg-8">
+                    <label for="lastName" class="col-lg-3 control-label">Last Name</label>
+                    <div class="col-lg-9">
                       <input type="text" name="lastname" maxlength="50" class="form-control" id="lastName" placeholder="Last Name" value="<?php echo htmlentities($_SESSION['lastname']); ?>">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-lg-4 control-label">School Name</label>
-                    <div class="col-lg-8">
-                      <input type="text" name="schoolname" maxlength="50" class="form-control" id="schoolname" placeholder="School Name" value="<?php echo htmlentities($_SESSION['schoolname']); ?>">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="phoneNumber" class="col-lg-4 control-label">Phone Number</label>
-                    <div class="col-lg-8">
+                    <label for="phoneNumber" class="col-lg-3 control-label">Phone Number</label>
+                    <div class="col-lg-9">
                       <input type="tel" name="phone" class="form-control" id="phoneNumber" value="<?php echo htmlentities($_SESSION['phone']); ?>">
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-lg-8 col-lg-offset-4">
+                    <div class="col-lg-9 col-lg-offset-3">
                       <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                   </div>
