@@ -99,7 +99,9 @@
         <ul class="nav navbar-nav navbar-right">
 
           <?php if($_SESSION["type"] == "parent") { ?>
-            <li><a><i class="fa fa-star"></i> 0</a></li>
+            <?php if($_SESSION["current_student_id"] > 0) { ?>
+              <li><a id="studentstars" href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="The total number of stars earned."><i class="fa fa-star"></i> 0</a></li>
+            <?php } ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-users"></i>
@@ -123,6 +125,7 @@ if($result = $conn->query("SELECT student_id, first_name, last_name FROM student
       if($row["student_id"] == $_SESSION["current_student_id"])
       {
         echo "<li><a><strong class='text-success'><i class='fa fa-check-circle'></i> Signed in</strong></a></li>";
+        echo "<li><a href='/student-dashboard/'><i class='fa fa-dashboard'></i> Dashboard</a></li>";
       }
       else
       {

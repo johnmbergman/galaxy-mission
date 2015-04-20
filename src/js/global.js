@@ -37,7 +37,7 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
                ).append(
 
                   $("<div>").attr("class", "modal-footer").append(
-                     $("<button>").attr("type", "button").attr("class", "btn btn-primary").attr("data-dismiss", "modal").text("OK")
+                     $("<button>").attr("type", "button").attr("class", "btn btn-primary").attr("data-dismiss", "modal").text("OK").focus()
                   )
 
                )
@@ -66,7 +66,7 @@ function uiMessageBox(uiTitle, uiMessage, imgSrc) {
                ).append(
 
                   $("<div>").attr("class", "modal-footer").append(
-                     $("<button>").attr("type", "button").attr("class", "btn btn-primary").attr("data-dismiss", "modal").text("OK")
+                     $("<button>").attr("type", "button").attr("class", "btn btn-primary").attr("data-dismiss", "modal").text("OK").focus()
                   )
 
                )
@@ -95,3 +95,14 @@ function uiError(xhr, status, errorThrown) {
    uiMessageBox("Error Message", "Oh no! A bug found its way into the current mission.", "");
    console.log(xhr + "\n" + status + "\n" + errorThrown);
 }
+
+
+/*
+|--------------------------------------------------------------|
+|  Called when EVERY page loads                                | 
+|  John Bergman - 4/10/15                                      |
+|--------------------------------------------------------------|
+*/
+$(document).load(function() {
+   $("#studentstars").tooltip();
+});

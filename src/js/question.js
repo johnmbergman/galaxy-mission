@@ -33,11 +33,11 @@ function submitAnswer() {
       dataType: "json",
       success: function(data) {
         if(data["message"] == "GOOD") {
-          uiMessageBox("Correct", "Great job! That's the correct answer!", "");
-          requestQuestion();
+          $("#mission-progress").append("<div class='progress-bar progress-bar-success' style='width: 10%;'></div>");
         } else {
-          uiMessageBox("Response", data["message"], "");
+          $("#mission-progress").append("<div class='progress-bar progress-bar-danger' style='width: 10%;'></div>");
         }
+        requestQuestion();
       },
       error: function(xhr, status, errorThrown) {
         uiError(xhr, status, errorThrown);
@@ -61,7 +61,12 @@ function requestQuestion() {
     type: "post",
     dataType: "json",
     success: function(data) {
-      displayQuestion(data["question"]);
+      if(data["question"] == "FINISHED") {
+        displayQuestion("You completed the mission! <a href='/mission-result/'>Click Here</a> to view your mission result.");
+        $("#qInput").remove();
+      } else {
+        displayQuestion(data["question"]);
+      }
     },
     error: function(xhr, status, errorThrown) {
       uiError(xhr, status, errorThrown);

@@ -51,6 +51,13 @@ else
       <input id="qInput" type="number" class="form-control input-lg" autocomplete="off" autofocus>
     </div>
   </div>
+  <br/><br/>
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="mission-progress" class="progress">
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Background styling for the question page -->

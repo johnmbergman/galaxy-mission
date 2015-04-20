@@ -39,11 +39,20 @@ function GetQuestion()
   if(isset($_SESSION["current_mission"]))
   {
     $model = $_SESSION["current_mission"];
-    $controller = new MissionController($model);
-    $model->current_question = $controller->GenerateQuestion(1);
-    $model->question_no++;
-    $_SESSION["current_mission"] = $model;
-    $return["question"] = $model->current_question->text;
+    if($model->question_no < 10)
+    {
+      // The student has not answered 10 questions yet
+      $controller = new MissionController($model);
+      $model->current_question = $controller->GenerateQuestion(1);
+      $model->question_no++;
+      $_SESSION["current_mission"] = $model;
+      $return["question"] = $model->current_question->text;
+    }
+    else
+    {
+      // The student has answered 10 questions
+      $return["question"] = "FINISHED";
+    }
   }
   else
   {
