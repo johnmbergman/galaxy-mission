@@ -10,12 +10,33 @@
               <?php include "dashboard-menu.php"; ?>
             </div>
             <div class="col-md-9">
+
+              <!-- Student tab list -->
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#student1" data-toggle="tab">STUDENT 1's Progress</a></li>
-                <li class="disabled"><a>STUDENT 2's Progress</a></li>
-                <li><a href="/register-student/">Add a Child</a></li>
+                <?php
+                  // Open the connection
+                  $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+                  if($conn->connect_error) {
+                    trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+                  }
+
+                  // Run the command
+                  $drewfirst = false;
+                  if($result = $conn->query("SELECT student_id, first_name, last_name, grade_level FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li " . ($drewfirst ? "" : "class='active'") . "><a href='#" . $row["student_id"] . "' data-toggle='tab'>" . $row["first_name"] . "'s Progress</a></li>";
+                      $drewfirst = true;
+                    }
+                  }
+
+                  // Close the connection
+                  $conn->close();
+                ?>
+                <li><a href="/register-student/"><i class="fa fa-plus-square"></i> Add a Child</a></li>
               </ul>
-              <div id="myTabContent" class="tab-content">
+
+              <!-- Tab content for each student here -->
+              <div class="tab-content">
                 <div class="tab-pane fade active in" id="student1">
                   <div class="panel panel-default">
                     <div class="panel-heading">
@@ -53,20 +74,14 @@
                         </div>
                         <div class="col-sm-4">
                           <h5 class="dash-header">Progress Summary</h5>
-                          <p><small>Number of Missions Completed: xx</small></p>
-                          <p><small>Total Curriculum Units Completed: xx</small></p>
-                          <p><small>Number of Stars Earned: xx</small></p>
-                          <p><small>STUDENT began his/her intergalactic journey on January 1, 2015</small></p>
+                          <p><small>Number of Missions Completed: 0</small></p>
+                          <p><small>Total Curriculum Units Completed: 0</small></p>
+                          <p><small>Number of Stars Earned: 0</small></p>
+                          <p><small>STUDENT began his/her intergalactic journey on DATE</small></p>
                           <p><small>He/she has played Galaxy Mission for xx hours and xx minutes</small></p>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="divider">
-                            <hr>
-                          </div>
-                        </div>
-                      </div>
+                      <hr/>
                       <div class="row">
                         <div class="col-sm-4">
                           <h6 class="dash-col-header">What is STUDENT currently learning?</h6>
