@@ -58,16 +58,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <div class="panel-primary">
         <div class="panel-body">
           <div class="row">
-            <!--Sidebar for Account Settings Area-->
-            <div class="col-sm-4">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="/account-settings/">Overview</a></li>
-                <li><a href="/profile/">Account Information</a></li>
-                <li class="active"><a href="/student-management/">Student Information</a></li>
-                <li><a href="/parent-dashboard/">Return to Parent Dashboard</a></li>
-              </ul>
+            <div class="col-sm-3">
+              <?php include "dashboard-menu.php"; ?>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <!--Student Info Form-->
               <form method="post" class="form-horizontal well">
                 <fieldset>
