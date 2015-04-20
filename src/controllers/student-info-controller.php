@@ -17,7 +17,7 @@ class StudentInfoController
   // Update account information
   public function Update() {
     // Create the sql string
-    $sql = "set first_name=?, last_name=?, grade_level=?";
+    $sql = "update students set first_name=?, last_name=?, grade_level=? where student_id=? and parent_id=?";
     $returnflag = false;
 
     // Attempt to connect to the database
@@ -28,12 +28,10 @@ class StudentInfoController
 
     // Successfully connected to the database. Run the query
     if($query = $conn->prepare($sql)) {
+
       // Bind the parameters and execute
-      $query->bind_parem('sss', $this->model->firstname, $this->model->lastname, $this->model->grade);
+      $query->bind_param("sssii", $this->model->firstname, $this->model->lastname, $this->model->grade, $this->model->studentid, $this->model->parentid);
       $query->execute();
-      $_SESSION["firstname"] = $this->model->firstname;
-      $_SESSION["lastname"] = $this->model->lastname;
-      $_SESSION["grade"] = $this->model->grade;
       $returnflag = true;
     }
 

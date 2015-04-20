@@ -108,7 +108,7 @@ if($conn->connect_error) {
 // Run the command
 if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
   while ($row = $result->fetch_assoc()) {
-    echo "<li><a href='/student-management/'>" . $row["first_name"] . " " . $row["last_name"] . "</a></li>";
+    echo "<li><a href='/student-management/" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</a></li>";
   }
 }
 

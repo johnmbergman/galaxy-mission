@@ -13,14 +13,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $model = new StudentInfoModel();
   $model->firstname  = $_POST["firstname"];
   $model->lastname   = $_POST["lastname"];
+  $model->parentid   = $_SESSION["user_id"];
   $model->grade      = $_POST["grade"];
+  if(isset($_GET["studentid"])) $model->studentid  = $_GET["studentid"];
 
   $valid_name        = $model->ValidName();
   $valid_grade       = $model->ValidGrade();
-  $valid_school      = $model->ValidSchoolName();
-  $valid_teacher     = $model->ValidTeacherName();
 
-  if($valid_teacher && $valid_school && $valid_grade && $valid_name)
+  if($valid_grade && $valid_name)
   {
     // Valid input!
     $controller = new StudentInfoController($model);
@@ -44,9 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     echo '<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-danger">';
     echo '<strong>Error!</strong> Your profile could not be updated. <ul>';
     if(!$valid_name)   echo '<li>An invalid name was specified! Please enter a first and last name!</li>';
-    if(!$valid_grade)  echo '<li>An invalid grade was selected! Please select a grade</li>';
-    if(!$valid_school) echo '<li>An invalid school name was specified! Please enter a valid school name.</li>';
-    if(!$valid_teacher) echo '<li>An invalid teacher name was specified! Please enter a valid teacher name.</li>';
+    if(!$valid_grade)  echo '<li>An invalid grade was selected! Please select a grade from the drop down.</li>';
     echo '</ul></div></div></div>';
   }
 }
@@ -73,12 +71,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
               <!--Student Info Form-->
               <form method="post" class="form-horizontal well">
                 <fieldset>
-                  <legend>Click in a field to edit information and then click Save.</legend>
+                  <legend>Edit student information and click save.</legend>
                   <div class="form-group">
                     <!--Parents with multiple students will be able to choose between them to make changes-->
                     <label for="studentSelect" class="col-lg-4 control-label">Select Student</label>
                     <div class="col-lg-8">
-                      <select class="form-control" id="studentSelect">
+                      <select class="form-control" id="studentSelect" onchange="location=this.options[this.selectedIndex].value;">
+                        <?php if(!isset($_GET["studentid"])) echo "<option value='#'>Select a student...</option>"; ?>
                         <?php
 
                           // Open the connection
@@ -88,9 +87,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                           }
 
                           // Run the command
-                          if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+                          if($result = $conn->query("SELECT student_id, first_name, last_name, grade_level FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
                             while ($row = $result->fetch_assoc()) {
-                              echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                              if(isset($_GET["studentid"]))
+                              {
+                                if($_GET["studentid"] == $row["student_id"])
+                                {
+                                  $student_first_name = $row["first_name"];
+                                  $student_last_name = $row["last_name"];
+                                  $student_grade = $row["grade_level"];
+                                }
+                                echo "<option value='/student-management/" . $row["student_id"] . "' " . ($_GET["studentid"]==$row["student_id"] ? "selected" : "") . ">" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                              }
+                              else
+                              {
+                                echo "<option value='/student-management/" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                              }
+                              //echo "<li><a href='/student-management/" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</a></li>";
                             }
                           }
 
@@ -101,49 +114,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                       </select>
                     </div>
                   </div>
-                  <div class="col-lg-10 col-lg-offset-2">
-                    <hr>
-                    <br>
-                  </div>
-                  <!--Update student's first name-->
+                  <hr>
+
+                  <!-- Update student's name and grade level -->
+                  <?php if(isset($_GET["studentid"])) { ?>
                   <div class="form-group">
                     <label for="firstName" class="col-lg-4 control-label">First Name</label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                      <input name="firstname" type="text" class="form-control" id="firstName" placeholder="First Name" value="<?php echo $student_first_name; ?>">
                     </div>
                   </div>
-                  <!--Update student's last name-->
                   <div class="form-group">
                     <label for="lastName" class="col-lg-4 control-label">Last Name</label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                      <input name="lastname" type="text" class="form-control" id="lastName" placeholder="Last Name" value="<?php echo $student_last_name; ?>">
                     </div>
                   </div>
-                  <!--Update student's grade level-->
                   <div class="form-group">
                     <label for="grade" class="col-lg-4 control-label">Grade Level</label>
                     <div class="col-lg-8">
                       <select class="form-control" id="grade" name="grade">
-                        <option value = "">Select a grade level</option>
-                        <option value = "Kindergarten">Kindergarten</option>
-                        <option value = "1st Grade">1st Grade</option>
+                        <option value="0" <?php if($student_grade == 0) echo "selected='selected'" ?>>Kindergarten</option>
+                        <option value="1" <?php if($student_grade == 1) echo "selected='selected'" ?>>1st Grade</option>
+                        <option value="2" <?php if($student_grade == 2) echo "selected='selected'" ?>>2nd Grade</option>
+                        <option value="3" <?php if($student_grade == 3) echo "selected='selected'" ?>>3rd Grade</option>
                       </select>
                     </div>
                   </div>
-                  <!--Update student's school's name-->
-                  <div class="form-group">
-                    <label for="schoolName" class="col-lg-4 control-label">School Name</label>
-                    <div class="col-lg-8">
-                      <input type="text" class="form-control" id="schoolName" placeholder="School Name (optional)">
-                    </div>
-                  </div>
-                  <!--Update student's teacher's name-->
-                  <div class="form-group">
-                    <label for="teacherName" class="col-lg-4 control-label">Teacher Name</label>
-                    <div class="col-lg-8">
-                      <input type="text" class="form-control" id="teacherName" placeholder="Teacher Name (optional)">
-                    </div>
-                  </div>
+                  <?php } ?>
+
                   <!--Update information in database-->
                   <div class="form-group">
                     <div class="col-lg-8 col-lg-offset-4">

@@ -6,19 +6,18 @@
 */
 
 class StudentInfoModel {
+  public $studentid;
+  public $parentid;
   public $firstname;
   public $lastname;
   public $grade;
-  public $schoolname;
-  public $teachername;
 
   public function __construct() {
-    $firstname = "";
-    $lastname = "";
-    $gender = "";
-    $grade = "";
-    $schoolname = "";
-    $teachername = "";
+    $this->studentid = -1;
+    $this->parentid = -1;
+    $this->firstname = "";
+    $this->lastname = "";
+    $this->grade = 0;
   }
 
   public function ValidName() {
@@ -26,16 +25,9 @@ class StudentInfoModel {
   }
 
   public function ValidGrade() {
-    return ($this->grade == "Kindergarten" || $this->grade == "1st Grade");
+    return ($this->grade >= 0 && $this->grade <= 3);
   }
 
-  public function ValidSchoolName() {
-    return strlen($this->schoolname) <= 50;
-  }
-
-  public function ValidTeacherName() {
-    return strlen($this->teachername) <= 30;
-  }
 }
 
 ?>
