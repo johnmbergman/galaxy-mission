@@ -6,8 +6,6 @@
 */
 
 require "controllers/authenticate.php";
-require "models/student-creation-model.php";
-require "controllers/student-creation-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   

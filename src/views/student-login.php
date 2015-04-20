@@ -5,8 +5,6 @@
 	Created: 4/15/15
 	Student sign-in
 */
-require "models/student-login-model.php";
-require "controllers/student-login-controller.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {

@@ -44,7 +44,6 @@ function PrintTestCaseBreak()
       <?php
 
       // ProfileModel Unit Tests //
-      require "models/profile-model.php";
       $model = new ProfileModel();
 
       // ValidName()
@@ -143,7 +142,6 @@ function PrintTestCaseBreak()
 
 
       // StudentInfoModel Unit Tests //
-      require "models/student-info-model.php";
       $model = new StudentInfoModel();
 
       // ValidName()
@@ -223,7 +221,6 @@ function PrintTestCaseBreak()
 
     
       // LoginModel Unit Tests //
-      require "models/login-model.php";
       $model = new LoginModel();
 
       // ValidEmail()
@@ -244,7 +241,6 @@ function PrintTestCaseBreak()
 
 
       // RegistrationModel Unit Tests //
-      require "models/registration-model.php";
       $model = new RegistrationModel();
 
       // ValidType()
@@ -355,7 +351,6 @@ function PrintTestCaseBreak()
 
 
       // StudentCreationModel Unit Tests //
-      require "models/student-creation-model.php";
       $model = new StudentCreationModel();
       
       // ValidFirstName()

@@ -13,7 +13,6 @@ Author: Jennifer Steadman
 
 <?php
 require "controllers/authenticate.php";
-require "models/mission-model.php";
 
 // AJAX-based view. First, create the request to start a new mission
 if(isset($_SESSION["current_mission"]))

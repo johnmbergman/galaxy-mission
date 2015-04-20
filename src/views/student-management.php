@@ -6,8 +6,6 @@
 // author: Shaun Fyffe with PHP guidance from John Bergman
 //   date: March 28, 2015
 //////////////////////////////
-require "models/student-info-model.php";
-require "controllers/student-info-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $model = new StudentInfoModel();

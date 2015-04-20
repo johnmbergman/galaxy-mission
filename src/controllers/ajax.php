@@ -51,7 +51,15 @@ function GetQuestion()
     else
     {
       // The student has answered 10 questions
-      $return["question"] = "FINISHED";
+      $controller = new MissionController($model);
+      if($controller->SubmitMission())
+      {
+        $return["question"] = "FINISHED";
+      }
+      else
+      {
+        $return["question"] = "FAILED TO SAVE!";
+      }
     }
   }
   else
@@ -82,33 +90,31 @@ function CheckAnswer()
         {
           // Correct
           $return["message"] = "GOOD";
-          $return["correct"] = true;
         }
         else
         {
           // Incorrect
           $return["message"] = "Sorry, that's not quite right. Try again!";
-          $return["correct"] = false;
         }
+
+        // Save the mission
+        $_SESSION["current_mission"] = $model;
       }
       else
       {
         // The answer is blank!
         $return["message"] = "Don't forgot to enter your answer!";
-        $return["correct"] = false;
       }
     }
     else
     {
       // The answer is not specified
       $return["message"] = "Don't forget to type in your answer before pressing ENTER!";
-      $return["correct"] = false;
     }
   }
   else
   {
     $return["message"] = "An error occurred! Please restart the mission.";
-    $return["correct"] = false;
   }
 
   // Return JSON format

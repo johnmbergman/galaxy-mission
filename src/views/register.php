@@ -1,7 +1,5 @@
 <?php
 
-require "models/registration-model.php";
-require "controllers/registration-controller.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $model = new RegistrationModel();

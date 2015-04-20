@@ -5,8 +5,6 @@
 //   date: March 23, 2015
 //////////////////////////////
 require "controllers/authenticate.php";
-require "models/profile-model.php";
-require "controllers/profile-controller.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {

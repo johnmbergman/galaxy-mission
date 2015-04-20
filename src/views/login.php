@@ -1,8 +1,5 @@
 <?php
 
-require "models/login-model.php";
-require "controllers/login-controller.php";
-
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $model = new LoginModel();
