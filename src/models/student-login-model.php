@@ -6,19 +6,21 @@
 */
 
 Class StudentLoginModel {
-  
-  public $studentId;
+
+  public $studentid;
+  public $parentid;
   public $pwd_picture;
-    
-  public function __construct()    
+
+  public function __construct()
   {
-    $studentId = "";
-    $pwd_picture = "";
+    $this->studentid = -1;
+    $this->parentid = -1;
+    $this->pwd_picture = -1;
   }
     
   public function ValidStudentId()
   {
-	return filter_var($this->studentId > 0);
+    return ($this->studentid > 0);
   }
 }
 

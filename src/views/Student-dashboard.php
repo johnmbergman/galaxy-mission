@@ -1,5 +1,4 @@
 <?php
-require "controllers/data.php";
 /* 
 	Adam Hill
 	Updated 4/14/15
@@ -50,7 +49,7 @@ require "controllers/data.php";
 ?>  
 <div class="row">
   <div class="col-lg-12">
-    <h1>Student Dashboard</h1>
+    <h1>Student Dashboard <small>for <?php echo $_SESSION["current_student_name"]; ?></small></h1>
   </div>
 </div>
 <div class="panel panel-primary">

@@ -19,7 +19,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-      echo "Could not be authenticated! Add Message.";
+      ?>
+      <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-danger">
+              <strong>Oops!</strong> Could not be authenticated or invalid email/password combination.
+            </div>
+          </div>
+        </div>
+      <?php
     }
   }
 

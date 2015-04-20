@@ -103,7 +103,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                               {
                                 echo "<option value='/student-management/" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
                               }
-                              //echo "<li><a href='/student-management/" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</a></li>";
                             }
                           }
 

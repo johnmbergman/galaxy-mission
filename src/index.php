@@ -109,14 +109,16 @@ if($conn->connect_error) {
 // Run the command
 if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
   while ($row = $result->fetch_assoc()) {
-    echo "<li><a href='/student-management/" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</a></li>";
+    echo "<li class='dropdown-header'><strong>" . $row["first_name"] . " " . $row["last_name"] . "</strong></li>";
+    echo "<li><a href='/student-management/" . $row["student_id"] . "'><i class='fa fa-gear'></i> Profile</a></li>";
+    echo "<li><a href='/student-login/" . $row["student_id"] . "'><i class='fa fa-sign-in'></i> Sign in</a></li>";
+    echo "<li class='divider'></li>";
   }
 }
 
 // Close the connection
 $conn->close();
 ?>
-                <li class="divider"></li>
                 <li><a href="/student-management/"><i class="fa fa-cog"></i> Manage Students</a></li>
                 <li><a href="/register-student/"><i class="fa fa-file-text-o"></i> Register Child</a></li>
               </ul>
