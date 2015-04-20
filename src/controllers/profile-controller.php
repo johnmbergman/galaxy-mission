@@ -1,5 +1,4 @@
 <?php
-require "data.php";
 
 class ProfileController
 {

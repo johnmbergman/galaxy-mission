@@ -3,6 +3,9 @@
   // Start a session
   session_start();
 
+  // Require the data page for database values
+  require "controllers/data.php";
+
   // Prepare the page
   if(isset($_GET['page']))
   {
@@ -96,22 +99,25 @@
           <?php if($_SESSION["type"] == "parent") { ?>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Children <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Example Student 1</a></li>
-                <li><a href="#">Example Student 2</a></li>
-                <li><a href="#">Example Student 3</a></li>
+<?php
+$conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+if($conn->connect_error) {
+  trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+}
+
+// Run the command
+if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+  while ($row = $result->fetch_assoc()) {
+    echo "<li><a href='/student-management/'>" . $row["first_name"] . " " . $row["last_name"] . "</a></li>";
+  }
+}
+
+// Close the connection
+$conn->close();
+?>
                 <li class="divider"></li>
                 <li><a href="/student-management/"><i class="fa fa-cog"></i> Manage Students</a></li>
                 <li><a href="/register-student/"><i class="fa fa-file-text-o"></i> Register Child</a></li>
-              </ul>
-            </li>
-          <?php } if($_SESSION["type"] == "teacher") { ?>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Classes <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Example Class 1</a></li>
-                <li><a href="#">Example Class 2</a></li>
-                <li><a href="#">Example Class 3</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Manage Classes</a></li>
               </ul>
             </li>
           <?php } ?>

@@ -5,8 +5,6 @@
 	Created: 4/16/15
 */
 
-require "data.php";
-
 class StudentLoginController
 {
   private $model;

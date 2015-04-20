@@ -4,7 +4,6 @@
   Updated: March 26, 2015
   RegistrationController class for accepting a RegistrationModel and registering a parent or teacher account.
 */
-require "data.php";
 
 class RegistrationController
 {

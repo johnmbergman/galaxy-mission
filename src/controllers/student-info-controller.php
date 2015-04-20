@@ -5,8 +5,6 @@
   StudentInfoController class for accepting a StudentInfoModel and updating account information in database.
 */
 
-require "data.php";
-
 class StudentInfoController
 {
   private $model;

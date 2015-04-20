@@ -4,7 +4,6 @@
   Updated: April 10, 2015
   MissionController class for managing a student mission.
 */
-require_once "data.php";
 require_once "../models/mission-model.php";
 
 class MissionController

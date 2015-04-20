@@ -8,18 +8,18 @@
           <div class="row">
             <div class="col-sm-4">
               <ul class="nav nav-pills nav-stacked">
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
                 <li class="active"><a href="account-settings">Account Overview</a></li>
                 <li><a href="profile">Account Information</a></li>
                 <li><a href="student-management">Student Information</a></li>
                 <li class="disabled"><a href="#">Email Preferences</a></li>
                 <li><a href="parent-dashboard">Return to My Dashboard</a></li>
-=======
+<!-- ======= -->
                 <li class="active"><a href="/account-settings/">Overview</a></li>
                 <li><a href="/profile/">Account Information</a></li>
                 <li><a href="/student-management/">Student Information</a></li>
                 <li><a href="/parent-dashboard/">Return to Parent Dashboard</a></li>
->>>>>>> origin/master
+<!-- >>>>>>> origin/master -->
               </ul>
             </div>
             <div class="col-sm-7 col-sm-offset-1">

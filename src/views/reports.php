@@ -6,15 +6,14 @@
   and will then generate a report on that student.
 */
 require "controllers/authenticate.php";
-require "controllers/data.php";
 ?>
 
 
 <div class="container-fluid">
 <h1>Student Reports</h1>
   <div class="row">
-	<div class="col-sm-12">
-	  <div class="panel panel-default">
+	  <div class="col-sm-12">
+	    <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-8 text-right">	   
@@ -45,8 +44,8 @@ require "controllers/data.php";
                   ?>
                 </select>
               </div>  
-			  </div>
-			</div>	  
+    			  </div>
+    			</div>	  
             <div class="col-md-4 text-left">
               <div class="form-group">
                 <button type="submit" class="btn btn-info">Generate</button>
@@ -94,40 +93,41 @@ require "controllers/data.php";
     			  </tr>
   				</thead>
   				<tbody>
-    		      <tr>
-      			    <td>K</td>
+  		      <tr>
+    			    <td>K</td>
       				<td>5</td>
       				<td>5</td>
-      				<td>Counting & Cardinality - 95%</td>
-      				<td>Operations & Algebraic Thinking - 80%</td>
+      				<td>Counting &amp; Cardinality - 95%</td>
+      				<td>Operations &amp; Algebraic Thinking - 80%</td>
       				<td>89%</td>
     			  </tr>
-                  <tr>
-      			    <td>1</td>
+            <tr>
+    			    <td>1</td>
       				<td>5</td>
       				<td>5</td>
       				<td>Measurements and Data - 95%</td>
-      				<td>Operations & Algebraic Thinking - 80%</td>
+      				<td>Operations &amp; Algebraic Thinking - 80%</td>
       				<td>89%</td>
     			  </tr>
-                  <tr class="info">
-                  <td>2</td>
+            <tr class="info">
+              <td>2</td>
       				<td>4</td>
       				<td>2</td>
       				<td>Measurements and Data - 60%</td>
-      				<td>Operations & Algebraic Thinking - 50%</td>
+      				<td>Operations &amp; Algebraic Thinking - 50%</td>
       				<td>55%</td>
     			  </tr>
-                  <tr class="success">
-                  <td>3</td>
-      				<td></td>
-      				<td></td>
-      				<td></td>
-      				<td></td>
+            <tr class="success">
+              <td>3</td>
+      				<td>5</td>
+      				<td>5</td>
+      				<td>Measurements and Data - 70%</td>
+      				<td>Operations &amp; Algebraic Thinking - 40%</td>
+              <td>45%</td>
     			  </tr>
     			</tbody>
     		  </table>
-    		<div class="col-md-6">
+    		<div class="col-md-12">
     	    <h2 class="text-center">Performance by Standard</h2>
               <table class="table table-striped table-hover ">
   				<thead>
@@ -173,12 +173,12 @@ require "controllers/data.php";
 			      <td>Numbers and Opertions - Fractions</td>
                     <td>0</td>
       				<td>0</td>
-      				<td></td>
+      				<td>-</td>
     			  </tr>
     			</tbody>
     		  </table>
     		</div>
-    		<div class="col-md-6">
+    		<div class="col-md-12">
     	    <h2 class="text-center">Mission Performance</h2>
     		  <table class="table table-striped table-hover ">
   				<thead>
@@ -215,6 +215,3 @@ require "controllers/data.php";
 	</div>			  
   <div>			   
 </div>          
-      
-    
-          

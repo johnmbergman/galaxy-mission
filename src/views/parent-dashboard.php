@@ -11,21 +11,21 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <ul class="nav nav-pills nav-stacked">
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
                     <li class="active"><a href="parent-dashboard">My Dashboard</a></li>
                     <li><a href="account-settings">Account Settings</a></li>
                     <li><a href="reports">Student Reports</a></li>
                     <li class="disabled"><a href="#">View Achievements</a></li>
                     <li><a href="contact">Contact Us</a></li>
                     <li><a href="feedback">Send Us Feedback</a></li>
-=======
+<!-- ======= -->
                     <li class="active"><a href="/parent-dashboard/">Parent Dashboard</a></li>
                     <li><a href="/account-settings/">Account Settings</a></li>
                     <li><a href="/reports/">Student Reports</a></li>
                     <li><a href="#">Notifications</a></li>
                     <li><a href="/contact/">Contact Us</a></li>
                     <li><a href="/feedback/">Send Us Feedback</a></li>
->>>>>>> origin/master
+<!-- >>>>>>> origin/master -->
                   </ul>
                 </div>
               </div>  
@@ -34,7 +34,7 @@
               <ul class="nav nav-tabs">
                 <li class="active"><a href="#student1" data-toggle="tab">STUDENT 1's Progress</a></li>
                 <li class="disabled"><a>STUDENT 2's Progress</a></li>
-                <li><a href="register-student">Add a Child</a></li>
+                <li><a href="/register-student/">Add a Child</a></li>
               </ul>
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="student1">

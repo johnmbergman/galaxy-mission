@@ -4,7 +4,6 @@
   Updated: March 28, 2015
   StudentCreationController class for accepting a StudentCreationModel and registering a student account.
 */
-require "data.php";
 
 class StudentCreationController
 {
