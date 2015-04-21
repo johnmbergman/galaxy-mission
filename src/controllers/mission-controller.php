@@ -62,7 +62,129 @@ class MissionController
         $question->answer = rand(2, ($this->model->type_id == "4" ? 5 : 10)) * 2;
         $question->text = "Enter the number that comes next in the sequence: " . ($question->answer - 4) . " " . ($question->answer - 2) . " _";
         break;
+    
+      case "9":	  // comparing counting images
+      	$difference = rand(1, 4);
+      	$image1Count = rand(1, 10);
+      	if ($image1Count < 5)
+      	{
+      		$image2Count = $image1Count + $difference;
+      		$question->answer = 2;
+      	}
+      	else
+      	{
+      		$image2Count = $image1Count - $difference;
+      		$question->answer = 1;
+      	}
+      		      	
+      	$question->text = "Enter 1 if there are more of the first planet and 2 if there are more of the second planet:</br>";
+      	$planets_drawn = 0;
+        while($planets_drawn < $image1Count)
+        {
+          $question->text .= "<img src='../res/earth-dark.png' alt='earth'>";
+          $planets_drawn++;
+        }
+        $planets_drawn = 0;
+        while($planets_drawn < $image2Count)
+        {
+          $question->text .= "<img src='../res/mars.png' alt='mars'>";
+          $planets_drawn++;
+        }
+        break;
+        
+    
+      case "10":	  // addition 1-5
+      case "13":  // addition 1-10
+      	$firstDigit = rand(0, ($this->model->type_id == "10" ? 5 : 10));
+      	$secondDigit = rand(0, ($this->model->type_id == "10" ? 5 : 10));
+      	$question->answer = $firstDigit + $secondDigit;
+      	$question->text = "What does " . ($firstDigit) . " + " . ($secondDigit) . " equal?";
+      	break; 
+      	
+      case "11":   // subtraction 1-5
+      case "14":   // subtraction 1-10
+      	$firstDigit = rand(0, ($this->model->type_id == "11" ? 5 : 10));
+      	$secondDigit = rand(0, ($this->model->type_id == "11" ? 5 : 10));
+      	if ($firstDigit > $secondDigit)
+      	{
+      		$question->answer = $firstDigit - $secondDigit;
+      		$question->text = "What does " . ($firstDigit) . " - " . ($secondDigit) . " equal?";
+      	}
+      	else
+      	{
+      		$question->answer =  $secondDigit - $firstDigit;
+      		$question->text = "What does " . ($secondDigit) . " - " . ($firstDigit) . " equal?";
+      	}
+      	break; 	 
 
+	  case "12":	// fill in the symbol inequality
+	  	$difference = rand(1, 9);
+      	$value1 = rand(1, 10);
+      	if ($value1 - $difference < 0)
+      	{
+      		$value2 = $value1 + $difference;
+      	}
+      	else
+      		$value2 = $value1 - $difference;
+      	if ($value1 > $value2)
+      		$question->answer = 1;
+      	else if ($value1 < $value2)
+      		$question->answer = 2;
+      	else $question->answer = 3;
+      	
+      	$question->text = "Enter the number for the symbol that completes the statement: " . ($value1) . " _ " . ($value2) . "?<br/> 1. >, 2. <, or 3. =";
+      	break;
+/*
+	  case "15":	// algebraic addition
+	  case "17":
+	  	$question_form = rand(1, 2);
+	  	$firstDigit = rand(0, ($this->model->type_id == "15" ? 5 : 10));
+	  	$secondDigit = = rand(0, ($this->model->type_id == "15" ? 5 : 10));
+      	$question->answer = $secondDigit;
+      	if ($question_form == 1)
+      	{
+      		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " + _ = " . ($firstDigit + $secondDigit) . "";
+      	}
+      	else
+      	{
+      		$question->text = "Enter the number that completes the problem: _ + " . ($firstDigit) . " = " . ($firstDigit + $secondDigit) . "";	
+      	}
+      	break;
+      
+      case "16":	// algebraic subtraction
+      case "18":    
+      $question_form = rand(1, 2);
+	  $firstDigit = rand(0, ($this->model->type_id == "16" ? 5 : 10));
+      $secondDigit = rand(0, ($this->model->type_id == "16" ? 5 : 10));
+      if ($firstDigit > $secondDigit)
+      {
+      	if ($question_form == 1)
+      	{
+      		$question->answer=$secondDigit;
+      		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " - _ = " . ($firstDigit - $secondDigit) . "";
+      	}
+      	else
+      	{
+      		$question->answer=$firstDigit;
+      		$question->text = "Enter the number that completes the problem: _ - " . ($secondDigit) . " = " . ($firstDigit - $secondDigit) . "";	
+      	}
+      }
+      else
+      {
+      	if ($question == 1)
+      	{
+      		$question->answer=$secondDigit;
+      		$question->text = "Enter the number that completes the problem: " . ($secondDigit) . " - _ = " . ($secondDigit - $firstDigit) . "";
+      	}
+      	else
+      	{
+      		$question->answer=$firstDigit;
+      		$question->text = "Enter the number that completes the problem: _ - " . ($firstDigit) . " = " . ($secondDigit - $firstDigit) . "";	
+      	}
+      }
+      break;
+*/
+	
       default:
         $question->answer = "1";
         $question->text = "This question type (" . $this->model->type_id . ") has not been implemented! (Answer 1)";
