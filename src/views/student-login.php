@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <div class="row">
           <div class="col-md-6 col-md-offset-3">
             <div class="alert alert-danger">
-              <strong>Oops!</strong> Looks like we couldn't log you in. Make sure you picked the write password icon!
+              <strong>Oops!</strong> Looks like we couldn't log you in. Make sure you picked the right password icon!
             </div>
           </div>
         </div>
