@@ -140,7 +140,6 @@ class MissionController
 	  	$question_form = rand(1, 2);
 	  	$firstDigit = rand(0, ($this->model->type_id == "15" ? 5 : 10));
 	  	$question->answer = rand(0, ($this->model->type_id == "15" ? 5 : 10));
-      	//$question->answer = $secondDigit;
       	if ($question_form == 1)
       	{
       		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " + _ = " . ($firstDigit + $question->answer) . "";

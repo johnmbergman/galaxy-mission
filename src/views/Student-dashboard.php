@@ -44,7 +44,7 @@ while ($row = $result->fetch_assoc())
   <a href="/question/<?php echo $row["question_type_id"]; ?>" class="list-group-item">
     <div class="row">
       <div class="col-sm-10">
-        <img src="../res/parabolic8.png" style="height:4em;width:4em;margin:10px;float:left;" alt="antennas" />
+        <img src="../res/<?php echo $row["question_type_id"]; ?>galaxy.jpg" style="height:6em;width:6em;margin:10px;float:left;" alt="antennas" />
         <h4><u><?php echo $row["name"]; ?></u></h4>
         <p><?php echo $row["description"]; ?></p>
       </div>
