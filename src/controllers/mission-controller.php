@@ -139,15 +139,15 @@ class MissionController
 	  case "17":
 	  	$question_form = rand(1, 2);
 	  	$firstDigit = rand(0, ($this->model->type_id == "15" ? 5 : 10));
-	  	$secondDigit = rand(0, ($this->model->type_id == "15" ? 5 : 10));
-      	$question->answer = $secondDigit;
+	  	$question->answer = rand(0, ($this->model->type_id == "15" ? 5 : 10));
+      	//$question->answer = $secondDigit;
       	if ($question_form == 1)
       	{
-      		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " + _ = " . ($firstDigit + $secondDigit) . "";
+      		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " + _ = " . ($firstDigit + $question->answer) . "";
       	}
       	else
       	{
-      		$question->text = "Enter the number that completes the problem: _ + " . ($firstDigit) . " = " . ($firstDigit + $secondDigit) . "";	
+      		$question->text = "Enter the number that completes the problem: _ + " . ($firstDigit) . " = " . ($firstDigit + $question->answer) . "";	
       	}
       	break;
       
