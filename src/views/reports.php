@@ -15,6 +15,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $controller = new ReportsController($model);
   $assessmentLevel = $controller->getAssessmentLevel();
   $gameLevel = $controller->getGameLevel();
+  $misCompPerc = $controller->CompletionPercentage();
+  $answerPercent = $controller->CorrectPercentage();
  } 
   
 ?>
@@ -78,19 +80,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label class="control-label" for="CurrentLevel">Current Game Level</label>
-                        <input class="form-control" id="disabledInput" type="text" placeholder="The current level the student is at to will show here..." disabled="">
+                        <input class="form-control" id="disabledInput" type="text" value="<?php echo $gameLevel; ?>" disabled="">
                       </div>
                     </div>
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label class="control-label" for="MissionCompletion">Mission Completion %</label>
-                        <input class="form-control" id="disabledInput" type="text" placeholder="The student's completion percentage will show here..." disabled="">
+                        <input class="form-control" id="disabledInput" type="text" value="<?php echo $misCompPerc; ?>" disabled="">
                       </div>
                     </div>
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label class="control-label" for="ProblemPercentage">Correct Answer %</label>
-                        <input class="form-control" id="disabledInput" type="text" placeholder="The student's correct percentage will show here..." disabled="">
+                        <input class="form-control" id="disabledInput" type="text" value="<?php echo $answerPercent; ?>" disabled=""> 
                       </div>
                     </div>
                   </div>
