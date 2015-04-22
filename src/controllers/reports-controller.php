@@ -11,6 +11,49 @@ class ReportsController
     $this->model = $model;
   }
   
+  public function getAssessmentLevel()
+  {
+  	$sql = "select assessment_level from students where student_id = " . ($model->studentid) . ;
+  	
+  	// Attempt to connect to the database
+    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+    if($conn->connect_error)
+    {
+      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
+
+    // Successfully connected to the database. Run the query
+    if($conn->query($sql) == false)
+    {
+      echo "bad sql " . $sql;
+      trigger_error("Failed to register the account");
+    }
+    else 
+    	$result = ($conn->query($sql));
+    	return $result;
+  }
+  
+  public function getGameLevel()
+  {
+  	$sql = "select game_level from students where student_id = " . ($model->studentid) . ;
+  	
+  	// Attempt to connect to the database
+    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+    if($conn->connect_error)
+    {
+      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
+
+    // Successfully connected to the database. Run the query
+    if($conn->query($sql) == false)
+    {
+      echo "bad sql " . $sql;
+      trigger_error("Failed to register the account");
+    }
+    else 
+    	return ($conn->query($sql));
+  }
+    	
   // returns the student's mission completion percentage
   public function CompletionPercentage()
   {

@@ -11,10 +11,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $model = new ReportsModel();
   $model->studentid   = $_POST["studentid"];
-  $model->assessmentLevel = $_POST["assessment_level"];
-  $model->gameLevel = $_POST["game_level"];
   
   $controller = new ReportsController($model);
+  $assessmentLevel = $controller->getAssessmentLevel();
+  $gameLevel = $controller->getGameLevel();
  } 
   
 ?>
@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label class="control-label" for="AssessmentLevel">Assessment Level</label>
-                        <input class="form-control" id="disabledInput" type="text" value="<?php echo $model->assessmentLevel; ?>" disabled="">
+                        <input class="form-control" id="disabledInput" type="text" value="<?php echo $assessmentLevel; ?>" disabled="">
                       </div>
                     </div>
                     <div class="col-sm-3">
