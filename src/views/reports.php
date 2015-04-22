@@ -6,6 +6,17 @@
   and will then generate a report on that student.
 */
 require "controllers/authenticate.php";
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  $model = new ReportsModel();
+  $model->studentid   = $_POST["studentid"];
+  $model->assessmentLevel = $_POST["assessment_level"];
+  $model->gameLevel = $_POST["game_level"];
+  
+  $controller = new ReportsController($model);
+ } 
+  
 ?>
 
 <div class="container-fluid">
@@ -28,7 +39,7 @@ require "controllers/authenticate.php";
                       <h4>Student:</h4>
                     </div>
                     <div class="col-sm-9">
-                      <select class="form-control" id="studentSelect">
+                      <select name="studentid" class="form-control" id="studentSelect">
                       <?php
                       
                         // Open the connection 
@@ -38,7 +49,7 @@ require "controllers/authenticate.php";
                         }
                         
                         // Run the command
-                        if($result = $conn->query("SELECT student_id, first_name, last_name FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+                        if($result = $conn->query("SELECT student_id, first_name, last_name, assessment_level, game_level FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
                           while ($row = $result->fetch_assoc()) {
                             echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
                           }
@@ -140,7 +151,7 @@ require "controllers/authenticate.php";
                   <!-- Performance by Standard -->
                   <div class="row">
                     <div class="col-lg-12">
-                      <h2>Performance by standard</h2>
+                      <h2>Performance by subject</h2>
                       <table class="table table-striped table-hover ">
                         <thead>
                           <tr>
@@ -152,40 +163,34 @@ require "controllers/authenticate.php";
                         </thead>
                         <tbody>
                           <tr>
-                            <td>Counting & Cardinality</td>
+                            <td>Counting</td>
                             <td>1</td>
                             <td>1</td>
                             <td>95%</td>
                           </tr>
                           <tr>
-                            <td>Operations & Algebraic Thinking</td>
+                            <td>Missing Numbers</td>
                             <td>3</td>
                             <td>2</td>
                             <td>89%</td>
                           </tr>
                           <tr>
-                            <td>Numbers and Operations in Base 10</td>
+                            <td>Inequalities</td>
                             <td>3</td>
                             <td>2</td>
                             <td>82%</td>
                           </tr>
                           <tr>
-                            <td>Measurements and Data</td>
+                            <td>Addition</td>
                             <td>2</td>
                             <td>2</td>
                             <td>88</td>
                           </tr>
                           <tr>
-                          <td>Geometry</td>
+                          <td>Subtraction</td>
                             <td>2</td>
                             <td>2</td>
                             <td>90</td>
-                          </tr>
-                          <tr>
-                            <td>Numbers and Opertions - Fractions</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>-</td>
                           </tr>
                         </tbody>
                       </table>
