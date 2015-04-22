@@ -1,5 +1,5 @@
 <?php $currentpage = $_GET["page"]; ?>
-<a href="tell-friend"><img class="img-responsive-dash" src="/../res/tell-friend.jpg" /></a>
+<a href="/tell-friend/"><img class="img-responsive-dash" src="/../res/tell-friend.jpg" /></a>
 <div class="panel panel-default">
   <div class="panel-body">
     <ul class="nav nav-pills nav-stacked">
