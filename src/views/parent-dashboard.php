@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-sm-9">
                               <div class="progress" style="width: 75%">
-                                <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+                                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
                                 <div class="progress-bar" style="width: 55%"></div>
                                 <div class="progress-bar progress-bar-danger" style="width: 25%"></div>
                               </div>
@@ -87,9 +87,33 @@
                             </div>
                             <div class="col-sm-9">
                               <div class="progress" style="width: 75%">
-                                <div class="progress-bar progress-bar-info" style="width: 10%"></div>
-                                <div class="progress-bar" style="width: 25%"></div>
-                                <div class="progress-bar progress-bar-danger" style="width: 65%"></div>
+                                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
+                                <div class="progress-bar" style="width: 0%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="progress-label">2nd Grade:</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <div class="progress" style="width: 75%">
+                                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
+                                <div class="progress-bar" style="width: 0%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="progress-label">3rd Grade:</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <div class="progress" style="width: 75%">
+                                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
+                                <div class="progress-bar" style="width: 0%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
                               </div>
                             </div>
                           </div>
