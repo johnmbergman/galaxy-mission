@@ -23,7 +23,7 @@
       $email = $_REQUEST['email'];
       $subj = $_REQUEST['subject'];
       $message = $_REQUEST['message'];
-      $from = $from = "From: ". $name . " <" . $email . ">\r";
+      $from = "From: ". $name . " <" . $email . ">\r";
       if (mail($email_to, $subj, $message, $from)) {
         $confirm = "<div class='alert alert-success'><strong>Thank you for sending us your feedback!</strong></div>";
       } else {
