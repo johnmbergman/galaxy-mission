@@ -134,12 +134,12 @@ class MissionController
       	
       	$question->text = "Enter the number for the symbol that completes the statement: " . ($value1) . " _ " . ($value2) . "?<br/> 1. >, 2. <, or 3. =";
       	break;
-/*
+//
 	  case "15":	// algebraic addition
 	  case "17":
 	  	$question_form = rand(1, 2);
 	  	$firstDigit = rand(0, ($this->model->type_id == "15" ? 5 : 10));
-	  	$secondDigit = = rand(0, ($this->model->type_id == "15" ? 5 : 10));
+	  	$secondDigit = rand(0, ($this->model->type_id == "15" ? 5 : 10));
       	$question->answer = $secondDigit;
       	if ($question_form == 1)
       	{
@@ -173,17 +173,17 @@ class MissionController
       {
       	if ($question == 1)
       	{
-      		$question->answer=$secondDigit;
+      		$question->answer=$firstDigit;
       		$question->text = "Enter the number that completes the problem: " . ($secondDigit) . " - _ = " . ($secondDigit - $firstDigit) . "";
       	}
       	else
       	{
-      		$question->answer=$firstDigit;
+      		$question->answer=$secondDigit;
       		$question->text = "Enter the number that completes the problem: _ - " . ($firstDigit) . " = " . ($secondDigit - $firstDigit) . "";	
       	}
       }
       break;
-*/
+//
 	
       default:
         $question->answer = "1";
