@@ -90,9 +90,9 @@ class ReportsController
     }
 
   // Successfully connected to the database. Run the query
-    if($conn->query($sql1) == false)
+    if($conn->query($sql) == false)
     {
-      echo "bad sql " . $sql1;
+      echo "bad sql " . $sql;
       trigger_error("Failed to register the account");
     }
     else 
@@ -102,7 +102,7 @@ class ReportsController
 	
   public function MissionCompleteByLevel($gradeLevel)
   {
-  	$sql ="count (distinct mission_id) from question_type join student_mission_record on question_type_id where question_type_id.grade_level = ".($gradeLevel)." and student_mission_record.student_id = ".($this->model->studentid)." and student_mission_record.number_correct > 7";
+  	$sql ="count (distinct question_type_id) from question_type join student_mission_record on question_type_id where question_type_id.grade_level = ".($gradeLevel)." and student_mission_record.student_id = ".($this->model->studentid)." and student_mission_record.number_correct > 7";
   	
   	// Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -112,9 +112,9 @@ class ReportsController
     }
 
   // Successfully connected to the database. Run the query
-    if($conn->query($sql1) == false)
+    if($conn->query($sql) == false)
     {
-      echo "bad sql " . $sql1;
+      echo "bad sql " . $sql;
       trigger_error("Failed to register the account");
     }
     else 
@@ -125,7 +125,7 @@ class ReportsController
   public function LevelCorrectPercentage($gradeLevel)
   {
     $sql1 = "select sum(number_correct) from student_mission_record join question_type on question_type_id where student_mission_record.student_id = ".($this-model->studentid)." and question_type.grade_level = ".($gradeLevel). "";
-  	$sql2 = "select count(*) from student_mission_record join question_type on question_type_id where student_mission_record.student_id = ".($this->model->studentid)." and question_type_id.grade_level = ".($gradeLevel)."";
+  	$sql2 = "select count(*) from student_mission_record join question_type on question_type_id where student_mission_record.student_id = ".($this->model->studentid)." and question_type.grade_level = ".($gradeLevel)."";
   	
   	// Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -154,8 +154,79 @@ class ReportsController
     return (100*($questionsCorrect/$questionsAttempted));
   }
 	
+  public function MissionsAttemptedBySubject($subject)
+  {
+  	$sql = "select count(distinct question_type_id) from student_mission_record join question_type on question_type_id where student_mission_record.student_id = ".($this->model->studentid)." and question_type.subject_code = " .($subject). "";
+  	// Attempt to connect to the database
+    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+    if($conn->connect_error)
+    {
+      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
+
+  // Successfully connected to the database. Run the query
+    if($conn->query($sql) == false)
+    {
+      echo "bad sql " . $sql;
+      trigger_error("Failed to register the account");
+    }
+    else 
+    	$result = $conn->query($sql);
+    	return ($result);
+  }
+  
+  public function MissionsCompletedBySubject($subject)
+  {
+  	$sql = "select count(distinct question_type_id) from student_mission_record join question_type on question_type_id where student_mission_record.student_id = ".($this->model->studentid)." and student_mission_record.number_correct > 7 and question_type.subject_code = " .($subject). "";
+  	// Attempt to connect to the database
+    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+    if($conn->connect_error)
+    {
+      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
+
+  // Successfully connected to the database. Run the query
+    if($conn->query($sql) == false)
+    {
+      echo "bad sql " . $sql;
+      trigger_error("Failed to register the account");
+    }
+    else 
+    	$result = $conn->query($sql);
+    	return ($result);
+  }
 	
-	
+  public function CorrectPercentageBySubject($subject)
+  {
+    $sql1 = "select sum(number_correct) from student_mission_record join question_type on question_type_id where student_mission_record.student_id = ".($this-model->studentid)." and question_type.subject_code = ".($subject). "";
+    $sql2 = "select count(*) from student_mission_record join question_type on question_type_id where student_mission_record.student_id = ".($this->model->studentid)." and question_type.subject_code = ".($subject)."";
+    
+    // Attempt to connect to the database
+    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+    if($conn->connect_error)
+    {
+      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
+
+  // Successfully connected to the database. Run the query
+    if($conn->query($sql1) == false)
+    {
+      echo "bad sql " . $sql1;
+      trigger_error("Failed to register the account");
+    }
+    else 
+      $questionsCorrect = $conn->query($sql1);
+    
+    if($conn->query($sql2) == false)
+    {
+      echo "bad sql " . $sql2;
+      trigger_error("Failed to register the account");
+    }
+    else
+      $questionsAttempted = ($conn->query($sql2) * 10);
+      
+    return (100*($questionsCorrect/$questionsAttempted));
+  }
 ?>
     
     

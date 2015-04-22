@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label class="control-label" for="AssessmentLevel">Assessment Level</label>
-                        <input class="form-control" id="disabledInput" type="text" placeholder="The level the student assessed to will show here..." disabled="">
+                        <input class="form-control" id="disabledInput" type="text" value="<?php echo $model->assessmentLevel; ?>" disabled="">
                       </div>
                     </div>
                     <div class="col-sm-3">
@@ -158,7 +158,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             <th>Standard</th>
                             <th>Number of missions attempted</th>
                             <th>Number of missions completed</th>
-                            <th>Overall level % correct</th>
+                            <th>Overall subject % correct</th>
                           </tr>
                         </thead>
                         <tbody>
