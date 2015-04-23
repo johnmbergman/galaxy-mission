@@ -7,10 +7,10 @@
 */
 require "controllers/authenticate.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
+if($_SERVER["REQUEST_METHOD"] == "GET")
 {
   $model = new ReportsModel();
-  $model->studentid   = $_POST["studentid"];
+  $model->studentid = $_GET["studentid"];
   
   $controller = new ReportsController($model);
   $assessmentLevel = $controller->getAssessmentLevel();
@@ -41,26 +41,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                       <h4>Student:</h4>
                     </div>
                     <div class="col-sm-9">
-                      <select name="studentid" class="form-control" id="studentSelect">
-                      <?php
-                      
-                        // Open the connection 
-                        $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
-                        if($conn->connect_error) {
-                          trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
-                        }
-                        
-                        // Run the command
-                        if($result = $conn->query("SELECT student_id, first_name, last_name, assessment_level, game_level FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
-                          while ($row = $result->fetch_assoc()) {
-                            echo "<option val='" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                      <select class="form-control" id="studentSelect" onchange="location=this.options[this.selectedIndex].value;">
+                        <?php if(!isset($_GET["studentid"])) echo "<option value='#'>Select a student...</option>"; ?>
+                        <?php
+
+                          // Open the connection
+                          $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+                          if($conn->connect_error) {
+                            trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
                           }
-                        }
 
-                        // Close the connection
-                        $conn->close();
+                          // Run the command
+                          if($result = $conn->query("SELECT student_id, first_name, last_name, grade_level FROM students WHERE parent_id = " . $_SESSION["user_id"])) {
+                            while ($row = $result->fetch_assoc()) {
+                              if(isset($_GET["studentid"]))
+                              {
+                                if($_GET["studentid"] == $row["student_id"])
+                                {
+                                  $student_first_name = $row["first_name"];
+                                  $student_last_name = $row["last_name"];
+                                  $student_grade = $row["grade_level"];
+                                }
+                                echo "<option value='/reports/" . $row["student_id"] . "' " . ($_GET["studentid"]==$row["student_id"] ? "selected" : "") . ">" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                              }
+                              else
+                              {
+                                echo "<option value='/reports/" . $row["student_id"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                              }
+                            }
+                          }
 
-                      ?>
+                          // Close the connection
+                          $conn->close();
+
+                        ?>
                       </select>
                     </div>
                   </div>
@@ -114,7 +128,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         <tbody>
                           <tr>
                             <td>K</td>
-                            <td>5</td>
+                            <td><?php echo $controller->MissionsAttemptedByLevel(0) ;?></td>
                             <td>5</td>
                             <td>Counting &amp; Cardinality - 95%</td>
                             <td>Operations &amp; Algebraic Thinking - 80%</td>

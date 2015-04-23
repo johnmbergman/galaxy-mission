@@ -7,6 +7,7 @@ require_once("controllers/registration-controller.php");
 require_once("controllers/student-creation-controller.php");
 require_once("controllers/student-info-controller.php");
 require_once("controllers/student-login-controller.php");
+require_once("controllers/reports-controller.php");
 
 // MODELS
 require_once("models/login-model.php");
@@ -17,6 +18,6 @@ require_once("models/registration-model.php");
 require_once("models/student-creation-model.php");
 require_once("models/student-info-model.php");
 require_once("models/student-login-model.php");
-
-
+require_once("models/reports-model.php");
+require_once("models/dashboard-data-model.php");
 ?>
