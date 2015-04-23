@@ -121,7 +121,6 @@ class ReportsController
     }
     else
       $questionsAttempted = $conn->query($sql2)->fetch_array(MYSQLI_NUM)[0];
-      echo $questionsAttempted;
     if ($questionsAttempted != 0)
     {
       return (100*($questionsCorrect/$questionsAttempted));
