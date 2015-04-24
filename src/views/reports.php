@@ -10,7 +10,7 @@ require "controllers/authenticate.php";
 if($_SERVER["REQUEST_METHOD"] == "GET")
 {
   $model = new ReportsModel();
-  $model->studentid = $_GET["studentid"];
+  if(isset($_GET["studentid"]))$model->studentid = $_GET["studentid"];
   
   $controller = new ReportsController($model);
   $assessmentLevel = $controller->getAssessmentLevel();
@@ -121,42 +121,37 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                           <th>Level</th>
                           <th># Missions Attempted</th>
                           <th># Missions Completed</th>
-                          <th>Best Mission</th>
-                          <th>Needs Most Improvement</th>
+                          <th>Missions not completed</th>
                           <th>Overall level % correct</th>
                         </thead>
                         <tbody>
                           <tr>
                             <td>K</td>
                             <td><?php echo $controller->MissionsAttemptedByLevel(0) ;?></td>
-                            <td>5</td>
-                            <td>Counting &amp; Cardinality - 95%</td>
-                            <td>Operations &amp; Algebraic Thinking - 80%</td>
-                            <td>89%</td>
+                            <td><?php echo $controller->MissionsCompletedByLevel(0) ;?></td>
+                            <td><?php $controller->UncompletedMissionsByLevel(0);?></td>
+                            <td><?php echo $controller->LevelCorrectPercentage(0) ;?></td>
                           </tr>
                           <tr>
                             <td>1</td>
-                            <td>5</td>
-                            <td>5</td>
-                            <td>Measurements and Data - 95%</td>
-                            <td>Operations &amp; Algebraic Thinking - 80%</td>
-                            <td>89%</td>
+                            <td><?php echo $controller->MissionsAttemptedByLevel(1) ;?></td>
+                            <td><?php echo $controller->MissionsCompletedByLevel(1) ;?></td>
+                            <td><?php $controller->UncompletedMissionsByLevel(1);?></td>
+                             <td><?php echo $controller->LevelCorrectPercentage(1) ;?></td>
                           </tr>
                           <tr>
                             <td>2</td>
-                            <td>4</td>
-                            <td>2</td>
-                            <td>Measurements and Data - 60%</td>
-                            <td>Operations &amp; Algebraic Thinking - 50%</td>
-                            <td>55%</td>
+                            <td><?php echo $controller->MissionsAttemptedByLevel(2) ;?></td>
+                            <td><?php echo $controller->MissionsCompletedByLevel(2) ;?></td>
+                            <td><?php $controller->UncompletedMissionsByLevel(2);?></td>
+                            <td><?php echo $controller->LevelCorrectPercentage(2) ;?></td>
                           </tr>
                           <tr>
                             <td>3</td>
-                            <td>5</td>
-                            <td>5</td>
-                            <td>Measurements and Data - 70%</td>
-                            <td>Operations &amp; Algebraic Thinking - 40%</td>
-                            <td>45%</td>
+                            <td><?php echo $controller->MissionsAttemptedByLevel(3) ;?></td>
+                            <td><?php echo $controller->MissionsCompletedByLevel(3) ;?></td>
+                            <td><?php $controller->UncompletedMissionsByLevel(3);?></td>
+                           <td><?php echo $controller->LevelCorrectPercentage(3) ;?></td>
                           </tr>
                         </tbody>
                       </table>
@@ -180,39 +175,40 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                         <tbody>
                           <tr>
                             <td>Counting</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>95%</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(1);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(1);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(1);?></td>
                           </tr>
                           <tr>
                             <td>Missing Numbers</td>
-                            <td>3</td>
-                            <td>2</td>
-                            <td>89%</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(2);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(2);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(2);?></td>
                           </tr>
                           <tr>
                             <td>Inequalities</td>
-                            <td>3</td>
-                            <td>2</td>
-                            <td>82%</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(3);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(3);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(3);?></td>
                           </tr>
                           <tr>
                             <td>Addition</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>88</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(4);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(4);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(4);?></td>
                           </tr>
                           <tr>
                           <td>Subtraction</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>90</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(5);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(5);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(5);?></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
                   <hr/>
+
 
                   <!-- Mission Performance -->
                   <div class="row">
@@ -224,25 +220,36 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                             <th>Mission Name</th>
                             <th># Attempts</th>
                             <th>Average Score</th>
-                            <th># Attempts to Complete</th>
                             <th>High Score</th>
                           </tr>
                         </thead>
                         <tbody>
+                        <?php
+
+						  // Attempt to connect to the database
+						  $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+						  if($conn->connect_error)
+						  {
+							  trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+						  }
+
+						  $i = 0;
+						  while ($i <= $controller->HighestMissionAttempted())
+						  {
+  							if ($controller->MissionAttempted($i))
+    						  {?>
+                        
                           <tr>
-                            <th>Count the stars</th>
-                            <th>2</th>
-                            <th>95%</th>
-                            <th>1</th>
-                            <th>100%</th>
+                            <td><?php $controller->GetMissionName($i);?></td>
+                            <td><?php echo $controller->AttemptsByMission($i);?></td>
+                            <td><?php echo $controller->AvgMissionScore($i);?></td>
+                            <td><?php echo $controller->MissionHighScore($i);?></td>
                           </tr>
-                          <tr>
-                            <th>Moon station flight</th>
-                            <th>3</th>
-                            <th>85%</th>
-                            <th>2</th>
-                            <th>100%</th>
-                          </tr>
+    					
+    					  <?php }
+    					    $i = $i + 1;
+    					   } ?>
+    
                         </tbody>
                       </table> 
                     </div>
