@@ -56,6 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <input type="password" name="password" class="form-control" id="input-pass" placeholder="Password">
           </div>
         </div>
+        <p>Forgot your password? <a href="/forgot-password/">Click here</a> to reset password!</p>
         <div class="form-group">
           <div class="col-md-9 col-md-offset-3">
             <button type="submit" class="btn btn-primary">Sign in</button>
