@@ -1,4 +1,20 @@
 <?php require "controllers/authenticate.php"; ?>
+<?php
+
+  if($_SERVER["REQUEST_METHOD"] == "GET") {
+    $model = new DashboardDataModel();
+    if(isset($_GET["studentid"]))$model->studentid = $_GET["studentid"];
+  
+    $controller = new DashboardController($model);
+    $kinderProgress = $controller->getKinderPercentComplete();
+    $firstProgress = $controller->getFirstPercentComplete();
+    $secondProgress = $controller->getSecondPercentComplete();
+    $thirdProgress = $controller->getThirdPercentComplete();
+    $starsEarned = $controller->getStarsEarned();
+  }
+
+?>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
@@ -76,7 +92,7 @@
                             <div class="col-sm-9">
                               <div class="progress" style="width: 75%">
                                 <div class="progress-bar progress-bar-info" style="width: 0%"></div>
-                                <div class="progress-bar" style="width: 55%"></div>
+                                <div class="progress-bar" style="width: <?php echo $kinderProgress; ?>%"></div>
                                 <div class="progress-bar progress-bar-danger" style="width: 25%"></div>
                               </div>
                             </div>
@@ -88,7 +104,7 @@
                             <div class="col-sm-9">
                               <div class="progress" style="width: 75%">
                                 <div class="progress-bar progress-bar-info" style="width: 0%"></div>
-                                <div class="progress-bar" style="width: 0%"></div>
+                                <div class="progress-bar" style="width: <?php echo $firstProgress; ?>%"></div>
                                 <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
                               </div>
                             </div>
@@ -99,7 +115,7 @@
                             </div>
                             <div class="col-sm-9">
                               <div class="progress" style="width: 75%">
-                                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
+                                <div class="progress-bar progress-bar-info" style="<?php echo $secondProgress; ?>%"></div>
                                 <div class="progress-bar" style="width: 0%"></div>
                                 <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
                               </div>
@@ -111,7 +127,7 @@
                             </div>
                             <div class="col-sm-9">
                               <div class="progress" style="width: 75%">
-                                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
+                                <div class="progress-bar progress-bar-info" style="<?php echo $thirdProgress; ?>%"></div>
                                 <div class="progress-bar" style="width: 0%"></div>
                                 <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
                               </div>
@@ -125,27 +141,26 @@
                         <div class="col-sm-4">
                           <h5 class="dash-header">Progress Summary</h5>
                           <p><small>Number of Missions Completed: 0</small></p>
-                          <p><small>Total Curriculum Units Completed: 0</small></p>
-                          <p><small>Number of Stars Earned: 0</small></p>
-                          <p><small>STUDENT began his/her intergalactic journey on DATE</small></p>
-                          <p><small>He/she has played Galaxy Mission for xx hours and xx minutes</small></p>
+                          <p><small>Number of Stars Earned: <?php echo $starsEarned; ?></small></p>
+                          <p><small><?php echo htmlentities($_SESSION['firstname']); ?> began his/her intergalactic journey on DATE</small></p>
+                          <p><small><?php echo htmlentities($_SESSION['firstname']); ?> has played Galaxy Mission for xx hours and xx minutes</small></p>
                         </div>
                       </div>
                       <hr/>
                       <div class="row">
                         <div class="col-sm-4">
-                          <h6 class="dash-col-header">What is STUDENT currently learning?</h6>
-                          <p><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus.</p>
+                          <h6 class="dash-col-header">What is <?php echo htmlentities($_SESSION['firstname']); ?> currently learning?</h6>
+                          <p><small><?php echo htmlentities($_SESSION['firstname']); ?> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus.</p>
                           <p><a href="#">Learn More</a></small></p>
                         </div>
                         <div class="col-sm-4">
-                          <h6 class="dash-col-header">What has STUDENT recently learned?</h6>
-                          <p><small>STUDENT has learned strategies to add numbers from 1 to 10 using pictures.</p>
+                          <h6 class="dash-col-header">What has <?php echo htmlentities($_SESSION['firstname']); ?> recently learned?</h6>
+                          <p><small><?php echo htmlentities($_SESSION['firstname']); ?> has learned strategies to add numbers from 1 to 10 using pictures.</p>
                           <p><a href="#">Learn More</a></small></p>
                         </div>
                         <div class="col-sm-4">
-                          <h6 class="dash-col-header">What will STUDENT learn next?</h6>
-                          <p><small>STUDENT will learn how to add numbers 1-10 without using visuals.</p>
+                          <h6 class="dash-col-header">What will <?php echo htmlentities($_SESSION['firstname']); ?> learn next?</h6>
+                          <p><small><?php echo htmlentities($_SESSION['firstname']); ?> will learn how to add numbers 1-10 without using visuals.</p>
                           <p><a href="#">Learn More</a></small></p>
                         </div>
                       </div>
