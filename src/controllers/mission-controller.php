@@ -23,8 +23,8 @@ class MissionController
     //$question->type_id = $this->model->type_id;
 
     // For now, we just have a dummy queston
-    switch ($this->model->type_id) {
-
+    switch ($this->model->type_id)
+    {
       case "1":   // Counting images [0-10]
         $question->answer = rand(1, 10);
         $question->text = "How many planets do you see?<br/>";
@@ -39,7 +39,8 @@ class MissionController
 
       case "2":   // Counting numbers 1-10 and sequence counting by 2s, 5s and 10s
       	$questionType = rand (1, 4);
-      	switch ($questionType)
+      	switch ($questionType){
+      	
       		case "1":
         		$question->answer = rand(3, 20);
         		$question->text = "Enter the number that comes next: " . ($question->answer - 3) . " " . ($question->answer - 2) . " " . ($question->answer-1) . " _";
@@ -59,17 +60,17 @@ class MissionController
         		$question->answer = rand(3, 10) * 10;
         		$question->text = "Enter the number that comes next in the sequence: " . ($question->answer - 30) . " " . ($question->answer - 20) . " " . ($question->answer - 10) . " _";
         		break;
-        		
+        	}
         break;
 				
 
       case "3":   // Missing numbers (sequence) [0-20] and in step counting 2-20, 5-100 and 10-100
       	$questionType = rand(1, 4);
-      	switch ($questionType)
+      	switch ($questionType){
       		case "1":
         		$question->answer = rand(3, 17);
-        		$answerPosition = rand(1,3)
-        		switch ($answerPosition)
+        		$answerPosition = rand(1,3);
+        		switch ($answerPosition){
         			case "1":
         				$question->text = "Enter the missing number: ";
         				$question->text .= ($question->answer - 1)." ";
@@ -96,13 +97,13 @@ class MissionController
         				$question->text = "_ ";
         				$question->text .= ($question->answer + 1)." ";
         				break;
-        			
+        			}
         		break;
         		
         	case "2":
         		$question->answer = rand(3, 17) *2 ;
-        		$answerPosition = rand(1,3)
-        		switch ($answerPosition)
+        		$answerPosition = rand(1,3);
+        		switch ($answerPosition){
         			case "1":
         				$question->text = "Enter the missing number: ";
         				$question->text .= ($question->answer - 2)." ";
@@ -129,13 +130,13 @@ class MissionController
         				$question->text = "_ ";
         				$question->text .= ($question->answer + 2)." ";
         				break;
-        			
+        			}
         		break;
         	
         	case "3":
         		$question->answer = rand(3, 17) * 5 ;
-        		$answerPosition = rand(1,3)
-        		switch ($answerPosition)
+        		$answerPosition = rand(1,3);
+        		switch ($answerPosition){
         			case "1":
         				$question->text = "Enter the missing number: ";
         				$question->text .= ($question->answer - 5)." ";
@@ -162,13 +163,13 @@ class MissionController
         				$question->text = "_ ";
         				$question->text .= ($question->answer + 5)." ";
         				break;
-        			
+        			}
         		break;
         	
         	case "4":
         		$question->answer = rand(3, 7) * 10 ;
-        		$answerPosition = rand(1,3)
-        		switch ($answerPosition)
+        		$answerPosition = rand(1,3);
+        		switch ($answerPosition){
         			case "1":
         				$question->text = "Enter the missing number: ";
         				$question->text .= ($question->answer - 10)." ";
@@ -195,13 +196,11 @@ class MissionController
         				$question->text = "_ ";
         				$question->text .= ($question->answer + 10)." ";
         				break;
-        			
+        			}
         		break;
-        		
+        		}	
         	break;
 
-		break;
-    
       case "4":	  // addition 1-5
       case "7":  // addition 1-20
       	$firstDigit = rand(0, ($this->model->type_id == "10" ? 5 : 20));
@@ -228,7 +227,7 @@ class MissionController
 
 	  case "6":  // inequalities
 	  	$questionType = rand(1, 2);
-      	switch ($questionType)
+      	switch ($questionType){
       	
       		case "1": 	  // comparing counting images
       			$difference = rand(1, 4);
@@ -269,12 +268,12 @@ class MissionController
       			else $question->answer = 3;
      	 			$question->text = "Enter the number for the symbol that completes the statement: " . ($value1) . " _ " . ($value2) . "?<br/> 1. >, 2. <, or 3. =";
      		 	break;
-     		 	
-     	break;
+     		 }
+     		break;
      		 	
      case "9": // add or subtract with 3 whole numbers whose sum is less than or equal to 20
     	$firstNumber = rand(1, 18);
-     	$secondNumber = rand(1, (19 - $firstNumber);
+     	$secondNumber = rand(1, (19 - $firstNumber));
      	$thirdNumber = rand(1, (20 - $firstNumber - $secondNumber));
      	$questionFormat = rand(1, 2);
      	if ($questionFormat == 1)
@@ -362,7 +361,7 @@ class MissionController
         
     case "13":   // Counting numbers 100-1000 and sequence counting by 2s, 5s and 10s
       	$questionType = rand (1, 4);
-      	switch ($questionType)
+      	switch ($questionType){
       		case "1":
         		$question->answer = rand(100, 1000);
         		$question->text = "Enter the number that comes next: " . ($question->answer - 3) . " " . ($question->answer - 2) . " " . ($question->answer-1) . " _";
@@ -382,7 +381,7 @@ class MissionController
         		$question->answer = (rand(3, 10) * 100);
         		$question->text = "Enter the number that comes next in the sequence: " . ($question->answer - 300) . " " . ($question->answer - 200) . " " . ($question->answer - 100) . " _";
         		break;
-        		
+        	}
         break;
         
     case "14":  // fill in the symbol inequality
@@ -401,7 +400,7 @@ class MissionController
      case "15":	// adding by 10s and 100s
      	$firstDigit = rand(100, 900);
      	$format = rand(1, 2);
-     	switch($format)
+     	switch($format){
      		case "1":
       			$secondDigit = rand(1, 9) * 10;
       			$question->answer = $firstDigit + $secondDigit;
@@ -409,11 +408,11 @@ class MissionController
       			break;
      		 	
      		case "2":
-     			$secondDigit = rand(100, (1000 - $firstDigit);
+     			$secondDigit = rand(100, (1000 - $firstDigit));
      			$question->answer = $firstDigit + $secondDigit;
       			$question->text = "What does " . ($firstDigit) . " + " . ($secondDigit) . " equal?";
       			break;
-    	
+    		}
     	break;
     	
 	case "16":	// multiply within 100
@@ -423,7 +422,7 @@ class MissionController
 		else
 			$secondNumber = rand(1, 5);
 		$question->answer = $firstNumber * $secondNumber;
-		$question->text =  . ($firstDigit) . " x " . ($secondDigit) . " =";
+		$question->text =  . ($firstNumber) . " x " . ($secondNumber) . " =";
 		break;
 		
 	case "17":	// divide within 100
@@ -434,7 +433,7 @@ class MissionController
 			$secondNumber = rand(1, 5);
 		$question->answer = $secondNumber;
 		$dividend = $firstNumber * $secondNumber;
-		$question->text =  . ($dividend) . " &divide " . ($firstDigit) . " = ";
+		$question->text =  . ($dividend) . " &divide " . ($firstNumber) . " = ";
 		break;
 		
 	case "18":  //  algebraic multiplication
@@ -448,11 +447,11 @@ class MissionController
 		$question->answer = $secondNumber;
       	if ($question_form == 1)
       	{
-      		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " x _ = " . ($product);
+      		$question->text = "Enter the number that completes the problem: " . ($firstNumber) . " x _ = " . ($product);
       	}
       	else
       	{
-      		$question->text = "Enter the number that completes the problem: _ x " . ($firstDigit) . " = " . ($product);	
+      		$question->text = "Enter the number that completes the problem: _ x " . ($firstNumber) . " = " . ($product);	
       	}
       	break;
       	
@@ -471,8 +470,8 @@ class MissionController
         $question->answer = "1";
         $question->text = "This question type (" . $this->model->type_id . ") has not been implemented! (Answer 1)";
         break;
-    }
-
+    
+	}
     // Set the current question to the generated question
     return $question;
   }
