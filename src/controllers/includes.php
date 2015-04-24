@@ -8,6 +8,7 @@ require_once("controllers/student-creation-controller.php");
 require_once("controllers/student-info-controller.php");
 require_once("controllers/student-login-controller.php");
 require_once("controllers/reports-controller.php");
+require_once("controllers/dashboard-controller.php");
 
 // MODELS
 require_once("models/login-model.php");
