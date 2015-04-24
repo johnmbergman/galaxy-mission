@@ -3,7 +3,32 @@
 	Updated 4/14/15
 	Student dashboard
 -->
+<?php
+public function MissionCompleted($question_type_id)
+  {
+  	$sql = "select count(*) from student_mission_record join question_type on student_mission_record.question_type_id=question_type.question_type_id where student_mission_record.student_id=".($this->model->studentid)." and question_type.question_type_id=".($question_type_id)." and student_mission_record.number_correct between 8 and 10";
+  	
+  	// Attempt to connect to the database
+    $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
+    if($conn->connect_error)
+    {
+      trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
 
+  // Successfully connected to the database. Run the query
+    if($conn->query($sql) == false)
+    {
+      echo "bad sql " . $sql;
+      trigger_error("Failed to register the account");
+    }
+    else 
+      echo ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+      if (($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]) > 0)
+        return true;
+      else
+        return false;
+  }?>
+  
 <!-- Page Header -->
 <div class="row">
   <div class="col-lg-12">
@@ -49,7 +74,10 @@ while ($row = $result->fetch_assoc())
         <p><?php echo $row["description"]; ?></p>
       </div>
       <div class="col-sm-2">
-        <!-- Completion Status goes here -->
+        <?php if MissionCompleted($row["question_type_id"])
+        	
+        	echo <img src="../res/green-check.png" style="height:4em;width:4em;margin:10px;float:right;" alt="checkmark">;
+        	 ?>
       </div>
     </div>
   </a>
