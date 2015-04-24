@@ -2,6 +2,7 @@
 /*
   Adam Hill
   HTML Created: April 10, 2015
+  PHP updated: 4/23/15
   This page will offer a parent or teacher a dropdown menu to select their student from 
   and will then generate a report on that student.
 */
@@ -24,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Student Reports <small>Sample</small></h2>
+      <h2>Student Reports</h2>
       <div class="panel-primary">
         <div class="panel-body">
           <div class="row">
@@ -121,7 +122,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                           <th>Level</th>
                           <th># Missions Attempted</th>
                           <th># Missions Completed</th>
-                          <th>Missions not completed</th>
+                          <th>Completed Missions</th>
+                          <th>Uncompleted Missions</th>
                           <th>Overall level % correct</th>
                         </thead>
                         <tbody>
@@ -129,6 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                             <td>K</td>
                             <td><?php echo $controller->MissionsAttemptedByLevel(0) ;?></td>
                             <td><?php echo $controller->MissionsCompletedByLevel(0) ;?></td>
+                            <td><?php $controller->CompletedMissionsByLevel(0);?></td>
                             <td><?php $controller->UncompletedMissionsByLevel(0);?></td>
                             <td><?php echo $controller->LevelCorrectPercentage(0) ;?></td>
                           </tr>
@@ -136,6 +139,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                             <td>1</td>
                             <td><?php echo $controller->MissionsAttemptedByLevel(1) ;?></td>
                             <td><?php echo $controller->MissionsCompletedByLevel(1) ;?></td>
+                            <td><?php $controller->CompletedMissionsByLevel(1);?></td>
                             <td><?php $controller->UncompletedMissionsByLevel(1);?></td>
                              <td><?php echo $controller->LevelCorrectPercentage(1) ;?></td>
                           </tr>
@@ -143,6 +147,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                             <td>2</td>
                             <td><?php echo $controller->MissionsAttemptedByLevel(2) ;?></td>
                             <td><?php echo $controller->MissionsCompletedByLevel(2) ;?></td>
+                            <td><?php $controller->CompletedMissionsByLevel(2);?></td>
                             <td><?php $controller->UncompletedMissionsByLevel(2);?></td>
                             <td><?php echo $controller->LevelCorrectPercentage(2) ;?></td>
                           </tr>
@@ -150,6 +155,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                             <td>3</td>
                             <td><?php echo $controller->MissionsAttemptedByLevel(3) ;?></td>
                             <td><?php echo $controller->MissionsCompletedByLevel(3) ;?></td>
+                            <td><?php $controller->CompletedMissionsByLevel(3);?></td>
                             <td><?php $controller->UncompletedMissionsByLevel(3);?></td>
                            <td><?php echo $controller->LevelCorrectPercentage(3) ;?></td>
                           </tr>

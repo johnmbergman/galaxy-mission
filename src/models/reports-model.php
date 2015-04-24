@@ -1,4 +1,9 @@
 <?php
+/*
+	Rerorts Model
+	Created by Adam Hill
+	4/20/15
+*/
 
 Class ReportsModel {
 

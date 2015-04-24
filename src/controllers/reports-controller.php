@@ -1,5 +1,9 @@
 <?php
-
+/*
+	ReportsConroller
+	Updated: 4/23/15
+	Adam Hill
+*/
 
 class ReportsController
 {
@@ -172,9 +176,9 @@ class ReportsController
       return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
   }
   
-  public function UncompletedMissionsByLevel($gradeLevel)
+  public function CompletedMissionsByLevel($gradeLevel)
   {
-  	$sql = "select question_type.name from question_type where question_type.question_type_id not in (select student_mission_record.question_type_id from student_mission_record where student_mission_record.student_id=".($this->model->studentid).") and question_type.grade_level= ".($gradeLevel);
+  	$sql = "select distinct question_type.name from question_type join student_mission_record on question_type.question_type_id=student_mission_record.question_type_id where student_mission_record.student_id=".($this->model->studentid)." and student_mission_record.number_correct between 8 and 10 and question_type.grade_level= ".($gradeLevel);
   	
   	// Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -195,27 +199,30 @@ class ReportsController
         echo $row["name"]."<br>";
     }
   }
- /* public function BestMissionByLevel($gradeLevel)
+  
+  public function UncompletedMissionsByLevel($gradeLevel)
   {
-    $sql = "select max(avg_num_correct) from (select avg(number_correct) as avg_number_correct from student_mission_record join question_type on (student_mission_record.question_type_id=question_type.question_type_id) where student_mission_record.student_id = ".($this->model->studentid)." and question_type.grade_level = ".($gradeLevel).")";
-    
-    // Attempt to connect to the database
+  	$sql = "select question_type.name from question_type where question_type.question_type_id not in (select student_mission_record.question_type_id from student_mission_record where student_mission_record.student_id=".($this->model->studentid)." and student_mission_record.number_correct between 8 and 10) and question_type.grade_level= ".($gradeLevel);
+  	
+  	// Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
     if($conn->connect_error)
     {
       trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
     }
 
-    // Successfully connected to the database. Run the query
+  // Successfully connected to the database. Run the query
     if($conn->query($sql) == false)
     {
       echo "bad sql " . $sql;
       trigger_error("Failed to register the account");
     }
     else 
-      return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
-  }*/ 
-  
+      $result =$conn->query($sql);    
+    while ($row = $result->fetch_assoc()) {
+        echo $row["name"]."<br>";
+    }
+  }
   
   public function LevelCorrectPercentage($gradeLevel)
   {
