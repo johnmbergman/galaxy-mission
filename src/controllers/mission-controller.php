@@ -327,7 +327,7 @@ class MissionController
       				break;
      		 	
      			case "2":
-     				$secondDigit = rand(100, (1000 - $firstDigit));
+     				$secondDigit = rand(1, (1000 - $firstDigit)/100) * 100;
      				$question->answer = $firstDigit + $secondDigit;
       				$question->text = "What does " . ($firstDigit) . " + " . ($secondDigit) . " equal?";
       				break;
