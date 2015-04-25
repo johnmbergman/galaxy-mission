@@ -7,7 +7,7 @@
     $controller = new DashboardController($model);
     $student_first_name = "";
     $start_date = "";
-    $grade_level="";
+    $grade_level="0";
   }
 
 ?>
