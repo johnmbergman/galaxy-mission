@@ -105,7 +105,7 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-3">
-                          <p class="progress-label">1st Grade:</p>
+                          <p class="progress-label">3rd Grade:</p>
                         </div>
                         <div class="col-sm-9">
                           <div class="progress" style="width: 75%">
