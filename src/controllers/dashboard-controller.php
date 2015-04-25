@@ -9,7 +9,7 @@ class DashboardController {
   }
 
   public function getKinderPercentComplete() {
-    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record WHERE student_id = " . ($this->model->studentid) . " and number_correct between 8 and 10" . " and grade_level = 0";
+    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record WHERE student_id = " . ($this->model->studentid) . " AND number_correct between 8 and 10";
     $sql2 = "SELECT count(mission_id) FROM missions WHERE grade_level = 0";
 
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -37,9 +37,9 @@ class DashboardController {
       return "0";
     }
   }
-  
+
   public function getFirstPercentComplete() {
-    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record WHERE student_id = " . ($this->model->studentid) . " and number_correct between 8 and 10" . " and grade_level = 0";
+    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record INNER JOIN question_type WHERE student_id = " . ($this->model->studentid) . " AND number_correct between 8 and 10 AND grade_level = 1";
     $sql2 = "SELECT count(mission_id) FROM missions WHERE grade_level = 1";
 
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -69,7 +69,7 @@ class DashboardController {
   }
 
   public function getSecondPercentComplete() {
-    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record WHERE student_id = " . ($this->model->studentid) . " and number_correct between 8 and 10" . " and grade_level = 0";
+    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record INNER JOIN question_type WHERE student_id = " . ($this->model->studentid) . " AND number_correct between 8 and 10 AND grade_level = 2";
     $sql2 = "SELECT count(mission_id) FROM missions WHERE grade_level = 2";
 
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -99,7 +99,7 @@ class DashboardController {
   }
 
   public function getThirdPercentComplete() {
-    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record WHERE student_id = " . ($this->model->studentid) . " and number_correct between 8 and 10" . " and grade_level = 0";
+    $sql1 = "SELECT count(mission_record_id) FROM student_mission_record INNER JOIN question_type WHERE student_id = " . ($this->model->studentid) . " AND number_correct between 8 and 10 AND grade_level = 3";
     $sql2 = "SELECT count(mission_id) FROM missions WHERE grade_level = 3";
 
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
