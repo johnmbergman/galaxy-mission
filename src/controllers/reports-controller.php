@@ -34,6 +34,7 @@ class ReportsController
     }
     else 
     	return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+     $conn->close();
   }
   
   public function getGameLevel()
@@ -55,6 +56,8 @@ class ReportsController
     }
     else 
     	return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+    	
+     $conn->close();
   }
     	
   // returns the student's mission completion percentage
@@ -94,6 +97,9 @@ class ReportsController
     }
     else
       return "0";
+      
+    $conn->close();
+    
   }
   
   // returns the student's total correct answer percentage
@@ -131,6 +137,7 @@ class ReportsController
 	}
 	else
 	  return "0";
+	 $conn->close();
       
   }
   
@@ -153,6 +160,8 @@ class ReportsController
     }
     else 
       return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+    
+     $conn->close();
   }
 	
   public function MissionsCompletedByLevel($gradeLevel)
@@ -174,6 +183,8 @@ class ReportsController
     }
     else 
       return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+      
+     $conn->close();
   }
   
   public function CompletedMissionsByLevel($gradeLevel)
@@ -198,6 +209,7 @@ class ReportsController
     while ($row = $result->fetch_assoc()) {
         echo $row["name"]."<br>";
     }
+     $conn->close();
   }
   
   public function UncompletedMissionsByLevel($gradeLevel)
@@ -222,6 +234,7 @@ class ReportsController
     while ($row = $result->fetch_assoc()) {
         echo $row["name"]."<br>";
     }
+     $conn->close();
   }
   
   public function LevelCorrectPercentage($gradeLevel)
@@ -259,6 +272,8 @@ class ReportsController
     }
     else
       return "0";
+      
+     $conn->close();
   }
 	
   public function MissionsAttemptedBySubject($subject)
@@ -279,6 +294,7 @@ class ReportsController
     }
     else 
       return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+       $conn->close();
   }
   
   public function MissionsCompletedBySubject($subject)
@@ -299,6 +315,9 @@ class ReportsController
     }
     else 
       return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+      
+     $conn->close();
+     
   }
 	
   public function CorrectPercentageBySubject($subject)
@@ -335,6 +354,8 @@ class ReportsController
     	return (100*($questionsCorrect/$questionsAttempted));
     }
     else return "0";
+    
+     $conn->close();
   }
   
   public function MissionAttempted($question_type_id)
@@ -359,6 +380,7 @@ class ReportsController
         return true;
       else
         return false;
+     $conn->close();
   }
     
   public function HighestMissionAttempted()
@@ -380,6 +402,8 @@ class ReportsController
     }
     else 
       return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+      
+    $conn->close();
   }
   
   public function GetMissionName($question_type_id)
@@ -404,6 +428,7 @@ class ReportsController
     while ($row = $result->fetch_assoc()) {
         echo $row["name"]."<br>";
     }
+     $conn->close();
   }
   
   public function AttemptsByMission($question_type_id)
@@ -425,6 +450,8 @@ class ReportsController
     }
     else 
       return ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
+      
+    $conn->close();
   }
   
   public function AvgMissionScore($question_type_id)
@@ -461,6 +488,8 @@ class ReportsController
     	return (100*($questionsCorrect/$questionsAttempted));
     }
     else return "0";
+    
+     $conn->close();
   }
   
   public function MissionHighScore($question_type_id)
@@ -484,6 +513,8 @@ class ReportsController
       $maxQuestionsCorrect = ($conn->query($sql)->fetch_array(MYSQLI_NUM)[0]);
       
     return (100*($maxQuestionsCorrect/10));
+    
+     $conn->close();
   }
     
 }

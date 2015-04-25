@@ -22,7 +22,7 @@ if($conn->connect_error)
 
 // Group and display the available missions.
 $lastgrade = -1;
-$result = $conn->query("select question_type_id,grade_level,name,description from question_type where enabled=1 and grade_level<=" . $_SESSION["current_student_grade"] . " order by grade_level");
+$result = $conn->query("select question_type_id,grade_level,name,description from question_type where enabled=1 and grade_level<=" . $_SESSION["current_student_game_level"] . " order by grade_level");
 while ($row = $result->fetch_assoc())
 {
   if($row["grade_level"] != $lastgrade)

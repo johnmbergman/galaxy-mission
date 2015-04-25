@@ -209,6 +209,21 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
                             <td><?php echo $controller->MissionsCompletedBySubject(5);?></td>
                             <td><?php echo $controller->CorrectPercentageBySubject(5);?></td>
                           </tr>
+                          <td>Parity</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(6);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(6);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(6);?></td>
+                          </tr>
+                          <td>Multiplication</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(7);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(7);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(7);?></td>
+                          </tr>
+                          <td>Division</td>
+                            <td><?php echo $controller->MissionsAttemptedBySubject(8);?></td>
+                            <td><?php echo $controller->MissionsCompletedBySubject(8);?></td>
+                            <td><?php echo $controller->CorrectPercentageBySubject(8);?></td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
