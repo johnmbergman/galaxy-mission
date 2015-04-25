@@ -265,8 +265,9 @@ class MissionController
       				$question->answer = 1;
       			else if ($value1 < $value2)
       				$question->answer = 2;
-      			else $question->answer = 3;
-     	 			$question->text = "Enter the number for the symbol that completes the statement: " . ($value1) . " _ " . ($value2) . "?<br/> 1. >, 2. <, or 3. =";
+      			else 
+      				$question->answer = 3;
+     	 		$question->text = "Enter the number for the symbol that completes the statement: " . ($value1) . " _ " . ($value2) . "?<br/> 1. >, 2. <, or 3. =";
      		 	break;
      		 }
      		break;
@@ -281,12 +282,12 @@ class MissionController
      		$question->answer = $firstNumber + $secondNumber + $thirdNumber;
      		$question->text = . ($firstNumber) . " + " . ($secondNumber) . " + " . ($thirdNumber) . " =";
      	}
-     	else if ($firstNumber > ($secondNumber && $thirdNumber))
+     	else if (($firstNumber > $secondNumber) && ($firstNumber > $thirdNumber))
      	{
      		$question->answer = $firstNumber - $secondNumber - $thirdNumber;
      		$question->text = . ($firstNumber) . " - " . ($secondNumber) . " - " . ($thirdNumber) . " =?";
      	}
-     	else if ($secondNumber > ($firstNumber && $thirdNumber))
+     	else if (($secondNumber > $firstNumber) && ($secondNumber > $thirdNumber))
      	{
      		$question->answer = $secondNumber - $thirdNumber - $firstNumber;
      		$question->text = . ($secondNumber) . " - " . ($thirdNumber) . " - " . ($firstNumber) . " =?";
@@ -304,11 +305,11 @@ class MissionController
 	  	$question->answer = rand(0, 10);
       	if ($question_form == 1)
       	{
-      		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " + _ = " . ($firstDigit + $question->answer) . "";
+      		$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " + _ = " . ($firstDigit + $question->answer);
       	}
       	else
       	{
-      		$question->text = "Enter the number that completes the problem: _ + " . ($firstDigit) . " = " . ($firstDigit + $question->answer) . "";	
+      		$question->text = "Enter the number that completes the problem: _ + " . ($firstDigit) . " = " . ($firstDigit + $question->answer);	
       	}
       	break;
       
@@ -321,12 +322,12 @@ class MissionController
       		if ($question_form == 1)
       		{
       			$question->answer=$secondDigit;
-      			$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " - _ = " . ($firstDigit - $secondDigit) . "";
+      			$question->text = "Enter the number that completes the problem: " . ($firstDigit) . " - _ = " . ($firstDigit - $secondDigit);
       		}
       		else
       		{
       			$question->answer=$firstDigit;
-      			$question->text = "Enter the number that completes the problem: _ - " . ($secondDigit) . " = " . ($firstDigit - $secondDigit) . "";	
+      			$question->text = "Enter the number that completes the problem: _ - " . ($secondDigit) . " = " . ($firstDigit - $secondDigit);	
       		}
       	}
       	else
@@ -334,12 +335,12 @@ class MissionController
       		if ($question_form == 2)
       		{
       			$question->answer=$firstDigit;
-      			$question->text = "Enter the number that completes the problem: " . ($secondDigit) . " - _ = " . ($secondDigit - $firstDigit) . "";
+      			$question->text = "Enter the number that completes the problem: " . ($secondDigit) . " - _ = " . ($secondDigit - $firstDigit);
       		}
       		else
       		{
       			$question->answer=$secondDigit;
-      			$question->text = "Enter the number that completes the problem: _ - " . ($firstDigit) . " = " . ($secondDigit - $firstDigit) . "";	
+      			$question->text = "Enter the number that completes the problem: _ - " . ($firstDigit) . " = " . ($secondDigit - $firstDigit);	
       		}
       	}
       	
@@ -347,7 +348,7 @@ class MissionController
       
     case "12":	// even or odd
     	$number = rand(1, 10);
-    	if ($number == 1 || 3 || 5 || 7 || 9)
+    	if ($number == (1 || 3 || 5 || 7 || 9))
     		$question->answer = 2;
     	else $question->answer = 1;    		
         $question->text = "Are there an even or odd number of planets? Enter 1 for even or 2 for odd.<br/>";
@@ -427,10 +428,12 @@ class MissionController
 		
 	case "17":	// divide within 100
 		$firstNumber = rand(1, 20);
+		
 		if ($firstNumber <= 10)
 			$secondNumber = rand(1, 10);
 		else
 			$secondNumber = rand(1, 5);
+		
 		$question->answer = $secondNumber;
 		$dividend = $firstNumber * $secondNumber;
 		$question->text =  . ($dividend) . " &divide " . ($firstNumber) . " = ";
@@ -443,6 +446,7 @@ class MissionController
 			$secondNumber = rand(1, 10);
 		else
 			$secondNumber = rand(1, 5);
+			
 		$product = $firstNumber * $secondNumber;
 		$question->answer = $secondNumber;
       	if ($question_form == 1)
@@ -461,6 +465,7 @@ class MissionController
 			$secondNumber = rand(1, 10);
 		else
 			$secondNumber = rand(1, 5);
+			
 		$dividend = $firstNumber * $secondNumber;
 		$question->answer = $firstNumber;
 		$question->text = "Enter the number that completes the problem: " . ($dividend) . " &divide _ = " . ($secondNumber);
