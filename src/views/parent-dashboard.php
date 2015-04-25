@@ -97,9 +97,9 @@
                         </div>
                         <div class="col-sm-9">
                           <div class="progress" style="width: 75%">
-                            <div id = "firstPreProg"  class="progress-bar progress-bar-info" style="width: 0%"></div>
-                            <div id = "firstProg"  class="progress-bar" style="width: <?php echo $controller->getSecondPercentComplete();?>%"></div>
-                            <div id = "firstNotComplete"  class="progress-bar progress-bar-danger" style="width: <?php echo (100 - $controller->getSecondPercentComplete()); ?>%"></div>
+                            <div id = "secondPreProg"  class="progress-bar progress-bar-info" style="width: 0%"></div>
+                            <div id = "secondProg"  class="progress-bar" style="width: <?php echo $controller->getSecondPercentComplete();?>%"></div>
+                            <div id = "secondNotComplete"  class="progress-bar progress-bar-danger" style="width: <?php echo (100 - $controller->getSecondPercentComplete()); ?>%"></div>
                           </div>
                         </div>
                       </div>
@@ -109,9 +109,9 @@
                         </div>
                         <div class="col-sm-9">
                           <div class="progress" style="width: 75%">
-                            <div id = "firstPreProg"  class="progress-bar progress-bar-info" style="width: 0%"></div>
-                            <div id = "firstProg"  class="progress-bar" style="width: <?php echo $controller->getThirdPercentComplete();?>%"></div>
-                            <div id = "firstNotComplete"  class="progress-bar progress-bar-danger" style="width: <?php echo (100 - $controller->getThirdPercentComplete()); ?>%"></div>
+                            <div id = "thirdPreProg"  class="progress-bar progress-bar-info" style="width: 0%"></div>
+                            <div id = "thirdProg"  class="progress-bar" style="width: <?php echo $controller->getThirdPercentComplete();?>%"></div>
+                            <div id = "thirdNotComplete"  class="progress-bar progress-bar-danger" style="width: <?php echo (100 - $controller->getThirdPercentComplete()); ?>%"></div>
                           </div>
                         </div>
                       </div>
