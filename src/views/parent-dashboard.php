@@ -32,6 +32,7 @@
                     <div class="col-sm-9">
                       <select class="form-control" id="studentSelect" onchange="location=this.options[this.selectedIndex].value;">
                         <?php if(!isset($_GET["studentid"])) echo "<option value='#'>Select a student...</option>"; ?>
+                        <?php if(!isset($_GET["studentid"])) { $grade_level = 0; } ?>
                         <?php
                           // Open the connection
                           $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
