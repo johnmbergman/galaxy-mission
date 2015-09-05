@@ -24,15 +24,18 @@ class LoginController
     // Validation boolean
     $returnflag = false;
 
-    // Build the sql query
-    $sql = "select parent_id as id, hash, email, 'parent' as type, first_name, last_name, phone from parents where email='" . $this->model->email . "' union select teacher_id as id, hash, email, 'teacher' as type, first_name, last_name, phone from teachers where email='" . $this->model->email . "'";
-
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
     if($conn->connect_error)
     {
       trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
     }
+
+    // String sanitization
+    $safe_email = $conn->real_escape_string($this->model->email);
+
+    // Build the sql query
+    $sql = "select parent_id as id, hash, email, 'parent' as type, first_name, last_name, phone from parents where email='" . $safe_email . "' union select teacher_id as id, hash, email, 'teacher' as type, first_name, last_name, phone from teachers where email='" . $safe_email . "'";
 
     // Run the query
     $result = $conn->query($sql);

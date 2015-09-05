@@ -21,19 +21,6 @@ class RegistrationController
   public function Register()
   {
 
-    // Generate the appropriate query string
-    if($this->model->type == "parent")
-    {
-      $sql = "insert into parents (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','" . $this->model->firstname ."', '" . $this->model->lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
-    }
-    elseif($this->model->type == "teacher")
-    {
-      $sql = "insert into teachers (email,first_name,last_name,hash,date_created) values ('" . $this->model->email . "','" . $this->model->firstname ."', '" . $this->model->lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
-    }
-    else
-    {
-      trigger_error("Type is neither parent nor teacher!");
-    }
     $returnflag = false;
 
     // Attempt to connect to the database
@@ -41,6 +28,25 @@ class RegistrationController
     if($conn->connect_error)
     {
       trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
+    }
+
+    // String sanitization
+    $safe_email       = $conn->real_escape_string($this->model->email);
+    $safe_firstname   = $conn->real_escape_string($this->model->firstname);
+    $safe_lastname    = $conn->real_escape_string($this->model->lastname);
+
+    // Prepare the sql statement
+    if($this->model->type == "parent")
+    {
+      $sql = "insert into parents (email,first_name,last_name,hash,date_created) values ('" . $safe_email . "','" . $safe_firstname ."', '" . $safe_lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+    }
+    elseif($this->model->type == "teacher")
+    {
+      $sql = "insert into teachers (email,first_name,last_name,hash,date_created) values ('" . $safe_email . "','" . $safe_firstname ."', '" . $safe_lastname . "','". password_hash($this->model->password, PASSWORD_DEFAULT) . "','" . date("Y-m-d H:i:s") . "')";
+    }
+    else
+    {
+      trigger_error("Type is neither parent nor teacher!");
     }
 
     // Successfully connected to the database. Run the query
@@ -63,7 +69,6 @@ class RegistrationController
   // Ensure the email is not already registered
   public function EmailAvailable($email)
   {
-    $sql = "select email from parents where email='" . $email . "' union select email from teachers where email='" . $email . "'";   
 
     // Attempt to connect to the database
     $conn = new mysqli(DB::DBSERVER, DB::DBUSER, DB::DBPASS, DB::DBNAME);
@@ -71,6 +76,12 @@ class RegistrationController
     {
       trigger_error("Database connection failed: " . $conn->connect_error, E_USER_ERROR);
     }
+
+    // String sanitization
+    $safe_email = $conn->real_escape_string($email);
+
+    // Prepare the sql statement
+    $sql = "select email from parents where email='" . $safe_email . "' union select email from teachers where email='" . $safe_email . "'";
 
     // Successfully connected to the database. Run the query
     $rs = $conn->query($sql);
@@ -81,8 +92,8 @@ class RegistrationController
     else
     {
       $returnflag = true;
-    }   
-    
+    }
+
 
     // Close the connection and return the result
     $conn->close();
