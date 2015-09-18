@@ -64,7 +64,7 @@
   <link href="/css/custom.css" rel="stylesheet">
 
   <!-- Font Awesome -->   
-  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -172,24 +172,28 @@ $conn->close();
       </div>
     </div>
   </nav>
-  <br /><br /><br /><br /><br />
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <?php require $filename; ?>
-      </div>
-    </div>
-    <!--<div class="row">
-      <div class="col-lg-12">
-        <?php echo "<pre>" . print_r($_SESSION, TRUE) . "</pre>"; ?>
-      </div>
-    </div>-->
-    <hr />
+  <?php
+    if($filename == "views/home.php") {
+      echo '<div class="container-fluid">';
+      require $filename;
+      echo '</div>';
+    } else {
+      echo '<br /><br /><br /><br /><br />';
+      echo '<div class="container">';
+      echo '<div class="row">';
+      echo '<div class="col-lg-12">';
+      require $filename;
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
+    }
+  ?>
+  <hr />
+  <footer class="container">
     <div class="row">
       <p>Copyright &copy; <a href="/">Galaxy Mission</a> <?php echo date("Y"); ?>. <a href="/tos/">Terms of Service</a>.</p>
     </div>
-  </div>
+  </footer>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

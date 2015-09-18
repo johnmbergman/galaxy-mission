@@ -4,10 +4,38 @@
   background-position: 0% 25%;
   background-size: cover;
   background-repeat: no-repeat;
-  color: white;
+  color: #eee;
   margin-bottom: 10px;
-  background-color: #eeeeee;
   max-width: 100%;
+  padding-top: 15em;
+  padding-bottom: 14em;
+}
+
+.jumbotron-home h1 {
+  font-size: 63px;
+}
+
+.jumbotron-home h1, .jumbotron-home h2, .jumbotron-home h3, .jumbotron-home h4, .jumbotron-home p {
+  color: #eee;
+}
+
+section {
+  padding-top: 7em;
+  padding-bottom: 7em;
+}
+
+.section-bg-dark {
+  background-color: #111;
+  color: #eee;
+}
+
+.section-bg-dark h1, .section-bg-dark h2, .section-bg-dark h3, .section-bg-dark h4, .section-bg-dark p {
+  color: #eee;
+}
+
+footer {
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 .jumbotron-question {
